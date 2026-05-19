@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Sound of Australia</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>The Sound of Australia</h1>
+    <p class="subtitle">What We Buy, What We Love, What We Stream</p>
+    <p class="intro">Three charts capture three different sides of Australian music.
+    The ARIA Charts show what sells. Triple J's Hottest 100 shows what Australians love.
+    Together, they reveal a surprising story about identity, taste, and the battle
+    for the Australian airwaves.</p>
+    <div class="stats-row">
+      <div class="stat">
+        <span class="stat-num">37</span>
+        <span class="stat-label">Years of ARIA Data</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">4,200</span>
+        <span class="stat-label">Triple J Entries</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">227</span>
+        <span class="stat-label">Melbourne Venues</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 1 -->
+  <section class="section">
+    <h2>Where Does Australian Music Come From?</h2>
+    <p class="section-intro">Melbourne and Sydney dominate — but the live music scene tells a richer story.</p>
+    <div class="grid-full">
+      <div id="map-venues"></div>
+    </div>
+    <div class="grid-2col">
+      <div id="map-choropleth"></div>
+      <div class="text-block">
+        <h3>A Nation of Buyers</h3>
+        <p>Australian albums make up 21.9% of all ARIA chart entries —
+        yet Australian singles sit at just 8.4%. The gap reveals how
+        Australians consume music differently across formats.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section section-dark">
+    <h2>What Australia Buys: The ARIA Story</h2>
+    <p class="section-intro">37 years of chart data reveals who has truly dominated Australian commercial music.</p>
+    <div class="grid-2col">
+      <div id="chart-line"></div>
+      <div id="chart-lollipop"></div>
+    </div>
+    <div class="grid-full">
+      <div id="chart-bump"></div>
+    </div>
+    <div class="grid-2col">
+      <div id="chart-dotplot"></div>
+      <div class="text-block">
+        <h3>Albums vs Singles</h3>
+        <p>Some artists dominate album charts but barely register on singles.
+        Others are singles powerhouses. The connected dot plot reveals
+        which format each major Australian artist truly owns.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section">
+    <h2>What Australia Loves: The Triple J Story</h2>
+    <p class="section-intro">Since 1989, over 2.65 million Australians vote each year for their favourite songs.</p>
+    <div class="grid-full">
+      <div id="chart-heatmap"></div>
+    </div>
+    <div class="grid-2col">
+      <div id="chart-area"></div>
+      <div id="chart-scatter-j"></div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section section-dark">
+    <h2>The Sound Itself: What Makes a Hit?</h2>
+    <p class="section-intro">Beyond the charts — what do the songs that Australians love actually sound like?</p>
+    <div class="grid-2col">
+      <div id="chart-grouped"></div>
+      <div id="chart-radial"></div>
+    </div>
+    <div class="grid-full">
+      <div id="chart-scatter-release"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>The Sound of Australia</strong> — Created by Nguyen Ngoc Tuan, May 2026</p>
+    <p>
+      Data sources:
+      <a href="https://github.com/caseybriggs/ARIA-charts">ARIA Charts (caseybriggs)</a> ·
+      <a href="https://www.abc.net.au/triplej/hottest100">Triple J Hottest 100 (ABC)</a> ·
+      <a href="https://data.melbourne.vic.gov.au">City of Melbourne Open Data</a>
+    </p>
+    <p>AI tools used: Claude (Anthropic) for code assistance and grammar checking.</p>
+  </footer>
+
+  <script src="vega_lite_vis.js"></script>
+</body>
+</html>
