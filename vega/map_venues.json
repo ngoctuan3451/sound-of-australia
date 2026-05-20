@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 500,
+  "height": 520,
   "title": {
     "text": "Live Music Venues Across Melbourne",
-    "subtitle": "227 registered venues — filter by type to explore the scene",
+    "subtitle": "227 registered venues — bars dominate, but performance spaces anchor the serious music scene",
     "fontSize": 18,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -13,28 +13,9 @@
   },
   "projection": {
     "type": "mercator",
-    "center": [144.963, -37.812],
-    "scale": 180000
+    "center": [144.968, -37.812],
+    "scale": 260000
   },
-  "params": [
-    {
-      "name": "venue_type",
-      "bind": {
-        "input": "select",
-        "options": [
-          null, "Bar", "Nightclub", "Hotel",
-          "Venue", "Performance space",
-          "Theatre", "Multi-use", "Museum", "Library"
-        ],
-        "labels": [
-          "Show All", "Bar", "Nightclub", "Hotel",
-          "Venue", "Performance space",
-          "Theatre", "Multi-use", "Museum", "Library"
-        ],
-        "name": "Filter by venue type: "
-      }
-    }
-  ],
   "layer": [
     {
       "data": {
@@ -46,9 +27,9 @@
       },
       "mark": {
         "type": "geoshape",
-        "fill": "#f0ede8",
-        "stroke": "#ccc",
-        "strokeWidth": 0.6
+        "fill": "#f7f4f0",
+        "stroke": "#333",
+        "strokeWidth": 1.0
       }
     },
     {
@@ -57,18 +38,16 @@
       },
       "transform": [
         {
-          "calculate": "datum.space_type == 'bar' ? 'Bar' : (datum.space_type == null || datum.space_type == '' ? 'Other' : datum.space_type)",
+          "calculate": "datum.space_type == 'Bar' || datum.space_type == 'bar' ? 'Bar' : datum.space_type == 'Nightclub' ? 'Nightclub' : datum.space_type == 'Hotel' ? 'Hotel' : datum.space_type == 'Venue' ? 'Venue' : datum.space_type == 'Performance space' ? 'Performance space' : 'Other'",
           "as": "Venue Type"
-        },
-        {
-          "filter": "venue_type == null || datum['Venue Type'] == venue_type"
         }
       ],
       "mark": {
         "type": "circle",
-        "opacity": 0.85,
+        "opacity": 0.8,
         "stroke": "white",
-        "strokeWidth": 0.8
+        "strokeWidth": 0.8,
+        "size": 45
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
@@ -77,43 +56,70 @@
           "field": "Venue Type",
           "type": "nominal",
           "title": "Venue Type",
-          "scale": {"scheme": "tableau10"}
+          "scale": {
+  "domain": ["Bar", "Nightclub", "Hotel", "Venue", "Performance space", "Other"],
+  "range": ["#E63946", "#B100CD", "#0077FF", "#00C853", "#FF8C00", "#999999"]
+},
+          "legend": {
+            "orient": "right",
+            "labelFontSize": 12,
+            "symbolSize": 100,
+            "title": "Venue Type",
+            "titleFontSize": 12,
+            "titleFontWeight": 600
+          }
         },
-        "size": {"value": 90},
         "tooltip": [
-          {"field": "venue_name", "title": "Venue"},
+          {"field": "venue_name", "title": "📍 Venue"},
           {"field": "Venue Type", "title": "Type"},
-          {"field": "venue_address", "title": "Address"},
-          {"field": "website", "title": "Website"}
+          {"field": "venue_address", "title": "Address"}
         ]
       }
     },
     {
       "data": {
         "values": [
-          {"suburb": "Melbourne CBD", "lon": 144.963, "lat": -37.814},
+          {"suburb": "Melbourne CBD", "lon": 144.9631, "lat": -37.8150},
           {"suburb": "Fitzroy", "lon": 144.978, "lat": -37.797},
-          {"suburb": "Carlton", "lon": 144.966, "lat": -37.799},
-          {"suburb": "Collingwood", "lon": 144.987, "lat": -37.803},
-          {"suburb": "Richmond", "lon": 144.999, "lat": -37.824},
-          {"suburb": "South Yarra", "lon": 144.993, "lat": -37.841},
-          {"suburb": "Docklands", "lon": 144.944, "lat": -37.816},
-          {"suburb": "North Melbourne", "lon": 144.953, "lat": -37.796}
+          {"suburb": "Carlton", "lon": 144.962, "lat": -37.803},
+          {"suburb": "Collingwood", "lon": 144.991, "lat": -37.805},
+          {"suburb": "Richmond", "lon": 145.001, "lat": -37.827},
+          {"suburb": "South Yarra", "lon": 144.993, "lat": -37.843},
+          {"suburb": "Docklands", "lon": 144.942, "lat": -37.818},
+          {"suburb": "North Melbourne", "lon": 144.950, "lat": -37.799},
+          {"suburb": "Southbank", "lon": 144.963, "lat": -37.824}
         ]
       },
-      "mark": {
-        "type": "text",
-        "fontSize": 11,
-        "color": "#444",
-        "fontStyle": "italic",
-        "fontWeight": 600,
-        "dy": -8
-      },
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude": {"field": "lat", "type": "quantitative"},
-        "text": {"field": "suburb", "type": "nominal"}
-      }
+      "layer": [
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "fontWeight": 700,
+            "stroke": "white",
+            "strokeWidth": 3
+          },
+          "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "text": {"field": "suburb", "type": "nominal"},
+            "color": {"value": "#222"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontSize": 10,
+            "fontWeight": 700
+          },
+          "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "text": {"field": "suburb", "type": "nominal"},
+            "color": {"value": "#222"}
+          }
+        }
+      ]
     }
   ]
 }

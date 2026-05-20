@@ -131,6 +131,15 @@ h3 {
 
 .section-dark {
   background: #f4f4f8;
+  padding: 5rem 2rem;
+}
+
+.section-dark .section-label,
+.section-dark h2,
+.section-dark .section-body {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-label {
@@ -176,6 +185,17 @@ h3 {
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   margin: 2rem auto;
   max-width: 1100px;
+  width: 100%;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  align-items: start;
+  padding: 0 2rem;
 }
 
 .section-dark .chart-block {
