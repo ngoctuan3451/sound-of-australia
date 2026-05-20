@@ -1,15 +1,21 @@
-    {
+{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 400,
+  "height": 420,
+  "padding": {"left": 20, "right": 20, "top": 10, "bottom": 10},
   "title": {
     "text": "Australia's Chart Royalty: Year by Year",
-    "subtitle": "Annual ranking of the top 8 Australian artists by weeks on ARIA singles chart (2018–2025)",
+    "subtitle": "Artists who appeared in the top 5 for 3+ consecutive years — hover a line to highlight one artist",
     "fontSize": 18,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",
-    "anchor": "start"
+    "anchor": "start",
+    "offset": 14
+  },
+  "config": {
+    "view": {"stroke": null},
+    "font": "Inter, system-ui, sans-serif"
   },
   "data": {
     "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/single_charts.csv"
@@ -20,11 +26,7 @@
       "as": "is_aussie"
     },
     {"filter": "datum.is_aussie == 1"},
-    {
-      "timeUnit": "year",
-      "field": "chart_date",
-      "as": "year"
-    },
+    {"timeUnit": "year", "field": "chart_date", "as": "year"},
     {"filter": "year(datum.year) >= 2018"},
     {
       "aggregate": [{"op": "count", "as": "weeks"}],
@@ -35,41 +37,104 @@
       "sort": [{"field": "weeks", "order": "descending"}],
       "groupby": ["year"]
     },
-    {"filter": "datum.rank <= 8"}
+    {"filter": "datum.rank <= 5"},
+    {
+      "joinaggregate": [
+        {"op": "count", "as": "years_appeared"}
+      ],
+      "groupby": ["artist"]
+    },
+    {"filter": "datum.years_appeared >= 3"}
   ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "temporal",
+      "title": null,
+      "axis": {
+        "format": "%Y",
+        "labelFontSize": 12,
+        "labelColor": "#555",
+        "grid": false,
+        "domain": false,
+        "ticks": false,
+        "labelPadding": 12,
+        "tickCount": 8
+      },
+      "scale": {"padding": 40}
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "title": null,
+      "scale": {"domain": [5.5, 0.5]},
+      "axis": {
+        "values": [1, 2, 3, 4, 5],
+        "labelExpr": "'#' + datum.value",
+        "labelFontSize": 13,
+        "labelFontWeight": 700,
+        "labelColor": "#aaa",
+        "labelPadding": 12,
+        "grid": true,
+        "gridDash": [3, 5],
+        "gridColor": "#e0e0e0",
+        "domain": false,
+        "ticks": false
+      }
+    },
+    "color": {
+      "field": "artist",
+      "type": "nominal",
+      "scale": {"scheme": "tableau10"},
+      "legend": {
+        "title": null,
+        "labelFontSize": 11,
+        "labelFontWeight": 500,
+        "symbolSize": 150,
+        "symbolStrokeWidth": 3,
+        "orient": "bottom",
+        "columns": 3,
+        "labelLimit": 200
+      }
+    }
+  },
   "layer": [
     {
       "mark": {
         "type": "line",
-        "strokeWidth": 3,
-        "interpolate": "monotone",
-        "point": {
-          "filled": true,
-          "size": 150,
-          "stroke": "white",
-          "strokeWidth": 2
-        }
+        "strokeWidth": 3.5,
+        "interpolate": "monotone"
       },
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "temporal",
-          "title": null,
-          "axis": {"format": "%Y", "labelFontSize": 11, "grid": false}
-        },
-        "y": {
-          "field": "rank",
-          "type": "quantitative",
-          "title": "Rank",
-          "scale": {"domain": [8.5, 0.5], "reverse": false},
-          "axis": {"tickCount": 8, "labelFontSize": 11, "grid": true, "gridOpacity": 0.2}
-        },
-        "color": {
-          "field": "artist",
-          "type": "nominal",
-          "title": "Artist",
-          "scale": {"scheme": "tableau10"},
-          "legend": {"labelLimit": 200}
+        "detail": {"field": "artist"},
+        "opacity": {
+          "condition": {"param": "bumpHover", "value": 1, "empty": true},
+          "value": 0.08
+        }
+      }
+    },
+    {
+      "params": [
+        {
+          "name": "bumpHover",
+          "select": {
+            "type": "point",
+            "fields": ["artist"],
+            "on": "mouseover",
+            "clear": "mouseout"
+          }
+        }
+      ],
+      "mark": {
+        "type": "circle",
+        "size": 180,
+        "stroke": "white",
+        "strokeWidth": 2.5
+      },
+      "encoding": {
+        "opacity": {
+          "condition": {"param": "bumpHover", "value": 1, "empty": true},
+          "value": 0.1
         },
         "tooltip": [
           {"field": "artist", "title": "Artist"},
@@ -77,6 +142,22 @@
           {"field": "rank", "title": "Rank"},
           {"field": "weeks", "title": "Weeks on Chart"}
         ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "fontSize": 9,
+        "fontWeight": 700,
+        "color": "white",
+        "baseline": "middle"
+      },
+      "encoding": {
+        "text": {"field": "rank"},
+        "opacity": {
+          "condition": {"param": "bumpHover", "value": 1, "empty": true},
+          "value": 0.1
+        }
       }
     }
   ]

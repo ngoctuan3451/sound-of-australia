@@ -7,111 +7,225 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
   <!-- HERO -->
   <section class="hero">
-    <h1>The Sound of Australia</h1>
-    <p class="subtitle">What We Buy, What We Love, What We Stream</p>
-    <p class="intro">Three charts capture three different sides of Australian music.
-    The ARIA Charts show what sells. Triple J's Hottest 100 shows what Australians love.
-    Together, they reveal a surprising story about identity, taste, and the battle
-    for the Australian airwaves.</p>
-    <div class="stats-row">
-      <div class="stat">
-        <span class="stat-num">37</span>
-        <span class="stat-label">Years of ARIA Data</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">4,200</span>
-        <span class="stat-label">Triple J Entries</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">227</span>
-        <span class="stat-label">Melbourne Venues</span>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">FIT2179 Data Visualisation 2 · Semester 1, 2026</p>
+      <h1>The Sound of Australia</h1>
+      <p class="subtitle">What We Buy, What We Love, What We Stream</p>
+      <p class="intro">Melbourne has one of the most vibrant live music scenes in the world. Australian artists have dominated our own charts — and occasionally broken the world's. But what does the data actually say about how we consume music? This visualisation traces three decades of ARIA chart data, Triple J listener votes, and Melbourne's live music venues to tell the real story of Australian music.</p>
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-num">37</span>
+          <span class="stat-label">Years of ARIA Data</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">4,200</span>
+          <span class="stat-label">Triple J Entries</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">227</span>
+          <span class="stat-label">Melbourne Venues</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">95,800</span>
+          <span class="stat-label">Chart Records</span>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SECTION 1 -->
   <section class="section">
+    <div class="section-label">Part 1</div>
     <h2>Where Does Australian Music Come From?</h2>
-    <p class="section-intro">Melbourne and Sydney dominate — but the live music scene tells a richer story.</p>
-    <div class="grid-full">
-      <div id="map-venues"></div>
-    </div>
-    <div class="grid-2col">
-      <div id="map-choropleth"></div>
-      <div class="text-block">
-        <h3>A Nation of Buyers</h3>
-        <p>Australian albums make up 21.9% of all ARIA chart entries —
-        yet Australian singles sit at just 8.4%. The gap reveals how
-        Australians consume music differently across formats.</p>
+    <p class="section-body">Australia's music scene is heavily concentrated in two cities. <strong>Melbourne and Sydney</strong> produce the vast majority of ARIA-charting artists — but Melbourne punches above its weight, hosting over <strong>227 registered live music venues</strong> in the CBD alone. The map below shows exactly where that scene lives, suburb by suburb.</p>
+    <p class="section-body">Internationally, the ARIA album charts tell a different story. <strong>The United States and United Kingdom</strong> have dominated Australian charts for decades, with Sweden emerging as a surprising powerhouse through pop exports like ABBA and more recently through the Swedish songwriting machine behind global hits.</p>
+
+    <div class="chart-block">
+      <div class="chart-header">
+        <h3>Live Music Venues Across Melbourne</h3>
+        <p class="chart-desc">Each dot represents a registered live music venue. Use the dropdown to filter by venue type — bars and hotels dominate, but performance spaces and theatres anchor the serious music scene.</p>
       </div>
+      <div id="map-venues"></div>
+      <p class="source">Source: City of Melbourne Open Data — Live Music Venues, 2024. <a href="https://data.melbourne.vic.gov.au">data.melbourne.vic.gov.au</a></p>
     </div>
+
+    <div class="chart-block">
+  <div class="chart-header">
+    <h3>Where Does ARIA Album Competition Come From?</h3>
+    <p class="chart-desc">Darker countries have sent more album chart entries into Australia. 
+    Australia itself ranks highest — followed by the USA, UK, Canada and Sweden. 
+    Grey countries have no chart entries recorded. Hover any country for exact figures.</p>
+  </div>
+  <div id="map-choropleth"></div>
+  <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
+</div>
+
+<div class="grid-2col">
+  <div class="text-block">
+  <h3>🥇 USA Dominates Australian Album Charts</h3>
+  <p>American artists account for <strong>32,046 weeks</strong> on the ARIA album charts — more than any other country, including Australia itself.</p>
+  <p>Australia ranks <strong>second with 20,666 weeks</strong> — impressive for a country of 26 million. The UK comes third with 15,255 weeks.</p>
+  <p>Sweden's <strong>648 weeks</strong> is remarkable for a country of just 10 million people — a testament to Swedish pop's global dominance through ABBA, Robyn and modern hitmakers.</p>
+</div>
+  <div class="text-block">
+    <h3>Singles Tell a Different Story</h3>
+    <p>On the <strong>singles chart</strong>, Australian artists drop to just <strong>8.4%</strong> — a dramatic fall from their album dominance.</p>
+    <p>This gap suggests Australians actively seek out local albums but passively consume international singles through radio and streaming — a pattern that shifted significantly in the <strong>streaming era after 2018</strong>.</p>
+  </div>
+</div>
   </section>
 
   <!-- SECTION 2 -->
   <section class="section section-dark">
-    <h2>What Australia Buys: The ARIA Story</h2>
-    <p class="section-intro">37 years of chart data reveals who has truly dominated Australian commercial music.</p>
-    <div class="grid-2col">
-      <div id="chart-line"></div>
-      <div id="chart-lollipop"></div>
-    </div>
-    <div class="grid-full">
-      <div id="chart-bump"></div>
-    </div>
-    <div class="grid-2col">
-      <div id="chart-dotplot"></div>
-      <div class="text-block">
-        <h3>Albums vs Singles</h3>
-        <p>Some artists dominate album charts but barely register on singles.
-        Others are singles powerhouses. The connected dot plot reveals
-        which format each major Australian artist truly owns.</p>
+    <div class="section-inner">
+      <div class="section-label">Part 2</div>
+      <h2>What Australia Buys: The ARIA Story</h2>
+      <p class="section-body">For most of the past 37 years, Australian artists struggled to break into their own singles charts. The ARIA Top 50 was dominated by American and British acts — local artists might crack the top 10 occasionally, but sustained chart presence was rare. Then something changed around <strong>2018</strong>.</p>
+      <p class="section-body">The streaming era arrived, and with it came a new path to chart success. Tones and I released <em>Dance Monkey</em> in 2019 and spent <strong>64 consecutive weeks</strong> in the Australian top 10. The Kid LAROI became the first Australian-born artist to top charts globally. Suddenly, <strong>Australian artists owned their own charts</strong> in a way they never had before.</p>
+
+      <div class="grid-2col">
+        <div class="chart-block">
+          <div class="chart-header">
+            <h3>The Rise of Australian Music on ARIA</h3>
+            <p class="chart-desc">Percentage of Top 50 ARIA singles by Australian artists each year. The spike from 2019–2021 marks the Tones and I era — the sharpest rise in Australian chart presence ever recorded.</p>
+          </div>
+          <div id="chart-line"></div>
+          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
+        </div>
+        <div class="chart-block">
+          <div class="chart-header">
+            <h3>Australia's ARIA Singles Royalty</h3>
+            <p class="chart-desc">Top 15 Australian artists by total weeks on the ARIA singles chart. Tones and I leads by a wide margin — her <strong>215 weeks</strong> on chart is almost double her nearest rival.</p>
+          </div>
+          <div id="chart-lollipop"></div>
+          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
+        </div>
+      </div>
+
+      <div class="chart-block">
+        <div class="chart-header">
+          <h3>Australia's Chart Royalty: Year by Year</h3>
+          <p class="chart-desc">Annual ranking of the top Australian artists on ARIA singles charts (2018–2025). A rank of 1 means that artist had the most weeks on chart that year. Watch how Tones and I dominates 2019–2021 before The Kid LAROI and others rise.</p>
+        </div>
+        <div id="chart-bump"></div>
+        <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
+      </div>
+
+      <div class="grid-2col">
+        <div class="chart-block">
+          <div class="chart-header">
+            <h3>Singles vs Albums: Who Owns Which Format?</h3>
+            <p class="chart-desc">For each major Australian artist, the left dot shows their album chart weeks and the right dot shows their singles chart weeks. Artists to the left are album artists — those to the right are singles powerhouses.</p>
+          </div>
+          <div id="chart-dotplot"></div>
+          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
+        </div>
+        <div class="text-block">
+          <h3>Albums vs Singles: A Cultural Split</h3>
+          <p>Some Australian artists are <strong>album artists</strong> — INXS, Cold Chisel, Kylie Minogue — who built loyal audiences through cohesive records rather than radio hits.</p>
+          <p>Others are <strong>singles machines</strong> — Tones and I, The Kid LAROI — whose streaming numbers far outpace their album sales.</p>
+          <p>This split reflects a generational shift in how Australians discover and consume music. The album era belonged to the <strong>1980s and 1990s</strong>. The singles era belongs to <strong>streaming</strong>.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SECTION 3 -->
   <section class="section">
+    <div class="section-label">Part 3</div>
     <h2>What Australia Loves: The Triple J Story</h2>
-    <p class="section-intro">Since 1989, over 2.65 million Australians vote each year for their favourite songs.</p>
-    <div class="grid-full">
+    <p class="section-body">Every January, millions of Australians vote in the Triple J Hottest 100 — the world's largest music poll. Unlike the ARIA charts, which measure <em>sales</em>, the Hottest 100 measures <em>love</em>. The results are often very different. Songs that top ARIA are often absent from Triple J, and vice versa.</p>
+    <p class="section-body">Since 1989, the Hottest 100 has featured <strong>4,200 songs</strong> across 36 annual polls. Australian artists have consistently made up around <strong>40–50%</strong> of entries — far higher than their ARIA chart share. But in recent years, international artists have been creeping up, reflecting how streaming algorithms expose Australian listeners to more global music than ever before.</p>
+
+    <div class="chart-block">
+      <div class="chart-header">
+        <h3>Triple J Hottest 100: Artist Appearances Across the Years</h3>
+        <p class="chart-desc">Each row is an Australian artist, each column a year. Darker cells mean more songs in that year's Hottest 100. Look for artists who appear consistently over decades — true Triple J legends.</p>
+      </div>
       <div id="chart-heatmap"></div>
+      <p class="source">Source: Triple J Hottest 100 — ABC Australia, abc.net.au/triplej/hottest100</p>
     </div>
+
     <div class="grid-2col">
-      <div id="chart-area"></div>
-      <div id="chart-scatter-j"></div>
+      <div class="chart-block">
+        <div class="chart-header">
+          <h3>Australian vs International in the Hottest 100</h3>
+          <p class="chart-desc">Share of Australian artists in each year's Hottest 100. The long-term trend shows international artists slowly gaining ground — a sign of streaming's globalising effect on Australian taste.</p>
+        </div>
+        <div id="chart-area"></div>
+        <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
+      </div>
+      <div class="chart-block">
+        <div class="chart-header">
+          <h3>When Were the Songs Released vs When They Charted?</h3>
+          <p class="chart-desc">Each dot is a Triple J entry. Most songs chart in the same year they're released — but some beloved tracks appear years after release, showing how listeners rediscover older music.</p>
+        </div>
+        <div id="chart-scatter-j"></div>
+        <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
+      </div>
     </div>
   </section>
 
   <!-- SECTION 4 -->
   <section class="section section-dark">
-    <h2>The Sound Itself: What Makes a Hit?</h2>
-    <p class="section-intro">Beyond the charts — what do the songs that Australians love actually sound like?</p>
-    <div class="grid-2col">
-      <div id="chart-grouped"></div>
-      <div id="chart-radial"></div>
-    </div>
-    <div class="grid-full">
-      <div id="chart-scatter-release"></div>
+    <div class="section-inner">
+      <div class="section-label">Part 4</div>
+      <h2>The Sound Itself: What Makes a Hit?</h2>
+      <p class="section-body">Beyond chart positions and listener votes, there is a deeper question: what do Australian hits actually <em>sound like</em>? Using Spotify's audio feature data — which measures qualities like energy, danceability, tempo, and emotional positivity — we can build an acoustic fingerprint of the music Australians love.</p>
+      <p class="section-body">The data reveals a consistent preference: Australian listeners gravitate toward <strong>high-energy, danceable tracks</strong> with moderate positivity. Pure acoustic music rarely charts. The sweet spot is electric but not abrasive — energetic but emotionally layered.</p>
+
+      <div class="grid-2col">
+        <div class="chart-block">
+          <div class="chart-header">
+            <h3>Aussie vs International: Chart Share by Genre</h3>
+            <p class="chart-desc">For each major genre, this chart compares how many Australian vs international songs appear on charts. Australian artists dominate in rock and indie — but trail in pop and hip-hop.</p>
+          </div>
+          <div id="chart-grouped"></div>
+          <p class="source">Source: Spotify Charts — dhruvildave/spotify-charts, Kaggle</p>
+        </div>
+        <div class="chart-block">
+          <div class="chart-header">
+            <h3>The Audio DNA of Australian Hits</h3>
+            <p class="chart-desc">Each axis of the radial chart shows a different audio quality. The larger the shape, the stronger that quality. Australian hits score highest on energy and danceability — and lowest on acousticness.</p>
+          </div>
+          <div id="chart-radial"></div>
+          <p class="source">Source: Spotify Charts — dhruvildave/spotify-charts, Kaggle</p>
+        </div>
+      </div>
+
+      <div class="chart-block">
+        <div class="chart-header">
+          <h3>Energy vs Danceability of Charting Songs</h3>
+          <p class="chart-desc">Each dot is a song. The most successful charting songs cluster in the high-energy, high-danceability corner. Pure ballads and acoustic tracks rarely appear in the top 50.</p>
+        </div>
+        <div id="chart-scatter-release"></div>
+        <p class="source">Source: Spotify Charts — dhruvildave/spotify-charts, Kaggle</p>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p><strong>The Sound of Australia</strong> — Created by Nguyen Ngoc Tuan, May 2026</p>
-    <p>
-      Data sources:
-      <a href="https://github.com/caseybriggs/ARIA-charts">ARIA Charts (caseybriggs)</a> ·
-      <a href="https://www.abc.net.au/triplej/hottest100">Triple J Hottest 100 (ABC)</a> ·
-      <a href="https://data.melbourne.vic.gov.au">City of Melbourne Open Data</a>
-    </p>
-    <p>AI tools used: Claude (Anthropic) for code assistance and grammar checking.</p>
+    <div class="footer-inner">
+      <p><strong>The Sound of Australia</strong> — FIT2179 Data Visualisation 2, Semester 1 2026</p>
+      <p>Created by Nguyen Ngoc Tuan · Monash University · May 2026</p>
+      <div class="footer-sources">
+        <p><strong>Data Sources</strong></p>
+        <p>
+          <a href="https://github.com/caseybriggs/ARIA-charts">ARIA Charts (caseybriggs, GitHub)</a> ·
+          <a href="https://www.abc.net.au/triplej/hottest100">Triple J Hottest 100 (ABC Australia)</a> ·
+          <a href="https://data.melbourne.vic.gov.au">City of Melbourne Open Data</a>
+        </p>
+      </div>
+      <p class="ai-note">AI tools used: Claude (Anthropic) assisted with code structure, debugging, and grammar. All data interpretation, design decisions, and final implementation were reviewed and edited by the author.</p>
+    </div>
   </footer>
 
   <script src="vega_lite_vis.js"></script>

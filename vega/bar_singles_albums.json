@@ -1,0 +1,103 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 420,
+  "title": {
+    "text": "Singles vs Albums: Who Owns Which Format?",
+    "subtitle": "Top 15 Australian artists — comparing total weeks on ARIA singles chart vs album chart",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "data": {
+    "values": []
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/single_charts.csv"
+      },
+      "transform": [
+        {
+          "calculate": "datum.aus_flag == 'TRUE' || datum.aus_flag == 'True' || datum.aus_flag == true ? 1 : 0",
+          "as": "is_aussie"
+        },
+        {"filter": "datum.is_aussie == 1"},
+        {"aggregate": [{"op": "count", "as": "weeks"}], "groupby": ["artist"]},
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "weeks", "order": "descending"}]
+        },
+        {"filter": "datum.rank <= 15"},
+        {"calculate": "'Singles'", "as": "format"}
+      ],
+      "mark": {"type": "bar", "cornerRadiusEnd": 3},
+      "encoding": {
+        "y": {
+          "field": "artist",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {"labelFontSize": 11, "labelLimit": 180}
+        },
+        "x": {
+          "field": "weeks",
+          "type": "quantitative",
+          "title": "Weeks on Chart",
+          "axis": {"grid": true, "gridOpacity": 0.2}
+        },
+        "color": {
+          "field": "format",
+          "type": "nominal",
+          "scale": {"domain": ["Singles", "Albums"], "range": ["#f39c12", "#2980b9"]},
+          "title": "Format",
+          "legend": {"title": "Chart Format", "labelFontSize": 12}
+        },
+        "xOffset": {"field": "format", "type": "nominal"},
+        "tooltip": [
+          {"field": "artist", "title": "Artist"},
+          {"field": "format", "title": "Format"},
+          {"field": "weeks", "title": "Weeks on Chart"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/album_charts.csv"
+      },
+      "transform": [
+        {
+          "calculate": "datum.aus_flag == 'TRUE' || datum.aus_flag == 'True' || datum.aus_flag == true ? 1 : 0",
+          "as": "is_aussie"
+        },
+        {"filter": "datum.is_aussie == 1"},
+        {"aggregate": [{"op": "count", "as": "weeks"}], "groupby": ["artist"]},
+        {
+          "window": [{"op": "rank", "as": "rank"}],
+          "sort": [{"field": "weeks", "order": "descending"}]
+        },
+        {"filter": "datum.rank <= 15"},
+        {"calculate": "'Albums'", "as": "format"}
+      ],
+      "mark": {"type": "bar", "cornerRadiusEnd": 3},
+      "encoding": {
+        "y": {"field": "artist", "type": "nominal", "sort": "-x", "title": null},
+        "x": {"field": "weeks", "type": "quantitative"},
+        "color": {
+          "field": "format",
+          "type": "nominal",
+          "scale": {"domain": ["Singles", "Albums"], "range": ["#f39c12", "#2980b9"]}
+        },
+        "xOffset": {"field": "format", "type": "nominal"},
+        "tooltip": [
+          {"field": "artist", "title": "Artist"},
+          {"field": "format", "title": "Format"},
+          {"field": "weeks", "title": "Weeks on Chart"}
+        ]
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+} 
