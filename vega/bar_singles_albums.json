@@ -35,7 +35,17 @@
           "field": "format",
           "type": "nominal",
           "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
-          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 160}
+          "legend": {
+            "orient": "none",
+            "legendX": 820, "legendY": 40,
+            "direction": "vertical",
+            "title": null,
+            "labelFontSize": 13,
+            "symbolSize": 200,
+            "padding": 10,
+            "fillColor": "rgba(255,255,255,0.85)",
+            "strokeColor": "#ddd"
+          }
         },
         "tooltip": [
           {"field": "artist", "title": "Artist"},

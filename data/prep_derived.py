@@ -219,6 +219,20 @@ kept = {a for a, c in appearances.items() if c >= 2}
 bump = [b for b in bump if b["artist"] in kept]
 json.dump(bump, open(os.path.join(OUT, "aria_bump_rankings.json"), "w"), separators=(",", ":"))
 
+# ---------- 13. Aus #1 weeks by year — albums (Sec 4) ----------
+year_n1_albums = defaultdict(lambda: {"aus": 0, "intl": 0})
+for r in albums:
+    if r["rank"] != 1: continue
+    y = yr(r["date"])
+    if r["aus"]: year_n1_albums[y]["aus"]  += 1
+    else:        year_n1_albums[y]["intl"] += 1
+yr_rows = []
+for y in sorted(year_n1_albums.keys()):
+    v = year_n1_albums[y]
+    yr_rows.append({"year": y, "origin": "Australian",    "weeks": v["aus"]})
+    yr_rows.append({"year": y, "origin": "International", "weeks": v["intl"]})
+json.dump(yr_rows, open(os.path.join(OUT, "aria_albums_yearly_origin.json"), "w"), separators=(",", ":"))
+
 # ---------- 12. Every Australian #1 album (Sec 4 timeline) ----------
 aus_alb_n1_weeks = Counter()
 aus_alb_n1_first = {}
