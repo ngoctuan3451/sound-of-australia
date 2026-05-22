@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 380,
+  "height": 440,
   "title": {
-    "text": "Aussies own the album chart — but almost never the singles chart",
-    "subtitle": "For each decade, the BLUE bar is the Australian share of the ARIA albums chart. The ORANGE bar is the same for singles. The orange bar barely existed until the 2020s.",
+    "text": "Every Time an Australian Topped the Album Chart",
+    "subtitle": "Each circle is one Australian album that hit #1 on the ARIA charts (1988–2025). Bigger circle = more weeks spent at #1. The biggest dots are the records that defined their decade.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -12,57 +12,64 @@
     "anchor": "start"
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
-  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_decades.json"},
-  "transform": [{"filter": "datum.origin == 'Australian'"}],
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aus_n1_albums_timeline.json"},
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 4},
+      "mark": {"type": "circle", "filled": true, "opacity": 0.75, "stroke": "#fff", "strokeWidth": 1.2},
       "encoding": {
         "x": {
-          "field": "decade",
-          "type": "ordinal",
-          "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"],
-          "title": null,
-          "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "labelPadding": 8}
-        },
-        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
-        "y": {
-          "field": "share",
+          "field": "year",
           "type": "quantitative",
-          "title": "% of chart weeks held by Australian artists",
-          "scale": {"domain": [0, 30]},
+          "title": null,
+          "scale": {"domain": [1987, 2026]},
+          "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#555", "tickCount": 10}
+        },
+        "y": {
+          "field": "weeks_at_1",
+          "type": "quantitative",
+          "title": "Weeks spent at #1",
+          "scale": {"domain": [0, 32]},
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
+        "size": {
+          "field": "weeks_at_1",
+          "type": "quantitative",
+          "scale": {"range": [40, 1200]},
+          "legend": null
+        },
         "color": {
-          "field": "format",
-          "type": "nominal",
-          "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
-          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 13, "symbolSize": 200}
+          "field": "weeks_at_1",
+          "type": "quantitative",
+          "scale": {"scheme": "oranges", "domainMin": 1},
+          "legend": null
         },
         "tooltip": [
-          {"field": "decade", "title": "Decade"},
-          {"field": "format", "title": "Format"},
-          {"field": "share",  "title": "Australian share %", "format": ".1f"},
-          {"field": "weeks",  "title": "Australian weeks on chart"}
+          {"field": "artist", "title": "Artist"},
+          {"field": "title",  "title": "Album"},
+          {"field": "year",   "title": "Year"},
+          {"field": "weeks_at_1", "title": "Weeks at #1"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "color": "#1a1a2e", "dy": -6},
+      "transform": [{"filter": "datum.weeks_at_1 >= 5"}],
+      "mark": {"type": "text", "align": "left", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dx": 10, "dy": -2},
       "encoding": {
-        "x": {"field": "decade", "type": "ordinal", "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"]},
-        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
-        "y": {"field": "share", "type": "quantitative"},
-        "text": {"field": "share", "type": "quantitative", "format": ".0f"}
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "weeks_at_1", "type": "quantitative"},
+        "text": {"field": "title"}
       }
     },
     {
-      "data": {"values": [{"x": "2020s", "y": 26, "text": "First decade where Aussie singles\nshare finally lifted off zero"}]},
-      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#c0392b", "align": "right", "dx": -20},
+      "data": {"values": [
+        {"x": 1994, "y": 28, "t": "267 Australian albums have reached #1"},
+        {"x": 1994, "y": 26, "t": "since 1988 — across pop, rock, country and Idol-era pop."}
+      ]},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "color": "#555"},
       "encoding": {
-        "x": {"field": "x", "type": "ordinal", "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"]},
+        "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "text"}
+        "text": {"field": "t"}
       }
     }
   ]

@@ -219,6 +219,25 @@ kept = {a for a, c in appearances.items() if c >= 2}
 bump = [b for b in bump if b["artist"] in kept]
 json.dump(bump, open(os.path.join(OUT, "aria_bump_rankings.json"), "w"), separators=(",", ":"))
 
+# ---------- 12. Every Australian #1 album (Sec 4 timeline) ----------
+aus_alb_n1_weeks = Counter()
+aus_alb_n1_first = {}
+for r in albums:
+    if r["aus"] and r["rank"] == 1:
+        key = (r["artist"], r["title"])
+        aus_alb_n1_weeks[key] += 1
+        if key not in aus_alb_n1_first or r["date"] < aus_alb_n1_first[key]:
+            aus_alb_n1_first[key] = r["date"]
+
+aus_alb_timeline = [
+    {"artist": k[0], "title": k[1],
+     "year": yr(aus_alb_n1_first[k]), "first": aus_alb_n1_first[k],
+     "weeks_at_1": v}
+    for k, v in aus_alb_n1_weeks.items()
+]
+aus_alb_timeline.sort(key=lambda x: (x["year"], -x["weeks_at_1"]))
+json.dump(aus_alb_timeline, open(os.path.join(OUT, "aus_n1_albums_timeline.json"), "w"), separators=(",", ":"))
+
 # ---------- 11. Lollipop: top 15 Aussie artists by singles weeks (Sec 2) ----------
 lolli = [{"artist": a, "weeks": w} for a, w in sing_weeks.most_common(15)]
 json.dump(lolli, open(os.path.join(OUT, "aria_top_singles_artists.json"), "w"), separators=(",", ":"))
