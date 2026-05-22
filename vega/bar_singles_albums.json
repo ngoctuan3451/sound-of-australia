@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 460,
+  "height": 620,
   "title": {
     "text": "Singles vs Albums: Who Owns Which Format?",
     "subtitle": "Top 15 Australian artists by combined weeks on the ARIA charts, sorted by total. Some are album acts, others live on the singles chart.",
@@ -15,7 +15,7 @@
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_top_artists_format.json"},
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 3, "height": 10},
+      "mark": {"type": "bar", "cornerRadiusEnd": 3, "height": {"band": 0.85}},
       "encoding": {
         "y": {
           "field": "artist",

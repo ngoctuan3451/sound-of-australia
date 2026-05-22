@@ -47,8 +47,8 @@
         "shape": "M 0,-1 L 0.866,-0.5 L 0.866,0.5 L 0,1 L -0.866,0.5 L -0.866,-0.5 Z",
         "filled": true,
         "stroke": "#fff",
-        "strokeWidth": 0.5,
-        "size": 950,
+        "strokeWidth": 0.6,
+        "size": 1700,
         "opacity": 0.95
       },
       "encoding": {

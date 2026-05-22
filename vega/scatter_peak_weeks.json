@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 480,
+  "height": 520,
   "title": {
     "text": "The Marathon Runners",
-    "subtitle": "The 15 songs that spent the most weeks on the ARIA singles chart, with the colour of each bar showing the song's best ever position. Notice: hitting #1 isn't what keeps a song on the chart.",
+    "subtitle": "The 15 songs that spent the most weeks on the ARIA singles chart. Bar colour = best position the song ever reached. Hitting #1 isn't what keeps a song around.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -14,21 +14,22 @@
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_summary.json"},
   "transform": [
-    {"calculate": "datum.artist + ' – ' + datum.title", "as": "label"},
+    {"calculate": "datum.artist + ' — ' + datum.title", "as": "label"},
     {"calculate": "datum.aus ? 'Australian' : 'International'", "as": "origin"},
+    {"calculate": "'#' + datum.best", "as": "peak_label"},
     {"window": [{"op": "rank", "as": "wk_rank"}], "sort": [{"field": "weeks", "order": "descending"}]},
     {"filter": "datum.wk_rank <= 15"}
   ],
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 4, "height": {"band": 0.75}},
+      "mark": {"type": "bar", "cornerRadiusEnd": 4},
       "encoding": {
         "y": {
           "field": "label",
           "type": "nominal",
           "sort": {"field": "weeks", "order": "descending"},
           "title": null,
-          "axis": {"labelFontSize": 12, "labelLimit": 320, "labelColor": "#333"}
+          "axis": {"labelFontSize": 12, "labelLimit": 320, "labelColor": "#333", "labelPadding": 8}
         },
         "x": {
           "field": "weeks",
@@ -39,9 +40,9 @@
         "color": {
           "field": "best",
           "type": "quantitative",
-          "scale": {"scheme": "yelloworangered", "reverse": true, "domain": [1, 30]},
+          "scale": {"scheme": "yelloworangered", "reverse": true, "domain": [1, 25]},
           "legend": {
-            "title": "Best position reached",
+            "title": "Peak position",
             "orient": "bottom-right",
             "gradientLength": 160,
             "titleFontSize": 11,
@@ -60,7 +61,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 600, "color": "#1a1a2e", "dx": 6},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "color": "#1a1a2e", "dx": 6},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "weeks", "order": "descending"}},
         "x": {"field": "weeks", "type": "quantitative"},
@@ -68,11 +69,11 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "right", "fontSize": 10, "fontWeight": 600, "color": "white", "dx": -8},
+      "mark": {"type": "text", "align": "right", "fontSize": 10, "fontWeight": 700, "color": "white", "dx": -10},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "weeks", "order": "descending"}},
         "x": {"field": "weeks", "type": "quantitative"},
-        "text": {"field": "best", "type": "quantitative", "format": "'#'d"}
+        "text": {"field": "peak_label"}
       }
     }
   ]

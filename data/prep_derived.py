@@ -213,9 +213,9 @@ for y, artists in sorted(year_artist.items()):
     for rank, (a, w) in enumerate(ranked, 1):
         bump.append({"year": y, "artist": a, "weeks": w, "rank": rank})
 
-# keep only artists who appeared in top 5 for 3+ years
+# keep top 5 Aussie artists per year, but require artist to appear in 2+ years overall
 appearances = Counter(b["artist"] for b in bump)
-kept = {a for a, c in appearances.items() if c >= 3}
+kept = {a for a, c in appearances.items() if c >= 2}
 bump = [b for b in bump if b["artist"] in kept]
 json.dump(bump, open(os.path.join(OUT, "aria_bump_rankings.json"), "w"), separators=(",", ":"))
 

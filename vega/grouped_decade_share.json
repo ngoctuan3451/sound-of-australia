@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 380,
+  "height": 360,
   "title": {
-    "text": "Decade by Decade: Singles vs Albums",
-    "subtitle": "Share of weeks on the ARIA charts held by Australian artists, each decade. Two bars per decade compare how locals fared on the singles chart vs the albums chart.",
+    "text": "The Album / Singles Gap, by Decade",
+    "subtitle": "Each decade is a row. The blue dot shows the Australian share of weeks on the ALBUMS chart; the orange dot shows the same for SINGLES. The grey bar between them is the gap.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -14,29 +14,38 @@
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_decades.json"},
   "transform": [{"filter": "datum.origin == 'Australian'"}],
+  "encoding": {
+    "y": {
+      "field": "decade",
+      "type": "ordinal",
+      "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"],
+      "title": null,
+      "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelPadding": 10}
+    }
+  },
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 3},
+      "mark": {"type": "line", "color": "#bbb", "strokeWidth": 10, "strokeCap": "round", "opacity": 0.6},
       "encoding": {
         "x": {
-          "field": "decade",
-          "type": "ordinal",
-          "title": null,
-          "axis": {"labelFontSize": 12, "labelColor": "#333", "labelAngle": 0, "labelPadding": 6}
-        },
-        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
-        "y": {
           "field": "share",
           "type": "quantitative",
           "title": "% of chart weeks held by Australian artists",
-          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"},
-          "scale": {"domain": [0, 60]}
+          "scale": {"domain": [0, 35]},
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
+        "detail": {"field": "decade"}
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 380, "stroke": "white", "strokeWidth": 2.5},
+      "encoding": {
+        "x": {"field": "share", "type": "quantitative"},
         "color": {
           "field": "format",
           "type": "nominal",
           "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
-          "legend": {"orient": "top-right", "title": null, "labelFontSize": 12, "symbolSize": 160}
+          "legend": {"orient": "top-right", "title": null, "labelFontSize": 12, "symbolSize": 200}
         },
         "tooltip": [
           {"field": "decade", "title": "Decade"},
@@ -47,11 +56,9 @@
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": 600, "color": "#1a1a2e", "dy": -6},
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "white"},
       "encoding": {
-        "x": {"field": "decade", "type": "ordinal"},
-        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
-        "y": {"field": "share", "type": "quantitative"},
+        "x": {"field": "share", "type": "quantitative"},
         "text": {"field": "share", "type": "quantitative", "format": ".0f"}
       }
     }
