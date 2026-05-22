@@ -1,130 +1,57 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 350,
+  "height": 340,
   "title": {
     "text": "The Rise of Australian Music on the ARIA Charts",
-    "subtitle": "Share of Top 50 ARIA singles by Australian artists — the streaming era changed everything",
-    "fontSize": 18,
+    "subtitle": "Share of Top 50 ARIA singles by Australian artists each year. The streaming era changed everything.",
+    "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",
     "anchor": "start"
   },
-  "data": {
-    "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/single_charts.csv"
-  },
-  "transform": [
-    {
-      "calculate": "datum.aus_flag == 'TRUE' || datum.aus_flag == 'True' || datum.aus_flag == true ? 1 : 0",
-      "as": "is_aussie"
-    },
-    {
-      "timeUnit": "year",
-      "field": "chart_date",
-      "as": "year"
-    },
-    {
-      "aggregate": [
-        {"op": "count", "as": "total"},
-        {"op": "sum", "field": "is_aussie", "as": "aus_count"}
-      ],
-      "groupby": ["year"]
-    },
-    {
-      "calculate": "datum.aus_count / datum.total * 100",
-      "as": "aus_pct"
-    },
-    {"filter": "year(datum.year) >= 2015"}
-  ],
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_yearly.json"},
+  "transform": [{"filter": "datum.year >= 2015"}],
   "layer": [
     {
-      "mark": {
-        "type": "area",
-        "line": {"strokeWidth": 3, "color": "#f39c12"},
-        "color": "#f39c12",
-        "fillOpacity": 0.25,
-        "interpolate": "monotone"
-      },
+      "mark": {"type": "area", "line": {"strokeWidth": 3, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.25, "interpolate": "monotone"},
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "temporal",
-          "title": null,
-          "axis": {"grid": false, "labelFontSize": 11, "format": "%Y"}
-        },
-        "y": {
-          "field": "aus_pct",
-          "type": "quantitative",
-          "title": "% Australian Songs",
-          "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 11},
-          "scale": {"domain": [0, 15]}
-        },
+        "x": {"field": "year", "type": "quantitative", "title": null, "axis": {"grid": false, "labelFontSize": 11, "format": "d"}},
+        "y": {"field": "aus_pct", "type": "quantitative", "title": "% Australian songs", "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}, "scale": {"domain": [0, 15]}},
         "tooltip": [
-          {"field": "year", "type": "temporal", "title": "Year", "format": "%Y"},
-          {"field": "aus_pct", "type": "quantitative", "title": "% Aussie Songs", "format": ".1f"},
-          {"field": "aus_count", "type": "quantitative", "title": "Aussie Entries"},
-          {"field": "total", "type": "quantitative", "title": "Total Entries"}
+          {"field": "year", "title": "Year"},
+          {"field": "aus_pct", "title": "% Aussie", "format": ".1f"},
+          {"field": "aus", "title": "Aussie entries"},
+          {"field": "total", "title": "Total entries"}
         ]
       }
     },
     {
-      "mark": {
-        "type": "point",
-        "filled": true,
-        "size": 80,
-        "color": "#d35400",
-        "stroke": "white",
-        "strokeWidth": 2
-      },
+      "mark": {"type": "point", "filled": true, "size": 90, "color": "#d35400", "stroke": "white", "strokeWidth": 2},
       "encoding": {
-        "x": {"field": "year", "type": "temporal"},
-        "y": {"field": "aus_pct", "type": "quantitative"},
-        "tooltip": [
-          {"field": "year", "type": "temporal", "title": "Year", "format": "%Y"},
-          {"field": "aus_pct", "type": "quantitative", "title": "% Aussie Songs", "format": ".1f"}
-        ]
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "aus_pct", "type": "quantitative"}
       }
     },
     {
-      "mark": {
-        "type": "rule",
-        "color": "#888",
-        "strokeDash": [4, 4],
-        "strokeWidth": 1
-      },
-      "encoding": {
-        "y": {"datum": 8.4}
-      }
+      "mark": {"type": "rule", "color": "#888", "strokeDash": [4, 4], "strokeWidth": 1},
+      "encoding": {"y": {"datum": 8.4}}
     },
     {
-      "mark": {
-        "type": "text",
-        "align": "right",
-        "fontSize": 10,
-        "color": "#888",
-        "fontStyle": "italic",
-        "dx": -5,
-        "dy": -5
-      },
+      "mark": {"type": "text", "align": "right", "fontSize": 10, "color": "#888", "fontStyle": "italic", "dx": -4, "dy": -5},
       "encoding": {
-        "x": {"datum": {"year": 2025}, "type": "temporal"},
+        "x": {"datum": 2025},
         "y": {"datum": 8.4},
         "text": {"value": "8.4% all-time avg"}
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "align": "center",
-        "fontSize": 12,
-        "fontWeight": 600,
-        "color": "#c0392b",
-        "dy": -20
-      },
+      "mark": {"type": "text", "align": "center", "fontSize": 12, "fontWeight": 600, "color": "#c0392b"},
       "encoding": {
-        "x": {"datum": {"year": 2021}, "type": "temporal"},
-        "y": {"datum": 13, "type": "quantitative"},
+        "x": {"datum": 2020},
+        "y": {"datum": 13.5},
         "text": {"value": "Peak: Tones and I era"}
       }
     }

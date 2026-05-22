@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 420,
+  "height": 480,
   "title": {
-    "text": "Peak Position vs Time on Chart",
-    "subtitle": "Each dot is a song that spent at least five weeks on the ARIA singles chart. Songs that hit #1 don't always stay long. Songs that linger don't always peak high.",
+    "text": "The Marathon Runners",
+    "subtitle": "The 15 songs that spent the most weeks on the ARIA singles chart, with the colour of each bar showing the song's best ever position. Notice: hitting #1 isn't what keeps a song on the chart.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -13,69 +13,66 @@
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_summary.json"},
-  "params": [
-    {
-      "name": "originSel",
-      "value": "All",
-      "bind": {
-        "input": "select",
-        "options": ["All", "Australian only", "International only"],
-        "name": "Show: "
-      }
-    }
-  ],
   "transform": [
+    {"calculate": "datum.artist + ' – ' + datum.title", "as": "label"},
     {"calculate": "datum.aus ? 'Australian' : 'International'", "as": "origin"},
-    {"filter": "originSel == 'All' || (originSel == 'Australian only' && datum.aus) || (originSel == 'International only' && !datum.aus)"}
+    {"window": [{"op": "rank", "as": "wk_rank"}], "sort": [{"field": "weeks", "order": "descending"}]},
+    {"filter": "datum.wk_rank <= 15"}
   ],
   "layer": [
     {
-      "mark": {"type": "circle", "opacity": 0.55, "stroke": "white", "strokeWidth": 0.3},
+      "mark": {"type": "bar", "cornerRadiusEnd": 4, "height": {"band": 0.75}},
       "encoding": {
-        "x": {
-          "field": "best",
-          "type": "quantitative",
-          "title": "Peak position (1 = #1)",
-          "scale": {"domain": [0, 50]},
-          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
-        },
         "y": {
+          "field": "label",
+          "type": "nominal",
+          "sort": {"field": "weeks", "order": "descending"},
+          "title": null,
+          "axis": {"labelFontSize": 12, "labelLimit": 320, "labelColor": "#333"}
+        },
+        "x": {
           "field": "weeks",
           "type": "quantitative",
-          "title": "Total weeks on chart",
-          "scale": {"type": "log", "base": 10},
+          "title": "Weeks on the ARIA singles chart",
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "color": {
-          "field": "origin",
-          "type": "nominal",
-          "scale": {"domain": ["Australian", "International"], "range": ["#f39c12", "#1a1a2e"]},
-          "legend": {"orient": "top-right", "title": null, "labelFontSize": 11}
-        },
-        "size": {
-          "field": "weeks",
+          "field": "best",
           "type": "quantitative",
-          "scale": {"range": [20, 300]},
-          "legend": null
+          "scale": {"scheme": "yelloworangered", "reverse": true, "domain": [1, 30]},
+          "legend": {
+            "title": "Best position reached",
+            "orient": "bottom-right",
+            "gradientLength": 160,
+            "titleFontSize": 11,
+            "labelFontSize": 10,
+            "format": "d"
+          }
         },
         "tooltip": [
           {"field": "title",  "title": "Song"},
           {"field": "artist", "title": "Artist"},
           {"field": "origin", "title": "Origin"},
-          {"field": "best",   "title": "Peak position"},
           {"field": "weeks",  "title": "Weeks on chart"},
-          {"field": "first",  "title": "First charted"},
-          {"field": "last",   "title": "Last charted"}
+          {"field": "best",   "title": "Best position"},
+          {"field": "first",  "title": "First charted"}
         ]
       }
     },
     {
-      "transform": [{"filter": "datum.weeks >= 90 || (datum.best == 1 && datum.weeks >= 40)"}],
-      "mark": {"type": "text", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dx": 8, "align": "left"},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 600, "color": "#1a1a2e", "dx": 6},
       "encoding": {
-        "x": {"field": "best", "type": "quantitative"},
-        "y": {"field": "weeks", "type": "quantitative"},
-        "text": {"field": "title"}
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "weeks", "order": "descending"}},
+        "x": {"field": "weeks", "type": "quantitative"},
+        "text": {"field": "weeks"}
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "right", "fontSize": 10, "fontWeight": 600, "color": "white", "dx": -8},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "weeks", "order": "descending"}},
+        "x": {"field": "weeks", "type": "quantitative"},
+        "text": {"field": "best", "type": "quantitative", "format": "'#'d"}
       }
     }
   ]

@@ -17,9 +17,8 @@ const charts = [
   ["#chart-area",            "vega/area_h100_new_returning.json"],
   ["#chart-scatter-j",       "vega/scatter_h100_longevity.json"],
 
-  // Section 4 — longevity, decades, seasons
+  // Section 4 — the shape of a hit
   ["#chart-grouped",         "vega/grouped_decade_share.json"],
-  ["#chart-radial",          "vega/radial_seasonality.json"],
   ["#chart-scatter-release", "vega/scatter_peak_weeks.json"]
 ];
 

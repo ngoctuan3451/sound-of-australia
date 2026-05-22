@@ -53,9 +53,10 @@
     },
     {
       "transform": [
-        {"filter": "datum.total >= 14"}
+        {"window": [{"op": "rank", "as": "label_rank"}], "sort": [{"field": "total", "order": "descending"}]},
+        {"filter": "datum.label_rank <= 8"}
       ],
-      "mark": {"type": "text", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dx": 8, "dy": -4, "align": "left"},
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 600, "color": "#1a1a2e", "dx": 10, "dy": -4, "align": "left"},
       "encoding": {
         "x": {"field": "span", "type": "quantitative"},
         "y": {"field": "total", "type": "quantitative"},

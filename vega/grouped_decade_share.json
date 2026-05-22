@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 360,
+  "height": 380,
   "title": {
     "text": "Decade by Decade: Singles vs Albums",
-    "subtitle": "Share of weeks on the ARIA chart held by Australian artists. Albums tell a much rosier story than singles.",
+    "subtitle": "Share of weeks on the ARIA charts held by Australian artists, each decade. Two bars per decade compare how locals fared on the singles chart vs the albums chart.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -14,49 +14,46 @@
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_decades.json"},
   "transform": [{"filter": "datum.origin == 'Australian'"}],
-  "facet": {
-    "column": {
-      "field": "format",
-      "type": "nominal",
-      "header": {"title": null, "labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#1a1a2e"}
-    }
-  },
-  "spec": {
-    "width": "container",
-    "height": 320,
-    "layer": [
-      {
-        "mark": {"type": "bar", "cornerRadiusEnd": 3, "color": "#f39c12"},
-        "encoding": {
-          "x": {
-            "field": "decade",
-            "type": "ordinal",
-            "title": null,
-            "axis": {"labelFontSize": 11, "labelColor": "#555"}
-          },
-          "y": {
-            "field": "share",
-            "type": "quantitative",
-            "title": "% of chart weeks (Australian)",
-            "scale": {"domain": [0, 60]},
-            "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
-          },
-          "tooltip": [
-            {"field": "decade", "title": "Decade"},
-            {"field": "format", "title": "Format"},
-            {"field": "share", "title": "Australian share %", "format": ".1f"},
-            {"field": "weeks", "title": "Aussie weeks on chart"}
-          ]
-        }
-      },
-      {
-        "mark": {"type": "text", "fontSize": 11, "fontWeight": 600, "color": "#1a1a2e", "dy": -6},
-        "encoding": {
-          "x": {"field": "decade", "type": "ordinal"},
-          "y": {"field": "share", "type": "quantitative"},
-          "text": {"field": "share", "type": "quantitative", "format": ".0f"}
-        }
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 3},
+      "encoding": {
+        "x": {
+          "field": "decade",
+          "type": "ordinal",
+          "title": null,
+          "axis": {"labelFontSize": 12, "labelColor": "#333", "labelAngle": 0, "labelPadding": 6}
+        },
+        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
+        "y": {
+          "field": "share",
+          "type": "quantitative",
+          "title": "% of chart weeks held by Australian artists",
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"},
+          "scale": {"domain": [0, 60]}
+        },
+        "color": {
+          "field": "format",
+          "type": "nominal",
+          "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
+          "legend": {"orient": "top-right", "title": null, "labelFontSize": 12, "symbolSize": 160}
+        },
+        "tooltip": [
+          {"field": "decade", "title": "Decade"},
+          {"field": "format", "title": "Format"},
+          {"field": "share",  "title": "Australian share %", "format": ".1f"},
+          {"field": "weeks",  "title": "Australian weeks on chart"}
+        ]
       }
-    ]
-  }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 600, "color": "#1a1a2e", "dy": -6},
+      "encoding": {
+        "x": {"field": "decade", "type": "ordinal"},
+        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
+        "y": {"field": "share", "type": "quantitative"},
+        "text": {"field": "share", "type": "quantitative", "format": ".0f"}
+      }
+    }
+  ]
 }

@@ -116,22 +116,18 @@
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
       </div>
 
-      <div class="grid-2col">
-        <div class="chart-block">
-          <div class="chart-header">
-            <h3>Singles vs Albums: Who Owns Which Format?</h3>
-            <p class="chart-desc">For each major Australian artist, the left dot shows their album chart weeks and the right dot shows their singles chart weeks. Artists to the left are album artists — those to the right are singles powerhouses.</p>
-          </div>
-          <div id="chart-dotplot"></div>
-          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
+      <div class="chart-block">
+        <div class="chart-header">
+          <h3>Singles vs Albums: Who Owns Which Format?</h3>
+          <p class="chart-desc">For each of Australia's 15 most-charted artists, the chart pairs their album weeks (blue) against their singles weeks (orange). Bars are sorted by combined total — some artists are clearly album acts, others live on the singles chart.</p>
         </div>
-        <div class="text-block">
-          <h3>Albums vs Singles: A Cultural Split</h3>
-          <p>Some Australian artists are <strong>album artists</strong> — INXS, Cold Chisel, Kylie Minogue — who built loyal audiences through cohesive records rather than radio hits.</p>
-          <p>Others are <strong>singles machines</strong> — Tones and I, The Kid LAROI — whose streaming numbers far outpace their album sales.</p>
-          <p>This split reflects a generational shift in how Australians discover and consume music. The album era belonged to the <strong>1980s and 1990s</strong>. The singles era belongs to <strong>streaming</strong>.</p>
-        </div>
+        <div id="chart-dotplot"></div>
+        <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
       </div>
+
+      <aside class="pullquote">
+        <p>Some Australian artists are <strong>album artists</strong> — INXS, Cold Chisel, Kylie Minogue — who built loyal audiences through cohesive records. Others are <strong>singles machines</strong> — Tones and I, The Kid LAROI — whose streaming numbers far outpace album sales. The album era belonged to the <strong>1980s and 1990s</strong>; the singles era belongs to <strong>streaming</strong>.</p>
+      </aside>
     </div>
   </section>
 
@@ -151,23 +147,22 @@
       <p class="source">Source: Triple J Hottest 100 — ABC Australia, abc.net.au/triplej/hottest100</p>
     </div>
 
-    <div class="grid-2col">
-      <div class="chart-block">
-        <div class="chart-header">
-          <h3>Fresh Faces vs Familiar Voices</h3>
-          <p class="chart-desc">Stacked-area split of every poll into <strong>new artists</strong> (never charted before) and <strong>returning artists</strong>. The orange band shrinks over time as the cumulative pool of past artists grows — a healthy sign that voters reward consistency, not just novelty.</p>
-        </div>
-        <div id="chart-area"></div>
-        <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
+    <div class="chart-block">
+      <div class="chart-header">
+        <h3>Fresh Faces vs Familiar Voices</h3>
+        <p class="chart-desc">Stacked-area split of every poll into <strong>new artists</strong> (never charted before) and <strong>returning artists</strong>. The orange band shrinks over time as the cumulative pool of past artists grows — a healthy sign that voters reward consistency, not just novelty.</p>
       </div>
-      <div class="chart-block">
-        <div class="chart-header">
-          <h3>Burn Bright, or Burn Long?</h3>
-          <p class="chart-desc">Each dot is one artist. <strong>X</strong> = years between their first and last appearance. <strong>Y</strong> = total songs voted in. <strong>Colour</strong> = best position ever reached. Long-career legends sit to the upper right; one-hit wonders cluster bottom-left.</p>
-        </div>
-        <div id="chart-scatter-j"></div>
-        <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
+      <div id="chart-area"></div>
+      <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
+    </div>
+
+    <div class="chart-block">
+      <div class="chart-header">
+        <h3>Burn Bright, or Burn Long?</h3>
+        <p class="chart-desc">Each dot is one artist. <strong>X</strong> = years between their first and last appearance. <strong>Y</strong> = total songs voted in. <strong>Colour</strong> = best position ever reached. Long-career legends sit to the upper right; one-hit wonders cluster bottom-left.</p>
       </div>
+      <div id="chart-scatter-j"></div>
+      <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
     </div>
   </section>
 
@@ -176,32 +171,23 @@
     <div class="section-inner">
       <div class="section-label">Part 4</div>
       <h2>The Shape of a Hit</h2>
-      <p class="section-body">Charts measure two things at once: <em>how high</em> a song peaks and <em>how long</em> it stays. These are not the same. A song can shoot to #1 for a single week and vanish. Another can sit at #18 for two years and quietly outsell the lot. The shape of a hit — peak, longevity, and timing — tells us much more than a single number on a chart.</p>
-      <p class="section-body">Looking across four decades of ARIA data, the Australian story has three layers: a slow climb in Australia's overall share of its own charts, a stark contrast between albums and singles, and a hidden seasonal rhythm in when new music actually breaks through.</p>
-
-      <div class="grid-2col">
-        <div class="chart-block">
-          <div class="chart-header">
-            <h3>Decade by Decade: Singles vs Albums</h3>
-            <p class="chart-desc">Australian artists have always done better on the <strong>albums</strong> chart than the singles chart. Each bar shows the share of weeks held by Australian acts in that decade, faceted by format.</p>
-          </div>
-          <div id="chart-grouped"></div>
-          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
-        </div>
-        <div class="chart-block">
-          <div class="chart-header">
-            <h3>When New Hits Arrive</h3>
-            <p class="chart-desc">A radial bar of every <em>first</em> appearance on the ARIA singles chart, grouped by month. The end-of-year cluster reflects the November–January release rush; Australian debuts (orange) follow a slightly different rhythm.</p>
-          </div>
-          <div id="chart-radial"></div>
-          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
-        </div>
-      </div>
+      <p class="section-body">Australian artists have always done better on the <strong>albums</strong> chart than the singles chart. The next chart shows that gap clearly: across every decade, the orange bar (singles) lags well behind the blue bar (albums). The streaming era is slowly closing it — but the divide is older than streaming itself.</p>
 
       <div class="chart-block">
         <div class="chart-header">
-          <h3>Peak Position vs Time on Chart</h3>
-          <p class="chart-desc">Every song that lasted five weeks or more on the ARIA singles chart, plotted by best position (x) against total weeks on chart on a log scale (y). Use the filter to compare Australian and international shapes. Labelled songs are the marathon runners.</p>
+          <h3>Decade by Decade: Singles vs Albums</h3>
+          <p class="chart-desc">Two bars per decade compare how Australian artists fared on the <strong>albums</strong> chart (blue) versus the <strong>singles</strong> chart (orange). Y values are the share of weeks on chart held by local acts.</p>
+        </div>
+        <div id="chart-grouped"></div>
+        <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
+      </div>
+
+      <p class="section-body">Chart success has two dimensions: <em>how high</em> a song peaks and <em>how long</em> it stays on chart. They are not the same. A song can hit #1 for one week and vanish. Another can sit at #18 for two years and quietly outsell the lot.</p>
+
+      <div class="chart-block">
+        <div class="chart-header">
+          <h3>The Marathon Runners</h3>
+          <p class="chart-desc">The 15 songs that spent the most weeks on the ARIA singles chart. Bar colour = best position the song reached. Notice that hitting #1 isn't what keeps a song around — most of these marathon runners peaked outside the top 5.</p>
         </div>
         <div id="chart-scatter-release"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>

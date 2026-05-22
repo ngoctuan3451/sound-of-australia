@@ -5,82 +5,47 @@
   "title": {
     "text": "Australia's ARIA Singles Royalty",
     "subtitle": "Top 15 Australian artists by total weeks on the ARIA singles chart",
-    "fontSize": 18,
+    "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",
     "anchor": "start"
   },
-  "data": {
-    "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/single_charts.csv"
-  },
-  "transform": [
-    {
-      "calculate": "datum.aus_flag == 'TRUE' || datum.aus_flag == 'True' || datum.aus_flag == true ? 1 : 0",
-      "as": "is_aussie"
-    },
-    {"filter": "datum.is_aussie == 1"},
-    {
-      "aggregate": [{"op": "count", "as": "weeks"}],
-      "groupby": ["artist"]
-    },
-    {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "weeks", "order": "descending"}]
-    },
-    {"filter": "datum.rank <= 15"}
-  ],
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_top_singles_artists.json"},
   "layer": [
     {
-      "mark": {
-        "type": "rule",
-        "color": "#f39c12",
-        "strokeWidth": 2
-      },
+      "mark": {"type": "rule", "color": "#f39c12", "strokeWidth": 2.5},
       "encoding": {
         "y": {
           "field": "artist",
           "type": "nominal",
           "sort": "-x",
           "title": null,
-          "axis": {"labelFontSize": 12, "labelLimit": 200}
+          "axis": {"labelFontSize": 12, "labelLimit": 220, "labelColor": "#333"}
         },
         "x": {
           "field": "weeks",
           "type": "quantitative",
-          "title": "Total Weeks on Chart",
-          "axis": {"grid": true, "gridOpacity": 0.2}
+          "title": "Total weeks on chart",
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "x2": {"datum": 0}
       }
     },
     {
-      "mark": {
-        "type": "circle",
-        "color": "#d35400",
-        "size": 250,
-        "stroke": "white",
-        "strokeWidth": 2
-      },
+      "mark": {"type": "circle", "color": "#d35400", "size": 280, "stroke": "white", "strokeWidth": 2.5},
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": "-x"},
         "x": {"field": "weeks", "type": "quantitative"},
         "tooltip": [
           {"field": "artist", "title": "Artist"},
-          {"field": "weeks", "title": "Weeks on Chart"},
-          {"field": "rank", "title": "Rank"}
+          {"field": "weeks", "title": "Weeks on chart"}
         ]
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "fontSize": 11,
-        "color": "#333",
-        "fontWeight": 600,
-        "dx": 10
-      },
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 600, "color": "#333", "dx": 12},
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": "-x"},
         "x": {"field": "weeks", "type": "quantitative"},

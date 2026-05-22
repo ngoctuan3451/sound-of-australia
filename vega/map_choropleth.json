@@ -1,16 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 420,
+  "height": 440,
   "title": {
-    "text": "Where Does ARIA Album Chart Competition Come From?",
-    "subtitle": "Total weeks on Australian album charts by country of artist origin — hover for details",
-    "fontSize": 18,
+    "text": "Where Does ARIA Album Competition Come From?",
+    "subtitle": "Total weeks on Australian album charts by country of artist origin. The USA and UK dominate; Sweden punches well above its weight.",
+    "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",
     "anchor": "start"
   },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "projection": {"type": "equalEarth"},
   "layer": [
     {
@@ -21,18 +22,11 @@
       "mark": {"type": "geoshape", "fill": "#e8e8e8", "stroke": "white", "strokeWidth": 0.4}
     },
     {
-      "data": {
-        "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/album_charts.csv"
-      },
+      "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_country_totals.json"},
       "transform": [
-        {"filter": "datum.location != 'non-Australian' && datum.location != null && datum.location != ''"},
         {
-          "calculate": "datum.location == 'United States' ? 'United States of America' : datum.location == 'United Kingdom' ? 'United Kingdom' : datum.location == 'New Zealand' ? 'New Zealand' : datum.location",
+          "calculate": "datum.location == 'United States' ? 'United States of America' : datum.location",
           "as": "location_fixed"
-        },
-        {
-          "aggregate": [{"op": "count", "as": "total_entries"}],
-          "groupby": ["location_fixed"]
         },
         {
           "lookup": "location_fixed",
@@ -50,92 +44,67 @@
       "encoding": {
         "shape": {"field": "geometry", "type": "geojson"},
         "color": {
-          "field": "total_entries",
+          "field": "weeks",
           "type": "quantitative",
-          "title": "Weeks on chart",
           "scale": {"type": "log", "scheme": "oranges"},
           "legend": {
             "title": "Weeks on chart",
             "format": ",",
             "orient": "bottom-right",
-            "gradientLength": 120
+            "gradientLength": 140
           }
         },
         "tooltip": [
           {"field": "location_fixed", "title": "Country"},
-          {"field": "total_entries", "title": "Weeks on Chart", "format": ","}
+          {"field": "weeks", "title": "Weeks on chart", "format": ","}
         ]
       }
     },
     {
       "data": {
-    "values": [
-      {"label": "★ #1", "sub": "USA", "lon": -100, "lat": 40},
-      {"label": "#2", "sub": "Australia", "lon": 134, "lat": -28},
-      {"label": "#3", "sub": "UK", "lon": -25, "lat": 58},
-      {"label": "#4", "sub": "Canada", "lon": -96, "lat": 67},
-      {"label": "#5", "sub": "Ireland", "lon": -25, "lat": 48},
-      {"label": "#6", "sub": "Sweden", "lon": 32, "lat": 67}
-    ]
+        "values": [
+          {"label": "★ #1", "sub": "USA", "lon": -100, "lat": 40},
+          {"label": "#2", "sub": "Australia", "lon": 134, "lat": -28},
+          {"label": "#3", "sub": "UK", "lon": -25, "lat": 58},
+          {"label": "#4", "sub": "Canada", "lon": -96, "lat": 67},
+          {"label": "#5", "sub": "Ireland", "lon": -25, "lat": 48},
+          {"label": "#6", "sub": "Sweden", "lon": 32, "lat": 67}
+        ]
       },
       "layer": [
         {
-          "mark": {
-            "type": "text",
-            "fontSize": 13,
-            "fontWeight": 800,
-            "stroke": "white",
-            "strokeWidth": 3,
-            "dy": -7
-          },
+          "mark": {"type": "text", "fontSize": 13, "fontWeight": 800, "stroke": "white", "strokeWidth": 3, "dy": -7},
           "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude": {"field": "lat", "type": "quantitative"},
-            "text": {"field": "label", "type": "nominal"},
+            "longitude": {"field": "lon"},
+            "latitude": {"field": "lat"},
+            "text": {"field": "label"},
             "color": {"value": "#c0392b"}
           }
         },
         {
-          "mark": {
-            "type": "text",
-            "fontSize": 13,
-            "fontWeight": 800,
-            "dy": -7
-          },
+          "mark": {"type": "text", "fontSize": 13, "fontWeight": 800, "dy": -7},
           "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude": {"field": "lat", "type": "quantitative"},
-            "text": {"field": "label", "type": "nominal"},
+            "longitude": {"field": "lon"},
+            "latitude": {"field": "lat"},
+            "text": {"field": "label"},
             "color": {"value": "#c0392b"}
           }
         },
         {
-          "mark": {
-            "type": "text",
-            "fontSize": 10,
-            "fontWeight": 600,
-            "stroke": "white",
-            "strokeWidth": 3,
-            "dy": 6
-          },
+          "mark": {"type": "text", "fontSize": 10, "fontWeight": 600, "stroke": "white", "strokeWidth": 3, "dy": 6},
           "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude": {"field": "lat", "type": "quantitative"},
-            "text": {"field": "sub", "type": "nominal"},
+            "longitude": {"field": "lon"},
+            "latitude": {"field": "lat"},
+            "text": {"field": "sub"},
             "color": {"value": "#333"}
           }
         },
         {
-          "mark": {
-            "type": "text",
-            "fontSize": 10,
-            "fontWeight": 600,
-            "dy": 6
-          },
+          "mark": {"type": "text", "fontSize": 10, "fontWeight": 600, "dy": 6},
           "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude": {"field": "lat", "type": "quantitative"},
-            "text": {"field": "sub", "type": "nominal"},
+            "longitude": {"field": "lon"},
+            "latitude": {"field": "lat"},
+            "text": {"field": "sub"},
             "color": {"value": "#333"}
           }
         }

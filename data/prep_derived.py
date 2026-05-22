@@ -154,6 +154,75 @@ def decade_share(rows, fmt):
 dec_rows = decade_share(singles, "Singles") + decade_share(albums, "Albums")
 json.dump(dec_rows, open(os.path.join(OUT, "aria_decades.json"), "w"), separators=(",", ":"))
 
+# ---------- 7. Top 15 Aussie artists: combined singles + albums (Sec 2 dotplot) ----------
+sing_weeks = Counter()
+for r in singles:
+    if r["aus"]: sing_weeks[r["artist"]] += 1
+alb_weeks = Counter()
+for r in albums:
+    if r["aus"]: alb_weeks[r["artist"]] += 1
+
+all_artists = set(sing_weeks) | set(alb_weeks)
+combo = []
+for a in all_artists:
+    s = sing_weeks.get(a, 0); al = alb_weeks.get(a, 0)
+    combo.append({"artist": a, "singles": s, "albums": al, "total": s + al})
+combo.sort(key=lambda x: -x["total"])
+top15 = combo[:15]
+
+rows = []
+for r in top15:
+    rows.append({"artist": r["artist"], "format": "Albums",  "weeks": r["albums"],  "total": r["total"]})
+    rows.append({"artist": r["artist"], "format": "Singles", "weeks": r["singles"], "total": r["total"]})
+json.dump(rows, open(os.path.join(OUT, "aria_top_artists_format.json"), "w"), separators=(",", ":"))
+
+# ---------- 8. Choropleth country totals (Sec 1) ----------
+country = Counter()
+with open(os.path.join(ROOT, "album_charts.csv"), encoding="utf-8") as f:
+    r = csv.DictReader(f)
+    for row in r:
+        loc = row.get("location", "").strip()
+        if not loc or loc == "non-Australian": continue
+        country[loc] += 1
+country_rows = [{"location": k, "weeks": v} for k, v in country.most_common()]
+json.dump(country_rows, open(os.path.join(OUT, "aria_country_totals.json"), "w"), separators=(",", ":"))
+
+# ---------- 9. Aussie share of singles top 50 per year (Sec 2 line) ----------
+year_counts = defaultdict(lambda: {"aus": 0, "total": 0})
+for r in singles:
+    y = yr(r["date"])
+    year_counts[y]["total"] += 1
+    if r["aus"]: year_counts[y]["aus"] += 1
+year_rows = [
+    {"year": y, "aus": v["aus"], "total": v["total"], "aus_pct": v["aus"]/v["total"]*100 if v["total"] else 0}
+    for y, v in sorted(year_counts.items())
+]
+json.dump(year_rows, open(os.path.join(OUT, "aria_singles_yearly.json"), "w"), separators=(",", ":"))
+
+# ---------- 10. Bump rankings: top 5 Aussie artists by year (Sec 2) ----------
+year_artist = defaultdict(lambda: defaultdict(int))
+for r in singles:
+    if not r["aus"]: continue
+    y = yr(r["date"])
+    if y < 2018: continue
+    year_artist[y][r["artist"]] += 1
+
+bump = []
+for y, artists in sorted(year_artist.items()):
+    ranked = sorted(artists.items(), key=lambda kv: -kv[1])[:5]
+    for rank, (a, w) in enumerate(ranked, 1):
+        bump.append({"year": y, "artist": a, "weeks": w, "rank": rank})
+
+# keep only artists who appeared in top 5 for 3+ years
+appearances = Counter(b["artist"] for b in bump)
+kept = {a for a, c in appearances.items() if c >= 3}
+bump = [b for b in bump if b["artist"] in kept]
+json.dump(bump, open(os.path.join(OUT, "aria_bump_rankings.json"), "w"), separators=(",", ":"))
+
+# ---------- 11. Lollipop: top 15 Aussie artists by singles weeks (Sec 2) ----------
+lolli = [{"artist": a, "weeks": w} for a, w in sing_weeks.most_common(15)]
+json.dump(lolli, open(os.path.join(OUT, "aria_top_singles_artists.json"), "w"), separators=(",", ":"))
+
 # ---------- Report ----------
 print("Wrote:")
 for f in sorted(os.listdir(OUT)):
