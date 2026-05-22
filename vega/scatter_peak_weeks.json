@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 420,
+  "title": {
+    "text": "Peak Position vs Time on Chart",
+    "subtitle": "Each dot is a song that spent at least five weeks on the ARIA singles chart. Songs that hit #1 don't always stay long. Songs that linger don't always peak high.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "data/derived/aria_singles_summary.json"},
+  "params": [
+    {
+      "name": "originSel",
+      "value": "All",
+      "bind": {
+        "input": "select",
+        "options": ["All", "Australian only", "International only"],
+        "name": "Show: "
+      }
+    }
+  ],
+  "transform": [
+    {"calculate": "datum.aus ? 'Australian' : 'International'", "as": "origin"},
+    {"filter": "originSel == 'All' || (originSel == 'Australian only' && datum.aus) || (originSel == 'International only' && !datum.aus)"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "circle", "opacity": 0.55, "stroke": "white", "strokeWidth": 0.3},
+      "encoding": {
+        "x": {
+          "field": "best",
+          "type": "quantitative",
+          "title": "Peak position (1 = #1)",
+          "scale": {"domain": [0, 50]},
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "y": {
+          "field": "weeks",
+          "type": "quantitative",
+          "title": "Total weeks on chart",
+          "scale": {"type": "log", "base": 10},
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "color": {
+          "field": "origin",
+          "type": "nominal",
+          "scale": {"domain": ["Australian", "International"], "range": ["#f39c12", "#1a1a2e"]},
+          "legend": {"orient": "top-right", "title": null, "labelFontSize": 11}
+        },
+        "size": {
+          "field": "weeks",
+          "type": "quantitative",
+          "scale": {"range": [20, 300]},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "title",  "title": "Song"},
+          {"field": "artist", "title": "Artist"},
+          {"field": "origin", "title": "Origin"},
+          {"field": "best",   "title": "Peak position"},
+          {"field": "weeks",  "title": "Weeks on chart"},
+          {"field": "first",  "title": "First charted"},
+          {"field": "last",   "title": "Last charted"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.weeks >= 90 || (datum.best == 1 && datum.weeks >= 40)"}],
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dx": 8, "align": "left"},
+      "encoding": {
+        "x": {"field": "best", "type": "quantitative"},
+        "y": {"field": "weeks", "type": "quantitative"},
+        "text": {"field": "title"}
+      }
+    }
+  ]
+}

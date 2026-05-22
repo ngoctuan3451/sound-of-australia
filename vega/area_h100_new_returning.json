@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 340,
+  "title": {
+    "text": "Fresh Faces vs Familiar Voices",
+    "subtitle": "Each year's Hottest 100 split between artists never heard before and those returning from a previous poll.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {
+    "view": {"stroke": null},
+    "font": "Inter, system-ui, sans-serif"
+  },
+  "data": {"url": "data/derived/h100_new_returning.json"},
+  "layer": [
+    {
+      "mark": {"type": "area", "interpolate": "monotone", "line": {"strokeWidth": 1}},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#666"}
+        },
+        "y": {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Distinct artists",
+          "stack": "zero",
+          "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "color": {
+          "field": "status",
+          "type": "nominal",
+          "scale": {"domain": ["Returning", "New artist"], "range": ["#1a1a2e", "#f39c12"]},
+          "legend": {"orient": "top", "title": null, "labelFontSize": 11}
+        },
+        "tooltip": [
+          {"field": "year", "title": "Poll year"},
+          {"field": "status", "title": "Type"},
+          {"field": "count", "title": "Distinct artists"}
+        ]
+      }
+    },
+    {
+      "data": {"values": [{"x": 1998, "label": "First poll era — almost everyone is new"}]},
+      "mark": {"type": "text", "align": "left", "fontSize": 10, "fontStyle": "italic", "color": "#555", "dy": -8},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"datum": 92},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {"values": [{"x": 2018, "label": "Streaming era: returning artists dominate"}]},
+      "mark": {"type": "text", "align": "right", "fontSize": 10, "fontStyle": "italic", "color": "#1a1a2e", "dy": -8},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"datum": 95},
+        "text": {"field": "label"}
+      }
+    }
+  ]
+}

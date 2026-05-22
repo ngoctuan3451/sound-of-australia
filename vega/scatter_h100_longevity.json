@@ -1,0 +1,66 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 380,
+  "title": {
+    "text": "Burn Bright, or Burn Long?",
+    "subtitle": "Each dot is a Hottest 100 artist. X = years between their first and last appearance. Y = total songs voted in. Colour = their best-ever position.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "data/derived/h100_longevity.json"},
+  "layer": [
+    {
+      "mark": {"type": "circle", "opacity": 0.75, "stroke": "white", "strokeWidth": 0.5},
+      "encoding": {
+        "x": {
+          "field": "span",
+          "type": "quantitative",
+          "title": "Career span in the Hottest 100 (years)",
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "y": {
+          "field": "total",
+          "type": "quantitative",
+          "title": "Total songs voted in",
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "size": {
+          "field": "total",
+          "type": "quantitative",
+          "scale": {"range": [40, 700]},
+          "legend": null
+        },
+        "color": {
+          "field": "best",
+          "type": "quantitative",
+          "scale": {"scheme": "viridis", "reverse": true, "domain": [1, 100]},
+          "legend": {"title": "Best position", "orient": "bottom", "gradientLength": 180}
+        },
+        "tooltip": [
+          {"field": "artist", "title": "Artist"},
+          {"field": "total", "title": "Total songs"},
+          {"field": "span", "title": "Career span (yrs)"},
+          {"field": "best", "title": "Best position"},
+          {"field": "first", "title": "First poll"},
+          {"field": "last",  "title": "Last poll"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.total >= 14"}
+      ],
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dx": 8, "dy": -4, "align": "left"},
+      "encoding": {
+        "x": {"field": "span", "type": "quantitative"},
+        "y": {"field": "total", "type": "quantitative"},
+        "text": {"field": "artist"}
+      }
+    }
+  ]
+}

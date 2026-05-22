@@ -142,12 +142,12 @@
     <div class="section-label">Part 3</div>
     <h2>What Australia Loves: The Triple J Story</h2>
     <p class="section-body">Every January, millions of Australians vote in the Triple J Hottest 100 — the world's largest music poll. Unlike the ARIA charts, which measure <em>sales</em>, the Hottest 100 measures <em>love</em>. The results are often very different. Songs that top ARIA are often absent from Triple J, and vice versa.</p>
-    <p class="section-body">Since 1989, the Hottest 100 has featured <strong>4,200 songs</strong> across 36 annual polls. Australian artists have consistently made up around <strong>40–50%</strong> of entries — far higher than their ARIA chart share. But in recent years, international artists have been creeping up, reflecting how streaming algorithms expose Australian listeners to more global music than ever before.</p>
+    <p class="section-body">Since the first poll in 1993, the Hottest 100 has featured roughly <strong>4,200 song entries</strong> across more than thirty annual countdowns. A small group of artists shows up year after year, while every January brings a fresh wave of debutants. The next three charts trace who returns, who arrives, and who builds a real career out of it.</p>
 
     <div class="chart-block">
       <div class="chart-header">
-        <h3>Triple J Hottest 100: Artist Appearances Across the Years</h3>
-        <p class="chart-desc">Each row is an Australian artist, each column a year. Darker cells mean more songs in that year's Hottest 100. Look for artists who appear consistently over decades — true Triple J legends.</p>
+        <h3>Triple J Royalty: Who Keeps Coming Back</h3>
+        <p class="chart-desc">A heatmap of the 25 most-played artists across every Hottest 100. Each cell is one year; darker cells mean more songs in that year's poll. Look for the long horizontal bands — those artists never went away.</p>
       </div>
       <div id="chart-heatmap"></div>
       <p class="source">Source: Triple J Hottest 100 — ABC Australia, abc.net.au/triplej/hottest100</p>
@@ -156,16 +156,16 @@
     <div class="grid-2col">
       <div class="chart-block">
         <div class="chart-header">
-          <h3>Australian vs International in the Hottest 100</h3>
-          <p class="chart-desc">Share of Australian artists in each year's Hottest 100. The long-term trend shows international artists slowly gaining ground — a sign of streaming's globalising effect on Australian taste.</p>
+          <h3>Fresh Faces vs Familiar Voices</h3>
+          <p class="chart-desc">Stacked-area split of every poll into <strong>new artists</strong> (never charted before) and <strong>returning artists</strong>. The orange band shrinks over time as the cumulative pool of past artists grows — a healthy sign that voters reward consistency, not just novelty.</p>
         </div>
         <div id="chart-area"></div>
         <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
       </div>
       <div class="chart-block">
         <div class="chart-header">
-          <h3>When Were the Songs Released vs When They Charted?</h3>
-          <p class="chart-desc">Each dot is a Triple J entry. Most songs chart in the same year they're released — but some beloved tracks appear years after release, showing how listeners rediscover older music.</p>
+          <h3>Burn Bright, or Burn Long?</h3>
+          <p class="chart-desc">Each dot is one artist. <strong>X</strong> = years between their first and last appearance. <strong>Y</strong> = total songs voted in. <strong>Colour</strong> = best position ever reached. Long-career legends sit to the upper right; one-hit wonders cluster bottom-left.</p>
         </div>
         <div id="chart-scatter-j"></div>
         <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
@@ -177,36 +177,36 @@
   <section class="section section-dark">
     <div class="section-inner">
       <div class="section-label">Part 4</div>
-      <h2>The Sound Itself: What Makes a Hit?</h2>
-      <p class="section-body">Beyond chart positions and listener votes, there is a deeper question: what do Australian hits actually <em>sound like</em>? Using Spotify's audio feature data — which measures qualities like energy, danceability, tempo, and emotional positivity — we can build an acoustic fingerprint of the music Australians love.</p>
-      <p class="section-body">The data reveals a consistent preference: Australian listeners gravitate toward <strong>high-energy, danceable tracks</strong> with moderate positivity. Pure acoustic music rarely charts. The sweet spot is electric but not abrasive — energetic but emotionally layered.</p>
+      <h2>The Shape of a Hit</h2>
+      <p class="section-body">Charts measure two things at once: <em>how high</em> a song peaks and <em>how long</em> it stays. These are not the same. A song can shoot to #1 for a single week and vanish. Another can sit at #18 for two years and quietly outsell the lot. The shape of a hit — peak, longevity, and timing — tells us much more than a single number on a chart.</p>
+      <p class="section-body">Looking across four decades of ARIA data, the Australian story has three layers: a slow climb in Australia's overall share of its own charts, a stark contrast between albums and singles, and a hidden seasonal rhythm in when new music actually breaks through.</p>
 
       <div class="grid-2col">
         <div class="chart-block">
           <div class="chart-header">
-            <h3>Aussie vs International: Chart Share by Genre</h3>
-            <p class="chart-desc">For each major genre, this chart compares how many Australian vs international songs appear on charts. Australian artists dominate in rock and indie — but trail in pop and hip-hop.</p>
+            <h3>Decade by Decade: Singles vs Albums</h3>
+            <p class="chart-desc">Australian artists have always done better on the <strong>albums</strong> chart than the singles chart. Each bar shows the share of weeks held by Australian acts in that decade, faceted by format.</p>
           </div>
           <div id="chart-grouped"></div>
-          <p class="source">Source: Spotify Charts — dhruvildave/spotify-charts, Kaggle</p>
+          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
         </div>
         <div class="chart-block">
           <div class="chart-header">
-            <h3>The Audio DNA of Australian Hits</h3>
-            <p class="chart-desc">Each axis of the radial chart shows a different audio quality. The larger the shape, the stronger that quality. Australian hits score highest on energy and danceability — and lowest on acousticness.</p>
+            <h3>When New Hits Arrive</h3>
+            <p class="chart-desc">A radial bar of every <em>first</em> appearance on the ARIA singles chart, grouped by month. The end-of-year cluster reflects the November–January release rush; Australian debuts (orange) follow a slightly different rhythm.</p>
           </div>
           <div id="chart-radial"></div>
-          <p class="source">Source: Spotify Charts — dhruvildave/spotify-charts, Kaggle</p>
+          <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
         </div>
       </div>
 
       <div class="chart-block">
         <div class="chart-header">
-          <h3>Energy vs Danceability of Charting Songs</h3>
-          <p class="chart-desc">Each dot is a song. The most successful charting songs cluster in the high-energy, high-danceability corner. Pure ballads and acoustic tracks rarely appear in the top 50.</p>
+          <h3>Peak Position vs Time on Chart</h3>
+          <p class="chart-desc">Every song that lasted five weeks or more on the ARIA singles chart, plotted by best position (x) against total weeks on chart on a log scale (y). Use the filter to compare Australian and international shapes. Labelled songs are the marathon runners.</p>
         </div>
         <div id="chart-scatter-release"></div>
-        <p class="source">Source: Spotify Charts — dhruvildave/spotify-charts, Kaggle</p>
+        <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
       </div>
     </div>
   </section>

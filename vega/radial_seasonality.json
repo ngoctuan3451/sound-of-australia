@@ -1,0 +1,55 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 380,
+  "height": 380,
+  "title": {
+    "text": "When New Hits Arrive",
+    "subtitle": "Radial bars show the number of brand-new ARIA singles debuts in each calendar month, split by Australian (orange) and international (navy) artists.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start",
+    "offset": 20
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "data/derived/aria_seasonality.json"},
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 60, "stroke": "white", "strokeWidth": 1.5},
+      "encoding": {
+        "theta": {
+          "field": "month",
+          "type": "ordinal",
+          "scale": {"type": "band"}
+        },
+        "radius": {
+          "field": "debuts",
+          "type": "quantitative",
+          "scale": {"type": "sqrt", "zero": true, "rangeMin": 60}
+        },
+        "color": {
+          "field": "origin",
+          "type": "nominal",
+          "scale": {"domain": ["Australian", "International"], "range": ["#f39c12", "#1a1a2e"]},
+          "legend": {"orient": "bottom", "title": null, "labelFontSize": 11}
+        },
+        "order": {"field": "origin"},
+        "tooltip": [
+          {"field": "label",  "title": "Month"},
+          {"field": "origin", "title": "Origin"},
+          {"field": "debuts", "title": "New debuts"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "radiusOffset": 14, "fontSize": 11, "fontWeight": 600, "color": "#555"},
+      "encoding": {
+        "theta": {"field": "month", "type": "ordinal", "scale": {"type": "band"}},
+        "radius": {"value": 170},
+        "text": {"field": "label"},
+        "detail": {"aggregate": "max", "field": "month"}
+      }
+    }
+  ]
+}

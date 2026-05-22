@@ -1,0 +1,65 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 520,
+  "padding": {"left": 10, "right": 10, "top": 10, "bottom": 10},
+  "title": {
+    "text": "Triple J Royalty: Who Keeps Coming Back",
+    "subtitle": "The 25 artists with the most entries across every Hottest 100 (1993–2025). Darker cells = more songs that year.",
+    "fontSize": 18,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start",
+    "offset": 14
+  },
+  "config": {
+    "view": {"stroke": null},
+    "font": "Inter, system-ui, sans-serif",
+    "axis": {"domain": false, "ticks": false}
+  },
+  "data": {"url": "data/derived/h100_heatmap.json"},
+  "layer": [
+    {
+      "mark": {"type": "rect", "stroke": "#fafafa", "strokeWidth": 1},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {"labelAngle": 0, "labelFontSize": 9, "labelOverlap": true, "labelColor": "#777"}
+        },
+        "y": {
+          "field": "artist",
+          "type": "nominal",
+          "sort": {"field": "total", "op": "max", "order": "descending"},
+          "title": null,
+          "axis": {"labelFontSize": 11, "labelColor": "#333", "labelLimit": 180}
+        },
+        "color": {
+          "field": "count",
+          "type": "quantitative",
+          "scale": {"scheme": "oranges", "domainMin": 0},
+          "legend": {"title": "Songs in poll", "orient": "bottom", "gradientLength": 220, "titleFontSize": 11, "labelFontSize": 10}
+        },
+        "tooltip": [
+          {"field": "artist", "title": "Artist"},
+          {"field": "year", "title": "Poll year"},
+          {"field": "count", "title": "Songs in this poll"},
+          {"field": "total", "title": "Total all-time entries"}
+        ]
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.count >= 4"}
+      ],
+      "mark": {"type": "text", "fontSize": 9, "fontWeight": 700, "color": "white"},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
+        "text": {"field": "count"}
+      }
+    }
+  ]
+}

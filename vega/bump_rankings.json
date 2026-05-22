@@ -2,10 +2,10 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 420,
-  "padding": {"left": 20, "right": 20, "top": 10, "bottom": 10},
+  "padding": {"left": 10, "right": 20, "top": 10, "bottom": 10},
   "title": {
     "text": "Australia's Chart Royalty: Year by Year",
-    "subtitle": "Artists who appeared in the top 5 for 3+ consecutive years — hover a line to highlight one artist",
+    "subtitle": "Annual ranking of top Australian artists by weeks on ARIA singles chart (2018–2025). Hover to highlight.",
     "fontSize": 18,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -26,8 +26,9 @@
       "as": "is_aussie"
     },
     {"filter": "datum.is_aussie == 1"},
+    {"filter": "datum.artist != null && datum.artist != ''"},
     {"timeUnit": "year", "field": "chart_date", "as": "year"},
-    {"filter": "year(datum.year) >= 2018"},
+    {"filter": "year(datum.year) >= 2018 && year(datum.year) <= 2025"},
     {
       "aggregate": [{"op": "count", "as": "weeks"}],
       "groupby": ["year", "artist"]
@@ -44,13 +45,29 @@
       ],
       "groupby": ["artist"]
     },
-    {"filter": "datum.years_appeared >= 3"}
+    {"filter": "datum.years_appeared >= 2"},
+    {
+      "joinaggregate": [
+        {"op": "max", "field": "year", "as": "artist_last_year"}
+      ],
+      "groupby": ["artist"]
+    },
+    {
+      "calculate": "time(datum.year) === time(datum.artist_last_year) ? datum.artist : ''",
+      "as": "endLabel"
+    }
   ],
   "encoding": {
     "x": {
       "field": "year",
       "type": "temporal",
       "title": null,
+      "scale": {
+        "domain": [
+          {"year": 2018, "month": 6},
+          {"year": 2026, "month": 6}
+        ]
+      },
       "axis": {
         "format": "%Y",
         "labelFontSize": 12,
@@ -60,8 +77,7 @@
         "ticks": false,
         "labelPadding": 12,
         "tickCount": 8
-      },
-      "scale": {"padding": 40}
+      }
     },
     "y": {
       "field": "rank",
@@ -74,7 +90,7 @@
         "labelFontSize": 13,
         "labelFontWeight": 700,
         "labelColor": "#aaa",
-        "labelPadding": 12,
+        "labelPadding": 10,
         "grid": true,
         "gridDash": [3, 5],
         "gridColor": "#e0e0e0",
@@ -89,12 +105,9 @@
       "legend": {
         "title": null,
         "labelFontSize": 11,
-        "labelFontWeight": 500,
-        "symbolSize": 150,
-        "symbolStrokeWidth": 3,
+        "symbolSize": 120,
         "orient": "bottom",
-        "columns": 3,
-        "labelLimit": 200
+        "columns": 3
       }
     }
   },
@@ -127,7 +140,7 @@
       ],
       "mark": {
         "type": "circle",
-        "size": 180,
+        "size": 200,
         "stroke": "white",
         "strokeWidth": 2.5
       },
