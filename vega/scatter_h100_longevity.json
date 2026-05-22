@@ -12,7 +12,7 @@
     "anchor": "start"
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
-  "data": {"url": "data/derived/h100_longevity.json"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/h100_longevity.json"},
   "layer": [
     {
       "mark": {"type": "circle", "opacity": 0.75, "stroke": "white", "strokeWidth": 0.5},

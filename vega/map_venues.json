@@ -31,7 +31,7 @@
     },
     {
       "data": {
-        "url": "data/live-music-venues.csv",
+        "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/live-music-venues.csv",
         "format": {"type": "csv", "parse": {"lat": "number", "lon": "number"}}
       },
       "transform": [

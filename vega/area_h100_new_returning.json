@@ -15,7 +15,7 @@
     "view": {"stroke": null},
     "font": "Inter, system-ui, sans-serif"
   },
-  "data": {"url": "data/derived/h100_new_returning.json"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/h100_new_returning.json"},
   "layer": [
     {
       "mark": {"type": "area", "interpolate": "monotone", "line": {"strokeWidth": 1}},

@@ -18,7 +18,7 @@
     "font": "Inter, system-ui, sans-serif",
     "axis": {"domain": false, "ticks": false}
   },
-  "data": {"url": "data/derived/h100_heatmap.json"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/h100_heatmap.json"},
   "layer": [
     {
       "mark": {"type": "rect", "stroke": "#fafafa", "strokeWidth": 1},

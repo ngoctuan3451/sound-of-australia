@@ -12,7 +12,7 @@
     "anchor": "start"
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
-  "data": {"url": "data/derived/aria_singles_summary.json"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_summary.json"},
   "params": [
     {
       "name": "originSel",
