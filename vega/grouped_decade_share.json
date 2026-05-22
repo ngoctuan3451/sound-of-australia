@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 360,
+  "height": 380,
   "title": {
-    "text": "The Album / Singles Gap, by Decade",
-    "subtitle": "Each decade is a row. The blue dot shows the Australian share of weeks on the ALBUMS chart; the orange dot shows the same for SINGLES. The grey bar between them is the gap.",
+    "text": "Aussies own the album chart — but almost never the singles chart",
+    "subtitle": "For each decade, the BLUE bar is the Australian share of the ARIA albums chart. The ORANGE bar is the same for singles. The orange bar barely existed until the 2020s.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -14,38 +14,30 @@
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_decades.json"},
   "transform": [{"filter": "datum.origin == 'Australian'"}],
-  "encoding": {
-    "y": {
-      "field": "decade",
-      "type": "ordinal",
-      "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"],
-      "title": null,
-      "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelPadding": 10}
-    }
-  },
   "layer": [
     {
-      "mark": {"type": "line", "color": "#bbb", "strokeWidth": 10, "strokeCap": "round", "opacity": 0.6},
+      "mark": {"type": "bar", "cornerRadiusEnd": 4},
       "encoding": {
         "x": {
+          "field": "decade",
+          "type": "ordinal",
+          "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"],
+          "title": null,
+          "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "labelPadding": 8}
+        },
+        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
+        "y": {
           "field": "share",
           "type": "quantitative",
           "title": "% of chart weeks held by Australian artists",
-          "scale": {"domain": [0, 35]},
+          "scale": {"domain": [0, 30]},
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
-        "detail": {"field": "decade"}
-      }
-    },
-    {
-      "mark": {"type": "point", "filled": true, "size": 380, "stroke": "white", "strokeWidth": 2.5},
-      "encoding": {
-        "x": {"field": "share", "type": "quantitative"},
         "color": {
           "field": "format",
           "type": "nominal",
           "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
-          "legend": {"orient": "top-right", "title": null, "labelFontSize": 12, "symbolSize": 200}
+          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 13, "symbolSize": 200}
         },
         "tooltip": [
           {"field": "decade", "title": "Decade"},
@@ -56,10 +48,21 @@
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "white"},
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "color": "#1a1a2e", "dy": -6},
       "encoding": {
-        "x": {"field": "share", "type": "quantitative"},
+        "x": {"field": "decade", "type": "ordinal", "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"]},
+        "xOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
+        "y": {"field": "share", "type": "quantitative"},
         "text": {"field": "share", "type": "quantitative", "format": ".0f"}
+      }
+    },
+    {
+      "data": {"values": [{"x": "2020s", "y": 26, "text": "First decade where Aussie singles\nshare finally lifted off zero"}]},
+      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#c0392b", "align": "right", "dx": -20},
+      "encoding": {
+        "x": {"field": "x", "type": "ordinal", "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"]},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "text"}
       }
     }
   ]

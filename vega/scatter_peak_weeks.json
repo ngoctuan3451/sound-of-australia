@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 520,
+  "height": 540,
   "title": {
-    "text": "The Marathon Runners",
-    "subtitle": "The 15 songs that spent the most weeks on the ARIA singles chart. Bar colour = best position the song ever reached. Hitting #1 isn't what keeps a song around.",
+    "text": "Hitting #1 isn't what keeps a song on the chart",
+    "subtitle": "The 15 longest-running songs on the ARIA singles chart. Bar LENGTH = total weeks on chart. Bar COLOUR shows how high the song actually peaked.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -15,8 +15,8 @@
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_summary.json"},
   "transform": [
     {"calculate": "datum.artist + ' — ' + datum.title", "as": "label"},
-    {"calculate": "datum.aus ? 'Australian' : 'International'", "as": "origin"},
     {"calculate": "'#' + datum.best", "as": "peak_label"},
+    {"calculate": "datum.best == 1 ? 'Peaked at #1' : datum.best <= 5 ? 'Peaked in top 5' : datum.best <= 10 ? 'Peaked #6–10' : 'Peaked outside top 10'", "as": "peak_band"},
     {"window": [{"op": "rank", "as": "wk_rank"}], "sort": [{"field": "weeks", "order": "descending"}]},
     {"filter": "datum.wk_rank <= 15"}
   ],
@@ -34,34 +34,28 @@
         "x": {
           "field": "weeks",
           "type": "quantitative",
-          "title": "Weeks on the ARIA singles chart",
+          "title": "Total weeks on the ARIA singles chart",
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "color": {
-          "field": "best",
-          "type": "quantitative",
-          "scale": {"scheme": "yelloworangered", "reverse": true, "domain": [1, 25]},
-          "legend": {
-            "title": "Peak position",
-            "orient": "bottom-right",
-            "gradientLength": 160,
-            "titleFontSize": 11,
-            "labelFontSize": 10,
-            "format": "d"
-          }
+          "field": "peak_band",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Peaked at #1", "Peaked in top 5", "Peaked #6–10", "Peaked outside top 10"],
+            "range":  ["#c0392b", "#e67e22", "#f1c40f", "#7f8c8d"]
+          },
+          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 11, "symbolSize": 160}
         },
         "tooltip": [
           {"field": "title",  "title": "Song"},
           {"field": "artist", "title": "Artist"},
-          {"field": "origin", "title": "Origin"},
           {"field": "weeks",  "title": "Weeks on chart"},
-          {"field": "best",   "title": "Best position"},
-          {"field": "first",  "title": "First charted"}
+          {"field": "best",   "title": "Peak position"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "color": "#1a1a2e", "dx": 6},
+      "mark": {"type": "text", "align": "left", "fontSize": 12, "fontWeight": 700, "color": "#1a1a2e", "dx": 8},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "weeks", "order": "descending"}},
         "x": {"field": "weeks", "type": "quantitative"},
@@ -69,11 +63,20 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "right", "fontSize": 10, "fontWeight": 700, "color": "white", "dx": -10},
+      "mark": {"type": "text", "align": "right", "fontSize": 11, "fontWeight": 700, "color": "white", "dx": -10},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "weeks", "order": "descending"}},
         "x": {"field": "weeks", "type": "quantitative"},
         "text": {"field": "peak_label"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.best > 10"}],
+      "mark": {"type": "text", "align": "right", "fontSize": 11, "fontStyle": "italic", "color": "#c0392b", "dx": -8, "dy": -16},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "weeks", "order": "descending"}},
+        "x": {"field": "weeks", "type": "quantitative"},
+        "text": {"value": "← never reached top 10!"}
       }
     }
   ]

@@ -35,7 +35,7 @@
           "field": "format",
           "type": "nominal",
           "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
-          "legend": {"orient": "top-right", "title": null, "labelFontSize": 12, "symbolSize": 140}
+          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 160}
         },
         "tooltip": [
           {"field": "artist", "title": "Artist"},
