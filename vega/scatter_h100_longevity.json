@@ -62,6 +62,32 @@
         "y": {"field": "total", "type": "quantitative"},
         "text": {"field": "artist"}
       }
+    },
+    {
+      "data": {"values": [
+        {"x": 3,  "y": 24, "t": "↑ BURN BRIGHT", "sub": "many songs, short career"},
+        {"x": 28, "y": 24, "t": "← HOTTEST 100 LEGENDS", "sub": "many songs, long career"},
+        {"x": 28, "y": 4,  "t": "← STEADY VISITORS", "sub": "few songs, long career"},
+        {"x": 3,  "y": 4,  "t": "↑ ONE-HIT WONDERS", "sub": "few songs, short career"}
+      ]},
+      "layer": [
+        {
+          "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#888", "align": "left", "dx": 4},
+          "encoding": {
+            "x": {"field": "x", "type": "quantitative"},
+            "y": {"field": "y", "type": "quantitative"},
+            "text": {"field": "t"}
+          }
+        },
+        {
+          "mark": {"type": "text", "fontSize": 9, "fontStyle": "italic", "color": "#999", "align": "left", "dx": 4, "dy": 12},
+          "encoding": {
+            "x": {"field": "x", "type": "quantitative"},
+            "y": {"field": "y", "type": "quantitative"},
+            "text": {"field": "sub"}
+          }
+        }
+      ]
     }
   ]
 }

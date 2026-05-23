@@ -60,6 +60,19 @@
         "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
         "text": {"field": "count"}
       }
+    },
+    {
+      "transform": [
+        {"aggregate": [{"op": "max", "field": "total", "as": "total"}], "groupby": ["artist"]},
+        {"window": [{"op": "rank", "as": "rk"}], "sort": [{"field": "total", "order": "descending"}]},
+        {"filter": "datum.rk == 1"}
+      ],
+      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "align": "left", "dx": 12, "baseline": "middle"},
+      "encoding": {
+        "y": {"field": "artist", "type": "nominal"},
+        "x": {"value": 750},
+        "text": {"value": "★ Most-played artist in Triple J history"}
+      }
     }
   ]
 }

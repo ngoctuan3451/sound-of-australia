@@ -64,6 +64,18 @@
         "text": {"field": "rank"},
         "opacity": {"condition": {"param": "bumpHover", "value": 1, "empty": true}, "value": 0.1}
       }
+    },
+    {
+      "data": {"values": [
+        {"x": 2020, "y": 0.6, "t": "Tones and I dominates 2019–21"},
+        {"x": 2024, "y": 0.6, "t": "The Kid Laroi & Vance Joy take over"}
+      ]},
+      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#c0392b", "align": "center"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "t"}
+      }
     }
   ]
 }

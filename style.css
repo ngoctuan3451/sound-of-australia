@@ -308,6 +308,13 @@ footer a:hover { border-bottom-color: #f39c12; }
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
+.source-list { list-style: none; padding-left: 0; margin: 0.5rem 0 0; }
+.source-list li {
+  padding: 0.35rem 0;
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+.source-list strong { color: #fff; }
 
 .ai-note {
   font-size: 0.76rem;
