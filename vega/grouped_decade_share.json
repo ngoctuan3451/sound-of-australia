@@ -47,25 +47,23 @@
       }
     },
     {
-      "data": {"values": [
-        {"x": "2003", "y": 48, "t": "2003: Delta Goodrem's Innocent Eyes\nhad 29 weeks at #1"}
-      ]},
-      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "color": "#c0392b", "align": "center", "dy": -10},
-      "encoding": {
-        "x": {"field": "x", "type": "ordinal"},
-        "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "t"}
-      }
-    },
-    {
       "mark": {"type": "rule", "color": "#888", "strokeDash": [4, 4], "strokeWidth": 1},
       "encoding": {"y": {"datum": 52}}
     },
     {
       "data": {"values": [{"y": 52, "t": "52 weeks = whole year"}]},
-      "mark": {"type": "text", "align": "right", "fontSize": 9, "color": "#888", "fontStyle": "italic", "dx": -5, "dy": -4},
+      "mark": {"type": "text", "align": "left", "fontSize": 9, "color": "#888", "fontStyle": "italic", "dx": 4, "dy": -4},
       "encoding": {
-        "x": {"datum": "2024", "type": "ordinal"},
+        "x": {"datum": "1988", "type": "ordinal"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "t"}
+      }
+    },
+    {
+      "data": {"values": [{"x": "2003", "y": 42, "t": "Delta Goodrem ruled 2003"}]},
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "center"},
+      "encoding": {
+        "x": {"field": "x", "type": "ordinal"},
         "y": {"field": "y", "type": "quantitative"},
         "text": {"field": "t"}
       }

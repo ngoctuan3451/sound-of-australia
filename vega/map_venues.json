@@ -47,8 +47,8 @@
         "shape": "M 0,-1 L 0.866,-0.5 L 0.866,0.5 L 0,1 L -0.866,0.5 L -0.866,-0.5 Z",
         "filled": true,
         "stroke": "#fff",
-        "strokeWidth": 1.2,
-        "size": 1380,
+        "strokeWidth": 1.6,
+        "size": 1200,
         "opacity": 0.95
       },
       "encoding": {
@@ -112,26 +112,38 @@
       ]
     },
     {
-      "data": {
-        "values": [
-          {"label": "The live-music heart of Melbourne",
-           "lon": 144.964, "lat": -37.811}
-        ]
-      },
-      "mark": {
-        "type": "text",
-        "fontSize": 11,
-        "fontStyle": "italic",
-        "color": "#7a1a06",
-        "dx": 70,
-        "dy": -32,
-        "align": "left"
-      },
+      "data": {"values": [{"lon": 144.974, "lat": -37.814}]},
+      "mark": {"type": "rule", "color": "#7a1a06", "strokeWidth": 1.2},
       "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"},
-        "text": {"field": "label"}
+        "longitude":  {"field": "lon", "type": "quantitative"},
+        "latitude":   {"field": "lat", "type": "quantitative"},
+        "longitude2": {"datum": 144.992},
+        "latitude2":  {"datum": -37.806}
       }
+    },
+    {
+      "data": {"values": [
+        {"lon": 144.992, "lat": -37.806, "t": "31 venues in this hex"},
+        {"lon": 144.992, "lat": -37.804, "s": "densest live-music block in Melbourne"}
+      ]},
+      "layer": [
+        {
+          "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "color": "#7a1a06", "align": "left", "dx": 4},
+          "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude":  {"field": "lat", "type": "quantitative"},
+            "text": {"field": "t"}
+          }
+        },
+        {
+          "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#7a1a06", "align": "left", "dx": 4, "dy": 12},
+          "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude":  {"field": "lat", "type": "quantitative"},
+            "text": {"field": "s"}
+          }
+        }
+      ]
     }
   ]
 }

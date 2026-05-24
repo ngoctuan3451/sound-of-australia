@@ -27,6 +27,7 @@
           "field": "total",
           "type": "quantitative",
           "title": "Total songs voted in",
+          "scale": {"domain": [0, 30]},
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "size": {
@@ -65,26 +66,26 @@
     },
     {
       "data": {"values": [
-        {"x": 3,  "y": 24, "t": "↑ BURN BRIGHT", "sub": "many songs, short career"},
-        {"x": 28, "y": 24, "t": "← HOTTEST 100 LEGENDS", "sub": "many songs, long career"},
-        {"x": 28, "y": 4,  "t": "← STEADY VISITORS", "sub": "few songs, long career"},
-        {"x": 3,  "y": 4,  "t": "↑ ONE-HIT WONDERS", "sub": "few songs, short career"}
+        {"x": 2,  "y": 29, "t": "↑ BURN BRIGHT",  "sub": "lots of songs, short career"},
+        {"x": 30, "y": 29, "t": "LEGENDS →",      "sub": "lots of songs, long career"}
       ]},
       "layer": [
         {
-          "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#888", "align": "left", "dx": 4},
+          "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#888"},
           "encoding": {
             "x": {"field": "x", "type": "quantitative"},
             "y": {"field": "y", "type": "quantitative"},
-            "text": {"field": "t"}
+            "text": {"field": "t"},
+            "align": {"condition": [{"test": "datum.x < 10", "value": "left"}], "value": "right"}
           }
         },
         {
-          "mark": {"type": "text", "fontSize": 9, "fontStyle": "italic", "color": "#999", "align": "left", "dx": 4, "dy": 12},
+          "mark": {"type": "text", "fontSize": 9, "fontStyle": "italic", "color": "#999", "dy": 12},
           "encoding": {
             "x": {"field": "x", "type": "quantitative"},
             "y": {"field": "y", "type": "quantitative"},
-            "text": {"field": "sub"}
+            "text": {"field": "sub"},
+            "align": {"condition": [{"test": "datum.x < 10", "value": "left"}], "value": "right"}
           }
         }
       ]

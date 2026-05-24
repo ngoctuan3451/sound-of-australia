@@ -4,7 +4,7 @@
   "height": 340,
   "title": {
     "text": "The Rise of Australian Music on the ARIA Charts",
-    "subtitle": "Share of Top 50 ARIA singles by Australian artists each year. The streaming era changed everything.",
+    "subtitle": "% of ARIA Top 50 singles by Australian artists, by year.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -40,19 +40,19 @@
       "encoding": {"y": {"datum": 8.4}}
     },
     {
-      "mark": {"type": "text", "align": "right", "fontSize": 10, "color": "#888", "fontStyle": "italic", "dx": -4, "dy": -5},
+      "mark": {"type": "text", "align": "right", "fontSize": 9, "color": "#999", "fontStyle": "italic", "dx": -4, "dy": -4},
       "encoding": {
         "x": {"datum": 2025},
         "y": {"datum": 8.4},
-        "text": {"value": "8.4% all-time avg"}
+        "text": {"value": "8.4% avg"}
       }
     },
     {
-      "mark": {"type": "text", "align": "center", "fontSize": 12, "fontWeight": 600, "color": "#c0392b"},
+      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontStyle": "italic", "color": "#c0392b"},
       "encoding": {
         "x": {"datum": 2020},
-        "y": {"datum": 13.5},
-        "text": {"value": "Peak: Tones and I era"}
+        "y": {"datum": 14.5},
+        "text": {"value": "Tones and I era"}
       }
     }
   ]

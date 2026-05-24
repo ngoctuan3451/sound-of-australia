@@ -57,11 +57,11 @@
         {"window": [{"op": "rank", "as": "lead"}], "sort": [{"field": "weeks", "order": "descending"}]},
         {"filter": "datum.lead == 1"}
       ],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 50, "dy": -2},
+      "mark": {"type": "text", "align": "left", "fontSize": 10, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 38, "dy": -2},
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": "-x"},
         "x": {"field": "weeks", "type": "quantitative"},
-        "text": {"value": "★ 215 weeks — 60% more than #2 Vance Joy"}
+        "text": {"value": "★ +60% over #2"}
       }
     }
   ]

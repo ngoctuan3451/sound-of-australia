@@ -34,7 +34,13 @@
           "type": "nominal",
           "sort": {"field": "total", "op": "max", "order": "descending"},
           "title": null,
-          "axis": {"labelFontSize": 11, "labelColor": "#333", "labelLimit": 180}
+          "axis": {
+            "labelFontSize": 11,
+            "labelColor": "#333",
+            "labelLimit": 200,
+            "labelExpr": "datum.value == 'Hilltop Hoods' ? '★ ' + datum.value : datum.value",
+            "labelFontWeight": {"expr": "datum.value == 'Hilltop Hoods' ? 700 : 400"}
+          }
         },
         "color": {
           "field": "count",
@@ -63,15 +69,13 @@
     },
     {
       "transform": [
-        {"aggregate": [{"op": "max", "field": "total", "as": "total"}], "groupby": ["artist"]},
-        {"window": [{"op": "rank", "as": "rk"}], "sort": [{"field": "total", "order": "descending"}]},
-        {"filter": "datum.rk == 1"}
+        {"filter": "datum.artist == 'Hilltop Hoods' && datum.year == 2025"}
       ],
-      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "align": "left", "dx": 12, "baseline": "middle"},
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "right", "baseline": "bottom", "dx": -6, "dy": -8},
       "encoding": {
         "y": {"field": "artist", "type": "nominal"},
-        "x": {"value": 750},
-        "text": {"value": "★ Most-played artist in Triple J history"}
+        "x": {"field": "year", "type": "ordinal"},
+        "text": {"value": "★ Most-played in Triple J history"}
       }
     }
   ]
