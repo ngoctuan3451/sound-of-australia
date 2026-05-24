@@ -63,6 +63,30 @@
         "x": {"field": "weeks", "type": "quantitative"},
         "text": {"field": "weeks"}
       }
+    },
+    {
+      "transform": [
+        {"filter": "datum.artist == 'Tones and I' && datum.format == 'Singles'"}
+      ],
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 50},
+      "encoding": {
+        "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
+        "yOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
+        "x": {"field": "weeks", "type": "quantitative"},
+        "text": {"value": "← Only top-15 artist whose singles outweigh albums"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.artist == 'INXS' && datum.format == 'Albums'"}
+      ],
+      "mark": {"type": "text", "align": "right", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#1a4a73", "dx": -8},
+      "encoding": {
+        "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
+        "yOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
+        "x": {"field": "weeks", "type": "quantitative"},
+        "text": {"value": "Pure album act — 593 weeks, only 1 single week"}
+      }
     }
   ]
 }

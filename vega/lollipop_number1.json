@@ -61,7 +61,7 @@
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": "-x"},
         "x": {"field": "weeks", "type": "quantitative"},
-        "text": {"value": "★ Most-charted Aussie of all time"}
+        "text": {"value": "★ 215 weeks — 60% more than #2 Vance Joy"}
       }
     }
   ]
