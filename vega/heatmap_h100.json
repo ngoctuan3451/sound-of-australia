@@ -5,7 +5,7 @@
   "padding": {"left": 10, "right": 10, "top": 10, "bottom": 10},
   "title": {
     "text": "Triple J Royalty: Who Keeps Coming Back",
-    "subtitle": "The 25 artists with the most entries across every Hottest 100 (1993–2025). Darker cells = more songs that year.",
+    "subtitle": "The 25 artists with the most entries across every Hottest 100 (1993–2025). Darker cells = more songs that year. ★ = most-played artist of all time.",
     "fontSize": 18,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -36,10 +36,10 @@
           "title": null,
           "axis": {
             "labelFontSize": 11,
-            "labelColor": "#333",
-            "labelLimit": 200,
+            "labelLimit": 220,
             "labelExpr": "datum.value == 'Hilltop Hoods' ? '★ ' + datum.value : datum.value",
-            "labelFontWeight": {"expr": "datum.value == 'Hilltop Hoods' ? 700 : 400"}
+            "labelFontWeight": {"expr": "datum.value == 'Hilltop Hoods' ? 800 : 400"},
+            "labelColor": {"expr": "datum.value == 'Hilltop Hoods' ? '#c0392b' : '#333'"}
           }
         },
         "color": {
@@ -65,17 +65,6 @@
         "x": {"field": "year", "type": "ordinal"},
         "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
         "text": {"field": "count"}
-      }
-    },
-    {
-      "transform": [
-        {"filter": "datum.artist == 'Hilltop Hoods' && datum.year == 2025"}
-      ],
-      "mark": {"type": "text", "fontSize": 10, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "right", "baseline": "bottom", "dx": -6, "dy": -8},
-      "encoding": {
-        "y": {"field": "artist", "type": "nominal"},
-        "x": {"field": "year", "type": "ordinal"},
-        "text": {"value": "★ Most-played in Triple J history"}
       }
     }
   ]

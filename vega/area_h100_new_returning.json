@@ -23,6 +23,7 @@
         "x": {
           "field": "year",
           "type": "quantitative",
+          "scale": {"domain": [1993, 2025]},
           "title": null,
           "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#666"}
         },

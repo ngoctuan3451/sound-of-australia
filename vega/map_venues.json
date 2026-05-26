@@ -47,8 +47,8 @@
         "shape": "M 0,-1 L 0.866,-0.5 L 0.866,0.5 L 0,1 L -0.866,0.5 L -0.866,-0.5 Z",
         "filled": true,
         "stroke": "#fff",
-        "strokeWidth": 1.6,
-        "size": 1200,
+        "strokeWidth": 1.8,
+        "size": 1050,
         "opacity": 0.95
       },
       "encoding": {
@@ -117,33 +117,27 @@
       "encoding": {
         "longitude":  {"field": "lon", "type": "quantitative"},
         "latitude":   {"field": "lat", "type": "quantitative"},
-        "longitude2": {"datum": 144.992},
-        "latitude2":  {"datum": -37.806}
+        "longitude2": {"datum": 144.994},
+        "latitude2":  {"datum": -37.808}
       }
     },
     {
-      "data": {"values": [
-        {"lon": 144.992, "lat": -37.806, "t": "31 venues in this hex"},
-        {"lon": 144.992, "lat": -37.804, "s": "densest live-music block in Melbourne"}
-      ]},
-      "layer": [
-        {
-          "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "color": "#7a1a06", "align": "left", "dx": 4},
-          "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude":  {"field": "lat", "type": "quantitative"},
-            "text": {"field": "t"}
-          }
-        },
-        {
-          "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#7a1a06", "align": "left", "dx": 4, "dy": 12},
-          "encoding": {
-            "longitude": {"field": "lon", "type": "quantitative"},
-            "latitude":  {"field": "lat", "type": "quantitative"},
-            "text": {"field": "s"}
-          }
-        }
-      ]
+      "data": {"values": [{"lon": 144.994, "lat": -37.808}]},
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "color": "#7a1a06", "align": "left", "dx": 6, "dy": -4},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text": {"value": "31 venues in this hex"}
+      }
+    },
+    {
+      "data": {"values": [{"lon": 144.994, "lat": -37.808}]},
+      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#7a1a06", "align": "left", "dx": 6, "dy": 10},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text": {"value": "densest live-music block in Melbourne"}
+      }
     }
   ]
 }
