@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 240,
+  "title": {
+    "text": "Two Australian Songs Have Ruled the Spotify Global #1",
+    "subtitle": "Days spent at #1 on Spotify's Daily Top Songs Global chart. \"Dance Monkey\" held the throne longer than any non-Christmas song in Spotify history (at the time).",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/spotify_global_aus.json"},
+  "transform": [
+    {"calculate": "datum.artist + ' — ' + datum.title", "as": "label"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 6, "color": "#f39c12"},
+      "encoding": {
+        "y": {
+          "field": "label",
+          "type": "nominal",
+          "sort": "-x",
+          "title": null,
+          "axis": {"labelFontSize": 12, "labelLimit": 320, "labelColor": "#333"}
+        },
+        "x": {
+          "field": "days_at_1",
+          "type": "quantitative",
+          "title": "Days at #1 on Spotify Global",
+          "scale": {"domain": [0, 140]},
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "tooltip": [
+          {"field": "artist",    "title": "Artist"},
+          {"field": "song",      "title": "Song"},
+          {"field": "year",      "title": "Year"},
+          {"field": "days_at_1", "title": "Days at Spotify Global #1"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "fontSize": 13, "fontWeight": 700, "color": "#1a1a2e", "dx": 8},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": "-x"},
+        "x": {"field": "days_at_1", "type": "quantitative"},
+        "text": {"field": "days_at_1"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.artist == 'Tones and I'"}],
+      "mark": {"type": "text", "align": "right", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "white", "dx": -10},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": "-x"},
+        "x": {"field": "days_at_1", "type": "quantitative"},
+        "text": {"value": "★ Longest non-seasonal #1 in Spotify history"}
+      }
+    }
+  ]
+}

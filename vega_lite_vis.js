@@ -19,7 +19,13 @@ const charts = [
 
   // Section 4 — the shape of a hit
   ["#chart-grouped",         "vega/grouped_decade_share.json"],
-  ["#chart-scatter-release", "vega/scatter_peak_weeks.json"]
+  ["#chart-scatter-release", "vega/scatter_peak_weeks.json"],
+
+  // Section 5 — Australia on the world stage
+  ["#chart-billboard",        "vega/billboard_aus_no1s.json"],
+  ["#chart-spotify",          "vega/spotify_global_throne.json"],
+  ["#chart-eurovision",       "vega/eurovision_journey.json"],
+  ["#chart-spotify-alltime",  "vega/spotify_alltime_top50.json"]
 ];
 
 const embedOpts = { actions: { export: true, source: true, editor: true, compiled: false } };

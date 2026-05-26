@@ -1,0 +1,12 @@
+[
+  {"year": 2015, "artist": "Guy Sebastian",       "song": "Tonight Again",            "place": 5,  "qualified": true,  "label": "5th"},
+  {"year": 2016, "artist": "Dami Im",              "song": "Sound of Silence",         "place": 2,  "qualified": true,  "label": "2nd"},
+  {"year": 2017, "artist": "Isaiah Firebrace",     "song": "Don't Come Easy",          "place": 9,  "qualified": true,  "label": "9th"},
+  {"year": 2018, "artist": "Jessica Mauboy",       "song": "We Got Love",              "place": 20, "qualified": true,  "label": "20th"},
+  {"year": 2019, "artist": "Kate Miller-Heidke",   "song": "Zero Gravity",             "place": 9,  "qualified": true,  "label": "9th"},
+  {"year": 2021, "artist": "Montaigne",            "song": "Technicolour",             "place": 27, "qualified": false, "label": "DNQ"},
+  {"year": 2022, "artist": "Sheldon Riley",        "song": "Not the Same",             "place": 15, "qualified": true,  "label": "15th"},
+  {"year": 2023, "artist": "Voyager",              "song": "Promise",                  "place": 9,  "qualified": true,  "label": "9th"},
+  {"year": 2024, "artist": "Electric Fields",      "song": "One Milkali (One Blood)",  "place": 27, "qualified": false, "label": "DNQ"},
+  {"year": 2025, "artist": "Go-Jo",                "song": "Milkshake Man",            "place": 27, "qualified": false, "label": "DNQ"}
+]

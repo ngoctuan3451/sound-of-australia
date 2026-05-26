@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 360,
+  "title": {
+    "text": "Australia at Eurovision: A Decade of Trying",
+    "subtitle": "Every Australian Eurovision entry from 2015 to 2025. Y = final placement (lower = better). Solid line = made the grand final; dotted = did not qualify (DNQ).",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/eurovision_australia.json"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "scale": {"domain": [2014.5, 2025.5]},
+      "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#555", "tickCount": 11}
+    }
+  },
+  "layer": [
+    {
+      "transform": [{"filter": "datum.qualified"}],
+      "mark": {"type": "line", "color": "#f39c12", "strokeWidth": 3, "interpolate": "monotone"},
+      "encoding": {
+        "y": {
+          "field": "place",
+          "type": "quantitative",
+          "title": "Final placement (1 = winner)",
+          "scale": {"domain": [28, 0]},
+          "axis": {"values": [1, 5, 10, 15, 20, 25], "grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        }
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 260, "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "y": {"field": "place", "type": "quantitative"},
+        "color": {
+          "field": "qualified",
+          "type": "nominal",
+          "scale": {"domain": [true, false], "range": ["#f39c12", "#999"]},
+          "legend": null
+        },
+        "shape": {
+          "field": "qualified",
+          "type": "nominal",
+          "scale": {"domain": [true, false], "range": ["circle", "cross"]},
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "year",   "title": "Year"},
+          {"field": "artist", "title": "Artist"},
+          {"field": "song",   "title": "Song"},
+          {"field": "label",  "title": "Result"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dy": -16},
+      "encoding": {
+        "y": {"field": "place", "type": "quantitative"},
+        "text": {"field": "artist"}
+      }
+    },
+    {
+      "data": {"values": [
+        {"year": 2016, "y": 1, "t": "★ Best ever: Dami Im finished 2nd"},
+        {"year": 2021, "y": 27, "t": "First-ever DNQ (Montaigne)"}
+      ]},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "t"}
+      }
+    }
+  ]
+}

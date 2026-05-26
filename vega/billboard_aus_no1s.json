@@ -1,0 +1,90 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 420,
+  "title": {
+    "text": "Every Time an Australian Hit #1 on the US Billboard Hot 100",
+    "subtitle": "1971–2021. Each circle is one #1 hit. Size = weeks spent at #1 in the USA. Colour = the era it belonged to.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aus_billboard_no1s.json"},
+  "layer": [
+    {
+      "mark": {"type": "circle", "opacity": 0.85, "stroke": "white", "strokeWidth": 1.5},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "scale": {"domain": [1969, 2025]},
+          "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#555", "tickCount": 10}
+        },
+        "y": {
+          "field": "weeks_at_1",
+          "type": "quantitative",
+          "title": "Weeks at #1 (Billboard Hot 100)",
+          "scale": {"domain": [0, 12]},
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "size": {
+          "field": "weeks_at_1",
+          "type": "quantitative",
+          "scale": {"range": [120, 1200]},
+          "legend": null
+        },
+        "color": {
+          "field": "era",
+          "type": "nominal",
+          "scale": {
+            "domain": ["70s/80s legacy", "90s/00s wave", "Streaming era"],
+            "range":  ["#2980b9", "#16a085", "#f39c12"]
+          },
+          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 200}
+        },
+        "tooltip": [
+          {"field": "year",       "title": "Year"},
+          {"field": "artist",     "title": "Artist"},
+          {"field": "song",       "title": "Song"},
+          {"field": "weeks_at_1", "title": "Weeks at #1"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.weeks_at_1 >= 7"}],
+      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 700, "color": "#1a1a2e", "dy": -22},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "weeks_at_1", "type": "quantitative"},
+        "text": {"field": "song"}
+      }
+    },
+    {
+      "data": {"values": [
+        {"x": 1990, "y": 11, "t": "27-year gap between INXS (1987) and Iggy Azalea (2014)"}
+      ]},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "color": "#c0392b"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "t"}
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "#ccc", "strokeDash": [3, 3], "strokeWidth": 1},
+      "encoding": {
+        "x": {"datum": 1987, "type": "quantitative"}
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "#ccc", "strokeDash": [3, 3], "strokeWidth": 1},
+      "encoding": {
+        "x": {"datum": 2014, "type": "quantitative"}
+      }
+    }
+  ]
+}

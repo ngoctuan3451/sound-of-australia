@@ -1,0 +1,18 @@
+[
+  {"year": 1971, "artist": "Bee Gees",                       "song": "How Can You Mend a Broken Heart", "weeks_at_1": 4,  "era": "70s/80s legacy"},
+  {"year": 1975, "artist": "Olivia Newton-John",             "song": "Have You Never Been Mellow",      "weeks_at_1": 1,  "era": "70s/80s legacy"},
+  {"year": 1977, "artist": "Andy Gibb",                      "song": "I Just Want to Be Your Everything","weeks_at_1": 4, "era": "70s/80s legacy"},
+  {"year": 1977, "artist": "Bee Gees",                       "song": "How Deep Is Your Love",           "weeks_at_1": 3,  "era": "70s/80s legacy"},
+  {"year": 1978, "artist": "Bee Gees",                       "song": "Stayin' Alive",                   "weeks_at_1": 4,  "era": "70s/80s legacy"},
+  {"year": 1978, "artist": "Andy Gibb",                      "song": "(Love Is) Thicker Than Water",    "weeks_at_1": 2,  "era": "70s/80s legacy"},
+  {"year": 1978, "artist": "Bee Gees",                       "song": "Night Fever",                     "weeks_at_1": 8,  "era": "70s/80s legacy"},
+  {"year": 1978, "artist": "Andy Gibb",                      "song": "Shadow Dancing",                  "weeks_at_1": 7,  "era": "70s/80s legacy"},
+  {"year": 1981, "artist": "Olivia Newton-John",             "song": "Physical",                        "weeks_at_1": 10, "era": "70s/80s legacy"},
+  {"year": 1981, "artist": "Rick Springfield",               "song": "Jessie's Girl",                   "weeks_at_1": 2,  "era": "70s/80s legacy"},
+  {"year": 1982, "artist": "Men at Work",                    "song": "Down Under",                      "weeks_at_1": 4,  "era": "70s/80s legacy"},
+  {"year": 1987, "artist": "INXS",                           "song": "Need You Tonight",                "weeks_at_1": 1,  "era": "70s/80s legacy"},
+  {"year": 1997, "artist": "Savage Garden",                  "song": "Truly Madly Deeply",              "weeks_at_1": 2,  "era": "90s/00s wave"},
+  {"year": 1999, "artist": "Savage Garden",                  "song": "I Knew I Loved You",              "weeks_at_1": 4,  "era": "90s/00s wave"},
+  {"year": 2014, "artist": "Iggy Azalea & Charli XCX",       "song": "Fancy",                           "weeks_at_1": 7,  "era": "Streaming era"},
+  {"year": 2021, "artist": "The Kid Laroi & Justin Bieber",  "song": "Stay",                            "weeks_at_1": 7,  "era": "Streaming era"}
+]

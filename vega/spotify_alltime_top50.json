@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 900,
+  "title": {
+    "text": "3 of the 50 Most-Streamed Songs Ever Are Australian",
+    "subtitle": "Top 50 songs on Spotify of all time, by total streams (billions). Australian songs are highlighted in orange.",
+    "fontSize": 16,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/spotify_alltime_top50.json"},
+  "transform": [
+    {"calculate": "'#' + datum.rank + '  ' + datum.song + '  —  ' + datum.artist", "as": "label"},
+    {"calculate": "datum.aus ? 'Australian' : 'Rest of world'", "as": "origin"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "bar", "cornerRadiusEnd": 3, "height": {"band": 0.78}},
+      "encoding": {
+        "y": {
+          "field": "label",
+          "type": "nominal",
+          "sort": {"field": "rank", "order": "ascending"},
+          "title": null,
+          "axis": {"labelFontSize": 10, "labelLimit": 360, "labelColor": "#333", "labelPadding": 6}
+        },
+        "x": {
+          "field": "streams",
+          "type": "quantitative",
+          "title": "Total Spotify streams (billions)",
+          "scale": {"domain": [0, 6]},
+          "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+        },
+        "color": {
+          "field": "origin",
+          "type": "nominal",
+          "scale": {"domain": ["Australian", "Rest of world"], "range": ["#f39c12", "#dcdcdc"]},
+          "legend": {"orient": "top", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 200}
+        },
+        "tooltip": [
+          {"field": "rank",    "title": "Rank"},
+          {"field": "song",    "title": "Song"},
+          {"field": "artist",  "title": "Artist"},
+          {"field": "streams", "title": "Streams (B)", "format": ".2f"},
+          {"field": "year",    "title": "Released"}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.aus"}],
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "color": "#7a1a06", "dx": 8},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "order": "ascending"}},
+        "x": {"field": "streams", "type": "quantitative"},
+        "text": {"field": "streams", "type": "quantitative", "format": ".2f"}
+      }
+    }
+  ]
+}
