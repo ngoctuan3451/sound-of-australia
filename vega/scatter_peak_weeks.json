@@ -73,11 +73,11 @@
     },
     {
       "transform": [{"filter": "datum.artist == 'The Killers'"}],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 38, "baseline": "middle"},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 36, "baseline": "middle"},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "neg_weeks", "op": "min"}},
         "x": {"field": "weeks", "type": "quantitative"},
-        "text": {"value": "Peaked at #19 — still 145 weeks on chart"}
+        "text": {"value": "← peaked at just #19"}
       }
     }
   ]

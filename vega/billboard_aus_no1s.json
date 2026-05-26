@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 420,
+  "height": 380,
   "title": {
     "text": "Every Time an Australian Hit #1 on the US Billboard Hot 100",
     "subtitle": "1971–2021. Each circle is one #1 hit. Size = weeks spent at #1 in the USA. Colour = the era it belonged to.",
@@ -65,9 +65,9 @@
     },
     {
       "data": {"values": [
-        {"x": 1990, "y": 11, "t": "27-year gap between INXS (1987) and Iggy Azalea (2014)"}
+        {"x": 2000, "y": 9.5, "t": "27-year drought between INXS (1987) and Iggy Azalea (2014)"}
       ]},
-      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "color": "#c0392b"},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},

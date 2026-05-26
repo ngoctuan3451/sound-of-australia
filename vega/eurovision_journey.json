@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 360,
+  "height": 320,
   "title": {
     "text": "Australia at Eurovision: A Decade of Trying",
     "subtitle": "Every Australian Eurovision entry from 2015 to 2025. Y = final placement (lower = better). Solid line = made the grand final; dotted = did not qualify (DNQ).",
@@ -69,14 +69,16 @@
     },
     {
       "data": {"values": [
-        {"year": 2016, "y": 1, "t": "★ Best ever: Dami Im finished 2nd"},
-        {"year": 2021, "y": 27, "t": "First-ever DNQ (Montaigne)"}
+        {"year": 2016, "y": 1,  "t": "★ Best ever: Dami Im, 2nd",   "anchor": "left"},
+        {"year": 2021, "y": 25, "t": "First-ever DNQ (Montaigne)",   "anchor": "right"}
       ]},
-      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
+      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "t"}
+        "text": {"field": "t"},
+        "align": {"field": "anchor", "type": "nominal"},
+        "dx": {"condition": [{"test": "datum.anchor == 'left'", "value": 8}], "value": -8}
       }
     }
   ]

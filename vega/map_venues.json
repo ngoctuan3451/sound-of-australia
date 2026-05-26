@@ -15,7 +15,7 @@
     "font": "Inter, system-ui, sans-serif"
   },
   "width": "container",
-  "height": 560,
+  "height": 500,
   "projection": {
     "type": "mercator",
     "center": [144.965, -37.815],

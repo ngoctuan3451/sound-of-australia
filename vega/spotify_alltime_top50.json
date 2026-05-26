@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 900,
+  "height": 760,
   "title": {
     "text": "3 of the 50 Most-Streamed Songs Ever Are Australian",
     "subtitle": "Top 50 songs on Spotify of all time, by total streams (billions). Australian songs are highlighted in orange.",

@@ -67,8 +67,8 @@
     },
     {
       "data": {"values": [
-        {"x": 2020, "y": 0.55, "t": "Tones and I held #1 for 3 straight years"},
-        {"x": 2024, "y": 0.55, "t": "Streaming-era newcomers take over"}
+        {"x": 2020, "y": 0.75, "t": "Tones and I held #1 three years running"},
+        {"x": 2024, "y": 0.75, "t": "Streaming-era newcomers take over"}
       ]},
       "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "fontWeight": 600, "color": "#c0392b", "align": "center"},
       "encoding": {

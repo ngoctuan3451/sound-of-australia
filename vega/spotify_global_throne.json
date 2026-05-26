@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 240,
+  "height": 200,
   "title": {
     "text": "Two Australian Songs Have Ruled the Spotify Global #1",
     "subtitle": "Days spent at #1 on Spotify's Daily Top Songs Global chart. \"Dance Monkey\" held the throne longer than any non-Christmas song in Spotify history (at the time).",
