@@ -31,7 +31,7 @@
           "field": "place",
           "type": "quantitative",
           "title": "Final placement (1 = winner)",
-          "scale": {"domain": [28, 0]},
+          "scale": {"domain": [30, -3]},
           "axis": {"values": [1, 5, 10, 15, 20, 25], "grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         }
       }
@@ -70,17 +70,14 @@
     },
     {
       "data": {"values": [
-        {"year": 2016, "y": 2,  "t": "★ Best ever: Dami Im, 2nd",   "anchor": "left",  "dyv": -30},
-        {"year": 2021, "y": 27, "t": "First-ever DNQ (Montaigne)",   "anchor": "right", "dyv": -30}
+        {"year": 2016, "y": -1, "t": "★ Best ever: Dami Im, 2nd (2016)"},
+        {"year": 2021, "y": 29, "t": "First-ever DNQ — Montaigne (2021)"}
       ]},
-      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "t"},
-        "align": {"field": "anchor", "type": "nominal"},
-        "dx": {"condition": [{"test": "datum.anchor == 'left'", "value": 12}], "value": -12},
-        "dy": {"field": "dyv", "type": "quantitative"}
+        "text": {"field": "t"}
       }
     }
   ]
