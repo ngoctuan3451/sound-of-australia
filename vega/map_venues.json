@@ -18,8 +18,8 @@
   "height": 500,
   "projection": {
     "type": "mercator",
-    "center": [144.965, -37.815],
-    "scale": 220000
+    "center": [144.972, -37.815],
+    "scale": 280000
   },
   "layer": [
     {
@@ -48,7 +48,7 @@
         "filled": true,
         "stroke": "#fff",
         "strokeWidth": 1.8,
-        "size": 1050,
+        "size": 1700,
         "opacity": 0.95
       },
       "encoding": {
@@ -112,17 +112,17 @@
       ]
     },
     {
-      "data": {"values": [{"lon": 144.974, "lat": -37.814}]},
-      "mark": {"type": "rule", "color": "#7a1a06", "strokeWidth": 1.2},
+      "data": {"values": [{"lon": 144.966, "lat": -37.815}]},
+      "mark": {"type": "rule", "color": "#7a1a06", "strokeWidth": 1.4},
       "encoding": {
         "longitude":  {"field": "lon", "type": "quantitative"},
         "latitude":   {"field": "lat", "type": "quantitative"},
-        "longitude2": {"datum": 144.994},
-        "latitude2":  {"datum": -37.808}
+        "longitude2": {"datum": 144.998},
+        "latitude2":  {"datum": -37.806}
       }
     },
     {
-      "data": {"values": [{"lon": 144.994, "lat": -37.808}]},
+      "data": {"values": [{"lon": 144.998, "lat": -37.806}]},
       "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "color": "#7a1a06", "align": "left", "dx": 6, "dy": -4},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
@@ -131,12 +131,12 @@
       }
     },
     {
-      "data": {"values": [{"lon": 144.994, "lat": -37.808}]},
+      "data": {"values": [{"lon": 144.998, "lat": -37.806}]},
       "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#7a1a06", "align": "left", "dx": 6, "dy": 10},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"},
-        "text": {"value": "densest live-music block in Melbourne"}
+        "text": {"value": "densest live-music block — at the CBD"}
       }
     }
   ]

@@ -28,7 +28,7 @@
           "field": "weeks",
           "type": "quantitative",
           "title": "Total weeks on chart",
-          "scale": {"domain": [0, 280]},
+          "scale": {"domain": [0, 260]},
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "x2": {"datum": 0}
