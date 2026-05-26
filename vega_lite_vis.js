@@ -30,9 +30,15 @@ const charts = [
 
 const embedOpts = { actions: { export: true, source: true, editor: true, compiled: false } };
 
+// Cache-bust: a fresh suffix on every page load forces the browser to refetch
+// each Vega-Lite spec JSON instead of using a stale cached copy. Required while
+// GitHub Pages / the raw.githubusercontent.com CDN serve recent edits.
+const cacheBust = '?v=' + Date.now();
+
 charts.forEach(([sel, spec]) => {
-  vegaEmbed(sel, spec, embedOpts).catch(err => {
-    console.error(`Failed to embed ${sel} from ${spec}:`, err);
+  const url = spec + cacheBust;
+  vegaEmbed(sel, url, embedOpts).catch(err => {
+    console.error(`Failed to embed ${sel} from ${url}:`, err);
     const el = document.querySelector(sel);
     if (el) el.innerHTML =
       `<p style="color:#c0392b;font-size:0.85rem;padding:1rem;">
