@@ -5,7 +5,7 @@
   "padding": {"left": 10, "right": 10, "top": 10, "bottom": 10},
   "title": {
     "text": "Triple J Royalty: Who Keeps Coming Back",
-    "subtitle": "The 25 artists with the most entries across every Hottest 100 (1993–2025). Darker cells = more songs that year. ★ = most-played artist of all time.",
+    "subtitle": "The 25 artists with the most entries across every Hottest 100 (1993–2025). Darker cells = more songs that year. Sorted by total entries (top = most).",
     "fontSize": 18,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -37,9 +37,7 @@
           "axis": {
             "labelFontSize": 11,
             "labelLimit": 220,
-            "labelExpr": "datum.value == 'Hilltop Hoods' ? '★ ' + datum.value : datum.value",
-            "labelFontWeight": {"expr": "datum.value == 'Hilltop Hoods' ? 800 : 400"},
-            "labelColor": {"expr": "datum.value == 'Hilltop Hoods' ? '#c0392b' : '#333'"}
+            "labelColor": "#333"
           }
         },
         "color": {

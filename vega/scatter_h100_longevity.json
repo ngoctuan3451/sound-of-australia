@@ -34,7 +34,14 @@
           "field": "total",
           "type": "quantitative",
           "scale": {"range": [40, 700]},
-          "legend": null
+          "legend": {
+            "title": "Total songs",
+            "orient": "bottom-right",
+            "symbolFillColor": "#bbb",
+            "symbolStrokeColor": "#888",
+            "labelFontSize": 10,
+            "titleFontSize": 11
+          }
         },
         "color": {
           "field": "best",

@@ -35,7 +35,14 @@
           "field": "weeks_at_1",
           "type": "quantitative",
           "scale": {"range": [120, 1200]},
-          "legend": null
+          "legend": {
+            "title": "Weeks at #1",
+            "orient": "bottom-right",
+            "symbolFillColor": "#bbb",
+            "symbolStrokeColor": "#888",
+            "labelFontSize": 10,
+            "titleFontSize": 11
+          }
         },
         "color": {
           "field": "era",
