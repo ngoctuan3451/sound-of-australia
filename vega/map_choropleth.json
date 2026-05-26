@@ -46,7 +46,7 @@
         "color": {
           "field": "weeks",
           "type": "quantitative",
-          "scale": {"type": "log", "scheme": "oranges"},
+          "scale": {"type": "log", "scheme": "yelloworangered"},
           "legend": {
             "title": "Weeks on chart",
             "format": ",",

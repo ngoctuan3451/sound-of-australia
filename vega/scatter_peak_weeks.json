@@ -43,7 +43,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Peaked at #1", "Peaked in top 5", "Peaked #6–10", "Peaked outside top 10"],
-            "range":  ["#c0392b", "#e67e22", "#f1c40f", "#7f8c8d"]
+            "range":  ["#c0392b", "#e67e22", "#3a8fb7", "#bdc3c7"]
           },
           "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 11, "symbolSize": 160}
         },
