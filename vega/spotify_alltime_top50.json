@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 760,
+  "height": 380,
   "title": {
-    "text": "3 of the 50 Most-Streamed Songs Ever Are Australian",
-    "subtitle": "Top 50 songs on Spotify of all time, by total streams (billions). Australian songs are highlighted in orange.",
+    "text": "2 of the 20 Most-Streamed Songs Ever Are Australian",
+    "subtitle": "Top 20 songs on Spotify of all time, by total streams (billions). Australian songs are highlighted in orange.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -14,7 +14,8 @@
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/spotify_alltime_top50.json"},
   "transform": [
-    {"calculate": "'#' + datum.rank + '  ' + datum.song + '  —  ' + datum.artist", "as": "label"},
+    {"filter": "datum.rank <= 20"},
+    {"calculate": "'#' + (datum.rank < 10 ? '0' + datum.rank : datum.rank) + '  ' + datum.song + '  —  ' + datum.artist", "as": "label"},
     {"calculate": "datum.aus ? 'Australian' : 'Rest of world'", "as": "origin"}
   ],
   "layer": [
@@ -24,9 +25,9 @@
         "y": {
           "field": "label",
           "type": "nominal",
-          "sort": {"field": "rank", "order": "ascending"},
+          "sort": {"field": "rank", "op": "min", "order": "ascending"},
           "title": null,
-          "axis": {"labelFontSize": 10, "labelLimit": 360, "labelColor": "#333", "labelPadding": 6}
+          "axis": {"labelFontSize": 11, "labelLimit": 360, "labelColor": "#333", "labelPadding": 6}
         },
         "x": {
           "field": "streams",
@@ -54,7 +55,7 @@
       "transform": [{"filter": "datum.aus"}],
       "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "color": "#7a1a06", "dx": 8},
       "encoding": {
-        "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "order": "ascending"}},
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "op": "min", "order": "ascending"}},
         "x": {"field": "streams", "type": "quantitative"},
         "text": {"field": "streams", "type": "quantitative", "format": ".2f"}
       }

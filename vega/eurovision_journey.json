@@ -37,19 +37,20 @@
       }
     },
     {
+      "transform": [{"calculate": "datum.qualified ? 'Made the grand final' : 'Did not qualify (DNQ)'", "as": "result"}],
       "mark": {"type": "point", "filled": true, "size": 260, "stroke": "white", "strokeWidth": 2},
       "encoding": {
         "y": {"field": "place", "type": "quantitative"},
         "color": {
-          "field": "qualified",
+          "field": "result",
           "type": "nominal",
-          "scale": {"domain": [true, false], "range": ["#f39c12", "#999"]},
-          "legend": null
+          "scale": {"domain": ["Made the grand final", "Did not qualify (DNQ)"], "range": ["#f39c12", "#999"]},
+          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 11, "symbolSize": 180}
         },
         "shape": {
-          "field": "qualified",
+          "field": "result",
           "type": "nominal",
-          "scale": {"domain": [true, false], "range": ["circle", "cross"]},
+          "scale": {"domain": ["Made the grand final", "Did not qualify (DNQ)"], "range": ["circle", "cross"]},
           "legend": null
         },
         "tooltip": [
@@ -61,7 +62,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dy": -16},
+      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dy": -18},
       "encoding": {
         "y": {"field": "place", "type": "quantitative"},
         "text": {"field": "artist"}
@@ -69,8 +70,8 @@
     },
     {
       "data": {"values": [
-        {"year": 2016, "y": 1,  "t": "★ Best ever: Dami Im, 2nd",   "anchor": "left"},
-        {"year": 2021, "y": 25, "t": "First-ever DNQ (Montaigne)",   "anchor": "right"}
+        {"year": 2016, "y": 2,  "t": "★ Best ever: Dami Im, 2nd",   "anchor": "left",  "dyv": -30},
+        {"year": 2021, "y": 27, "t": "First-ever DNQ (Montaigne)",   "anchor": "right", "dyv": -30}
       ]},
       "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
       "encoding": {
@@ -78,7 +79,8 @@
         "y": {"field": "y", "type": "quantitative"},
         "text": {"field": "t"},
         "align": {"field": "anchor", "type": "nominal"},
-        "dx": {"condition": [{"test": "datum.anchor == 'left'", "value": 8}], "value": -8}
+        "dx": {"condition": [{"test": "datum.anchor == 'left'", "value": 12}], "value": -12},
+        "dy": {"field": "dyv", "type": "quantitative"}
       }
     }
   ]
