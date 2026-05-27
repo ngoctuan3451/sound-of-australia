@@ -121,6 +121,7 @@ h2 {
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1.1rem;          /* matches chart-block horizontal padding so all inner text aligns with chart inner area */
 }
 .section > .section-label,
 .section > h2,
@@ -128,6 +129,8 @@ h2 {
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1.1rem;
+  padding-right: 1.1rem;
 }
 
 .section-label {
@@ -158,11 +161,11 @@ h2 {
   padding: 0 1.1rem;          /* matches .chart-block horizontal padding so the TEXT aligns with chart inner area */
   line-height: 1.65;
 }
-/* Body paragraphs inside section-inner fill the inner wrapper (already 1100px). */
+/* Body paragraphs inside section-inner fill the inner wrapper (which already has 1.1rem padding). */
 .section-inner > .section-body {
   max-width: 100%;
   margin: 0 0 0.6rem;
-  padding: 0 1.1rem;
+  padding: 0;
 }
 
 .section-body + .section-body { margin-top: -0.15rem; }
