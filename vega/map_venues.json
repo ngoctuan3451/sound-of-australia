@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Where Melbourne's Live Music Happens",
-    "subtitle": "Each hexagon covers roughly 500 metres. Darker hexes pack more registered live-music venues. Source: City of Melbourne Open Data (2024).",
+    "text": "227 live-music venues across Melbourne",
+    "subtitle": "Each dot is one registered venue, coloured by venue type. The scene clusters along the CBD spine and the Fitzroy / Collingwood corridor.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -36,39 +36,41 @@
       },
       "transform": [
         {"filter": "isValid(datum.lat) && isValid(datum.lon)"},
-        {"calculate": "round((datum.lon - 144.93) * 120)",  "as": "bx"},
-        {"calculate": "round((datum.lat + 37.86) * 220)",   "as": "by"},
-        {"aggregate": [{"op": "count", "as": "venues"}], "groupby": ["bx", "by"]},
-        {"calculate": "datum.bx / 120 + 144.93 + ((datum.by % 2 + 2) % 2 == 0 ? 0 : 0.004167)", "as": "lon"},
-        {"calculate": "datum.by / 220 - 37.86", "as": "lat"}
+        {"calculate": "datum.space_type == null || datum.space_type == '' ? 'Other' : datum.space_type == 'bar' ? 'Bar' : datum.space_type", "as": "type"},
+        {"calculate": "indexof(['Bar','Hotel','Nightclub','Performance space','Theatre','Venue'], datum.type) >= 0 ? datum.type : 'Other'", "as": "type_group"}
       ],
       "mark": {
-        "type": "point",
-        "shape": "M 0,-1 L 0.866,-0.5 L 0.866,0.5 L 0,1 L -0.866,0.5 L -0.866,-0.5 Z",
+        "type": "circle",
         "filled": true,
-        "stroke": "#fff",
-        "strokeWidth": 1.8,
-        "size": 1700,
-        "opacity": 0.95
+        "stroke": "white",
+        "strokeWidth": 0.7,
+        "size": 90,
+        "opacity": 0.92
       },
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"},
         "color": {
-          "field": "venues",
-          "type": "quantitative",
-          "scale": {"scheme": "yelloworangered", "domainMin": 1},
+          "field": "type_group",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Bar", "Hotel", "Nightclub", "Performance space", "Theatre", "Venue", "Other"],
+            "range":  ["#c0392b", "#e67e22", "#8e44ad", "#16a085", "#2980b9", "#27ae60", "#7f8c8d"]
+          },
           "legend": {
-            "title": "Venues per hex",
-            "orient": "bottom-right",
-            "gradientLength": 160,
+            "title": "Venue type",
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelFontSize": 11,
             "titleFontSize": 11,
-            "labelFontSize": 10,
-            "format": "d"
+            "symbolSize": 120,
+            "columns": 4
           }
         },
         "tooltip": [
-          {"field": "venues", "type": "quantitative", "title": "Venues in this hex"}
+          {"field": "venue_name",   "title": "Venue"},
+          {"field": "type",         "title": "Type"},
+          {"field": "venue_address","title": "Address"}
         ]
       }
     },
@@ -88,13 +90,7 @@
       },
       "layer": [
         {
-          "mark": {
-            "type": "text",
-            "fontSize": 11,
-            "fontWeight": 700,
-            "stroke": "white",
-            "strokeWidth": 3
-          },
+          "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "stroke": "white", "strokeWidth": 3},
           "encoding": {
             "longitude": {"field": "lon", "type": "quantitative"},
             "latitude":  {"field": "lat", "type": "quantitative"},
@@ -110,34 +106,6 @@
           }
         }
       ]
-    },
-    {
-      "data": {"values": [{"lon": 144.966, "lat": -37.815}]},
-      "mark": {"type": "rule", "color": "#7a1a06", "strokeWidth": 1.4},
-      "encoding": {
-        "longitude":  {"field": "lon", "type": "quantitative"},
-        "latitude":   {"field": "lat", "type": "quantitative"},
-        "longitude2": {"datum": 144.998},
-        "latitude2":  {"datum": -37.806}
-      }
-    },
-    {
-      "data": {"values": [{"lon": 144.998, "lat": -37.806}]},
-      "mark": {"type": "text", "fontSize": 12, "fontWeight": 700, "color": "#7a1a06", "align": "left", "dx": 6, "dy": -4},
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"},
-        "text": {"value": "31 venues in this hex"}
-      }
-    },
-    {
-      "data": {"values": [{"lon": 144.998, "lat": -37.806}]},
-      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#7a1a06", "align": "left", "dx": 6, "dy": 10},
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"},
-        "text": {"value": "densest live-music block — at the CBD"}
-      }
     }
   ]
 }
