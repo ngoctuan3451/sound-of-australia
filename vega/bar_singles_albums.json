@@ -3,9 +3,9 @@
   "width": "container",
   "height": 540,
   "title": {
-    "text": "Singles vs Albums: Who Owns Which Format?",
+    "text": "Most top-charted Aussie artists are album acts",
     "subtitle": "Top 15 Australian artists by combined weeks on the ARIA charts, sorted by total. Some are album acts, others live on the singles chart.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

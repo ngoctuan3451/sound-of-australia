@@ -3,9 +3,9 @@
   "width": "container",
   "height": 340,
   "title": {
-    "text": "The Rise of Australian Music on the ARIA Charts",
+    "text": "Australian singles share spiked in the streaming era",
     "subtitle": "% of ARIA Top 50 singles by Australian artists, by year.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

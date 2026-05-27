@@ -3,9 +3,9 @@
   "width": "container",
   "height": 380,
   "title": {
-    "text": "Burn Bright, or Burn Long?",
+    "text": "Hottest 100 artists: short bursts vs long careers",
     "subtitle": "Each dot is a Hottest 100 artist. X = years between their first and last appearance. Y = total songs voted in. Colour = their best-ever position.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

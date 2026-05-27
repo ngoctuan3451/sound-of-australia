@@ -3,9 +3,9 @@
   "width": "container",
   "height": 340,
   "title": {
-    "text": "Fresh Faces vs Familiar Voices",
+    "text": "Triple J's pool of returning artists keeps growing",
     "subtitle": "Each year's Hottest 100 split between artists never heard before and those returning from a previous poll.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

@@ -4,9 +4,9 @@
   "height": 460,
   "padding": {"left": 10, "right": 10, "top": 10, "bottom": 10},
   "title": {
-    "text": "Triple J Royalty: Who Keeps Coming Back",
+    "text": "The 25 artists Triple J listeners keep voting back",
     "subtitle": "The 25 artists with the most entries across every Hottest 100 (1993–2025). Darker cells = more songs that year. Sorted by total entries (top = most).",
-    "fontSize": 18,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

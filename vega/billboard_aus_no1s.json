@@ -5,7 +5,7 @@
   "title": {
     "text": "Every Time an Australian Hit #1 on the US Billboard Hot 100",
     "subtitle": "1971–2021. Each circle is one #1 hit. Size = weeks spent at #1 in the USA. Colour = the era it belonged to.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

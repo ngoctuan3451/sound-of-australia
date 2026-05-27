@@ -5,7 +5,7 @@
   "title": {
     "text": "Australia's Year-by-Year Domination of the Album Chart",
     "subtitle": "Each bar is one year. Height = number of weeks that year when the ARIA #1 album was by an Australian artist. The 2003 spike is the Australian Idol / Delta Goodrem era.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

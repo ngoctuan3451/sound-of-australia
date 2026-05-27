@@ -3,7 +3,7 @@
   "title": {
     "text": "Where Melbourne's Live Music Happens",
     "subtitle": "Each hexagon covers roughly 500 metres. Darker hexes pack more registered live-music venues. Source: City of Melbourne Open Data (2024).",
-    "fontSize": 18,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

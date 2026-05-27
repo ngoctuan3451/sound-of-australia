@@ -5,7 +5,7 @@
   "title": {
     "text": "Hitting #1 isn't what keeps a song on the chart",
     "subtitle": "The 15 longest-running songs on the ARIA singles chart. Bar LENGTH = total weeks on chart. Bar COLOUR shows how high the song actually peaked.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

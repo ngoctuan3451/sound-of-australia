@@ -5,7 +5,7 @@
   "title": {
     "text": "When New Hits Arrive",
     "subtitle": "Radial bars show the number of brand-new ARIA singles debuts in each calendar month, split by Australian (orange) and international (navy) artists.",
-    "fontSize": 16,
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",

@@ -3,9 +3,9 @@
   "width": "container",
   "height": 440,
   "title": {
-    "text": "Where the Albums on Australia's Chart Come From",
-    "subtitle": "Each country shaded by how many weeks its artists have spent on the ARIA album chart. Australia, the USA and UK do most of the heavy lifting; Sweden punches well above its weight.",
-    "fontSize": 16,
+    "text": "Three countries supply most of Australia's album chart",
+    "subtitle": "Each country shaded by how many weeks its artists have spent on the ARIA album chart. The USA, Australia and the UK do most of the heavy lifting; Sweden punches well above its weight.",
+    "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",
