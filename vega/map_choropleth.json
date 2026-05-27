@@ -3,8 +3,8 @@
   "width": "container",
   "height": 440,
   "title": {
-    "text": "Where Does ARIA Album Competition Come From?",
-    "subtitle": "Total weeks on Australian album charts by country of artist origin. The USA and UK dominate; Sweden punches well above its weight.",
+    "text": "Where the Albums on Australia's Chart Come From",
+    "subtitle": "Each country shaded by how many weeks its artists have spent on the ARIA album chart. Australia, the USA and UK do most of the heavy lifting; Sweden punches well above its weight.",
     "fontSize": 16,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

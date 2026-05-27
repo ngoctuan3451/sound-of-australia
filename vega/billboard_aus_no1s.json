@@ -38,6 +38,7 @@
           "legend": {
             "title": "Weeks at #1",
             "orient": "bottom-right",
+            "values": [2, 5, 10],
             "symbolFillColor": "#bbb",
             "symbolStrokeColor": "#888",
             "labelFontSize": 10,

@@ -37,6 +37,7 @@
           "legend": {
             "title": "Total songs",
             "orient": "bottom-right",
+            "values": [5, 15, 25],
             "symbolFillColor": "#bbb",
             "symbolStrokeColor": "#888",
             "labelFontSize": 10,
