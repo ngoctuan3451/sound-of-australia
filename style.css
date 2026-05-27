@@ -211,7 +211,7 @@ h2 {
   line-height: 1.55;
   color: #1a1a2e;
   margin: 0;
-  max-width: 65ch;
+  max-width: 100%;
 }
 .pullquote strong { font-weight: 700; font-style: normal; color: #c0392b; }
 
@@ -284,7 +284,7 @@ h2 {
   color: #444;
   margin-bottom: 0.65rem;
   line-height: 1.6;
-  max-width: 55ch;
+  max-width: 100%;
 }
 
 .text-block p:last-child { margin-bottom: 0; }
@@ -421,7 +421,7 @@ footer a:hover { border-bottom-color: #f39c12; }
   color: #1a1a2e;
   margin: 0;
   line-height: 1.55;
-  max-width: 70ch;
+  max-width: 100%;
 }
 .section-dark .takeaway {
   background: linear-gradient(to right, rgba(243, 156, 18, 0.14), rgba(243, 156, 18, 0.02) 70%);
