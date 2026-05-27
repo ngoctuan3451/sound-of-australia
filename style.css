@@ -155,9 +155,9 @@ h2 {
 .section-body {
   font-size: 1rem;
   color: #444;
-  max-width: 70ch;
+  max-width: none;
   margin: 0 0 0.6rem;
-  line-height: 1.7;
+  line-height: 1.65;
 }
 
 .section-body + .section-body { margin-top: -0.15rem; }
