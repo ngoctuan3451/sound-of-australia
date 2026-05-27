@@ -140,7 +140,7 @@ h2 {
   letter-spacing: 0.18em;
   color: #f39c12;
   margin-bottom: 0.6rem;
-  display: inline-block;
+  display: block;
 }
 
 .section-label::before {
