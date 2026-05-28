@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 380,
-  "height": 380,
+  "width": 460,
+  "height": 460,
   "title": {
-    "text": "When New Hits Arrive",
-    "subtitle": "Radial bars show the number of brand-new ARIA singles debuts in each calendar month, split by Australian (orange) and international (navy) artists.",
+    "text": "When new singles hit the ARIA chart, by month",
+    "subtitle": "Radial bars show the number of first-ever debuts on the ARIA singles chart by calendar month, split by Australian (orange) and international (navy) artists.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -32,7 +32,7 @@
           "field": "origin",
           "type": "nominal",
           "scale": {"domain": ["Australian", "International"], "range": ["#f39c12", "#1a1a2e"]},
-          "legend": {"orient": "bottom", "title": null, "labelFontSize": 11}
+          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 180}
         },
         "order": {"field": "origin"},
         "tooltip": [
@@ -43,10 +43,10 @@
       }
     },
     {
-      "mark": {"type": "text", "radiusOffset": 14, "fontSize": 11, "fontWeight": 600, "color": "#555"},
+      "mark": {"type": "text", "radiusOffset": 16, "fontSize": 12, "fontWeight": 700, "color": "#333"},
       "encoding": {
         "theta": {"field": "month", "type": "ordinal", "scale": {"type": "band"}},
-        "radius": {"value": 170},
+        "radius": {"value": 200},
         "text": {"field": "label"},
         "detail": {"aggregate": "max", "field": "month"}
       }

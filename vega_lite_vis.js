@@ -19,6 +19,8 @@ const charts = [
 
   // Section 4 — the shape of a hit
   ["#chart-grouped",         "vega/grouped_decade_share.json"],
+  ["#chart-slope",           "vega/slope_decade_share.json"],
+  ["#chart-radial",          "vega/radial_seasonality.json"],
   ["#chart-scatter-release", "vega/scatter_peak_weeks.json"],
 
   // Section 5 — Australia on the world stage
