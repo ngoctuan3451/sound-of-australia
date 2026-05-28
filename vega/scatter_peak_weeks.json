@@ -83,11 +83,11 @@
     },
     {
       "transform": [{"filter": "datum.artist == 'Glass Animals'"}],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#1a4a3a", "dx": 36, "baseline": "middle"},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#1a4a3a", "dx": 36, "baseline": "middle", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "neg_weeks", "op": "min"}},
         "x": {"field": "weeks", "type": "quantitative"},
-        "text": {"value": "★ best of both: #1 peak AND 159 weeks"}
+        "text": {"value": "★ best of both:|#1 peak AND 159 weeks"}
       }
     }
   ]
