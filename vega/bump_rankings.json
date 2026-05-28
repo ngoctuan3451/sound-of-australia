@@ -70,11 +70,13 @@
         {"x": 2020, "y": 0.75, "t": "Tones and I held #1 three years running"},
         {"x": 2024, "y": 0.75, "t": "Streaming-era newcomers take over"}
       ]},
-      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "fontWeight": 600, "color": "#c0392b", "align": "center"},
+      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "fontWeight": 600, "align": "center"},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "t"}
+        "text": {"field": "t"},
+        "color": {"value": "#c0392b"},
+        "opacity": {"value": 1}
       }
     }
   ]

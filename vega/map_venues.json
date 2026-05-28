@@ -61,10 +61,11 @@
             "title": "Venue type",
             "orient": "bottom",
             "direction": "horizontal",
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "titleFontSize": 11,
-            "symbolSize": 120,
-            "columns": 4
+            "symbolSize": 160,
+            "columns": 0,
+            "columnPadding": 16
           }
         },
         "tooltip": [
