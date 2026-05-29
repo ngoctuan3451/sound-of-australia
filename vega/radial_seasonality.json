@@ -1,55 +1,63 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 460,
-  "height": 460,
+  "width": "container",
+  "height": 380,
   "title": {
-    "text": "When new singles hit the ARIA chart, by month",
-    "subtitle": "Radial bars show the number of first-ever debuts on the ARIA singles chart by calendar month, split by Australian (orange) and international (navy) artists.",
+    "text": "New songs arrive all year — then go quiet at Christmas",
+    "subtitle": "Total number of brand-new entries onto the ARIA singles chart in each calendar month, summed across 37 years (1988–2024). Record labels release steadily from autumn to spring, then ease off over the summer holidays.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
     "subtitleColor": "#888",
-    "anchor": "start",
-    "offset": 20
+    "anchor": "start"
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_seasonality.json"},
+  "transform": [
+    {"aggregate": [{"op": "sum", "field": "debuts", "as": "total"}], "groupby": ["month", "label"]}
+  ],
+  "encoding": {
+    "x": {
+      "field": "label",
+      "type": "ordinal",
+      "sort": {"field": "month"},
+      "title": null,
+      "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "domain": false, "ticks": false}
+    },
+    "y": {
+      "field": "total",
+      "type": "quantitative",
+      "title": "New chart entries that month (1988–2024)",
+      "scale": {"domain": [0, 900]},
+      "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+    }
+  },
   "layer": [
     {
-      "mark": {"type": "arc", "innerRadius": 60, "stroke": "white", "strokeWidth": 1.5},
+      "mark": {"type": "area", "interpolate": "monotone", "line": {"color": "#1a4a6b", "strokeWidth": 3}, "color": {"x1": 1, "y1": 1, "x2": 1, "y2": 0, "gradient": "linear", "stops": [{"offset": 0, "color": "#eaf2f8"}, {"offset": 1, "color": "#7fb3d5"}]}}
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 90, "color": "#1a4a6b", "stroke": "white", "strokeWidth": 1.5},
       "encoding": {
-        "theta": {
-          "field": "month",
-          "type": "ordinal",
-          "scale": {"type": "band"}
-        },
-        "radius": {
-          "field": "debuts",
-          "type": "quantitative",
-          "scale": {"type": "sqrt", "zero": true, "rangeMin": 60}
-        },
-        "color": {
-          "field": "origin",
-          "type": "nominal",
-          "scale": {"domain": ["Australian", "International"], "range": ["#f39c12", "#1a1a2e"]},
-          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 180}
-        },
-        "order": {"field": "origin"},
         "tooltip": [
-          {"field": "label",  "title": "Month"},
-          {"field": "origin", "title": "Origin"},
-          {"field": "debuts", "title": "New debuts"}
+          {"field": "label", "title": "Month"},
+          {"field": "total", "title": "New chart entries"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "radiusOffset": 16, "fontSize": 12, "fontWeight": 700, "color": "#333"},
-      "encoding": {
-        "theta": {"field": "month", "type": "ordinal", "scale": {"type": "band"}},
-        "radius": {"value": 200},
-        "text": {"field": "label"},
-        "detail": {"aggregate": "max", "field": "month"}
-      }
+      "transform": [{"filter": "datum.label == 'Dec'"}],
+      "mark": {"type": "point", "filled": true, "size": 150, "color": "#c0392b", "stroke": "white", "strokeWidth": 2}
+    },
+    {
+      "transform": [{"filter": "datum.label == 'Dec'"}],
+      "mark": {"type": "text", "align": "right", "dx": -10, "dy": -4, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "encoding": {"text": {"value": "Quietest month:|the Christmas slowdown"}}
+    },
+    {
+      "transform": [{"filter": "datum.label == 'May'"}],
+      "mark": {"type": "text", "align": "center", "dy": -16, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#1a4a6b"},
+      "encoding": {"text": {"value": "Busiest month for new releases"}}
     }
   ]
 }

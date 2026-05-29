@@ -1,10 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 400,
+  "height": 420,
+  "padding": {"right": 70},
   "title": {
-    "text": "Five decades of Australian chart share",
-    "subtitle": "Each line connects an ARIA chart's Australian share from the 1980s to the 2020s. Albums (blue) hold steady around a quarter; singles (orange) only escaped zero in the streaming era.",
+    "text": "Australia competes on albums — but barely on singles",
+    "subtitle": "Share of the ARIA chart held by Australian artists, by decade. On the ALBUMS chart (blue) Australia has always had a real presence. On the SINGLES chart (orange) it sat at zero for 30 years — until streaming arrived.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -25,47 +26,50 @@
     "y": {
       "field": "share",
       "type": "quantitative",
-      "title": "% of chart weeks held by Australian artists",
+      "title": "Australian share of the chart (%)",
       "scale": {"domain": [0, 30]},
-      "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+      "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666", "format": ".0f"}
     },
     "color": {
       "field": "format",
       "type": "nominal",
       "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
-      "legend": {"orient": "top", "direction": "horizontal", "title": null, "labelFontSize": 13, "symbolSize": 200}
+      "legend": null
     }
   },
   "layer": [
     {
       "mark": {"type": "line", "strokeWidth": 4, "interpolate": "monotone"},
-      "encoding": {
-        "detail": {"field": "format"}
-      }
+      "encoding": {"detail": {"field": "format"}}
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 220, "stroke": "white", "strokeWidth": 2.5},
+      "mark": {"type": "point", "filled": true, "size": 300, "stroke": "white", "strokeWidth": 2.5},
       "encoding": {
         "tooltip": [
           {"field": "decade", "title": "Decade"},
-          {"field": "format", "title": "Format"},
-          {"field": "share",  "title": "Aussie share %", "format": ".1f"},
-          {"field": "weeks",  "title": "Aussie chart weeks"}
+          {"field": "format", "title": "Chart"},
+          {"field": "share",  "title": "Australian share %", "format": ".1f"},
+          {"field": "weeks",  "title": "Australian chart-weeks"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "white"},
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 700, "color": "white"},
       "encoding": {
         "text": {"field": "share", "type": "quantitative", "format": ".0f"}
       }
     },
     {
-      "data": {"values": [
-        {"decade": "2010s", "y": 14, "t": "Streaming era begins →"},
-        {"decade": "2020s", "y": 4,  "t": "Singles share lifts off zero"}
-      ]},
-      "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "fontWeight": 600, "color": "#c0392b", "align": "center", "dx": 0, "dy": -4},
+      "transform": [{"filter": "datum.decade == '2020s'"}],
+      "mark": {"type": "text", "align": "left", "dx": 16, "fontSize": 14, "fontWeight": 700, "baseline": "middle"},
+      "encoding": {
+        "text": {"field": "format"},
+        "color": {"field": "format", "type": "nominal"}
+      }
+    },
+    {
+      "data": {"values": [{"decade": "2010s", "y": 6, "t": "Streaming finally lifts"}, {"decade": "2010s", "y": 3.4, "t": "Aussie singles off zero"}]},
+      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "align": "center", "dy": 0},
       "encoding": {
         "x": {"field": "decade", "type": "ordinal", "sort": ["1980s","1990s","2000s","2010s","2020s"]},
         "y": {"field": "y", "type": "quantitative"},
