@@ -4,7 +4,7 @@
   "height": 380,
   "title": {
     "text": "New songs arrive all year — then go quiet at Christmas",
-    "subtitle": "Total number of brand-new entries onto the ARIA singles chart in each calendar month, summed across 37 years (1988–2024). Record labels release steadily from autumn to spring, then ease off over the summer holidays.",
+    "subtitle": ["Total brand-new entries onto the ARIA singles chart in each calendar month, summed across 37 years (1988–2024).", "Record labels release steadily from autumn to spring, then ease off over the summer holidays."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

@@ -5,7 +5,7 @@
   "padding": {"right": 70},
   "title": {
     "text": "Australia competes on albums — but barely on singles",
-    "subtitle": "Share of the ARIA chart held by Australian artists, by decade. On the ALBUMS chart (blue) Australia has always had a real presence. On the SINGLES chart (orange) it sat at zero for 30 years — until streaming arrived.",
+    "subtitle": ["Share of the ARIA chart held by Australian artists, by decade. On the ALBUMS chart (blue) Australia has always had a real presence;", "on the SINGLES chart (orange) it sat at zero for 30 years — until streaming arrived in the 2010s."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
