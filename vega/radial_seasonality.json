@@ -18,11 +18,10 @@
   ],
   "encoding": {
     "x": {
-      "field": "label",
+      "field": "month",
       "type": "ordinal",
-      "sort": {"field": "month"},
       "title": null,
-      "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "domain": false, "ticks": false}
+      "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "domain": false, "ticks": false, "labelExpr": "['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value]"}
     },
     "y": {
       "field": "total",

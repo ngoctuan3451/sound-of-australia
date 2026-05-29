@@ -37,16 +37,44 @@ const embedOpts = { actions: { export: true, source: true, editor: true, compile
 // GitHub Pages / the raw.githubusercontent.com CDN serve recent edits.
 const cacheBust = '?v=' + Date.now();
 
+// Keep every embedded view so we can force a re-fit after layout settles.
+// width:"container" charts measure their box once at embed time; if the page
+// is still reflowing (fonts loading, scrollbars, flex re-order) they can lock
+// to a too-narrow width and leave white space on the right. Re-running each
+// view on load + resize makes them snap back to the full container width.
+const liveViews = [];
+
 charts.forEach(([sel, spec]) => {
   const url = spec + cacheBust;
-  vegaEmbed(sel, url, embedOpts).catch(err => {
-    console.error(`Failed to embed ${sel} from ${url}:`, err);
-    const el = document.querySelector(sel);
-    if (el) el.innerHTML =
-      `<p style="color:#c0392b;font-size:0.85rem;padding:1rem;">
-        Could not load <code>${spec}</code>. ${err.message || err}
-      </p>`;
-  });
+  vegaEmbed(sel, url, embedOpts)
+    .then(res => { if (res && res.view) liveViews.push(res.view); })
+    .catch(err => {
+      console.error(`Failed to embed ${sel} from ${url}:`, err);
+      const el = document.querySelector(sel);
+      if (el) el.innerHTML =
+        `<p style="color:#c0392b;font-size:0.85rem;padding:1rem;">
+          Could not load <code>${spec}</code>. ${err.message || err}
+        </p>`;
+    });
+});
+
+function refitCharts() {
+  liveViews.forEach(v => { try { v.resize().run(); } catch (e) { /* ignore */ } });
+}
+
+// Refit after the page has fully loaded and once more shortly after, to catch
+// late reflows (web fonts, async layout).
+window.addEventListener('load', () => {
+  refitCharts();
+  setTimeout(refitCharts, 200);
+  setTimeout(refitCharts, 800);
+});
+
+// Debounced refit on window resize.
+let _refitTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(_refitTimer);
+  _refitTimer = setTimeout(refitCharts, 150);
 });
 
 // Scroll-spy for the sticky section nav.
