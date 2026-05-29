@@ -68,8 +68,12 @@ function embedConcat(sel, spec) {
   return fetch(spec + cacheBust)
     .then(r => r.json())
     .then(specObj => {
-      const w = Math.max(280, el.clientWidth);
-      concatWidths[sel] = w;
+      // For concat, "width" is the PLOT area only; the fixed-extent left axis
+      // (160px, set in the spec) sits outside it. Subtract that + a little right
+      // padding so the whole chart fits the container instead of overflowing.
+      const AXIS_ALLOWANCE = 196;
+      const w = Math.max(220, el.clientWidth - AXIS_ALLOWANCE);
+      concatWidths[sel] = el.clientWidth;
       (specObj.vconcat || specObj.hconcat || specObj.concat || []).forEach(c => { c.width = w; });
       return vegaEmbed(sel, specObj, embedOpts);
     })
