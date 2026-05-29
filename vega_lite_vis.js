@@ -71,7 +71,7 @@ function embedConcat(sel, spec) {
       // For concat, "width" is the PLOT area only; the fixed-extent left axis
       // (160px, set in the spec) sits outside it. Subtract that + a little right
       // padding so the whole chart fits the container instead of overflowing.
-      const AXIS_ALLOWANCE = 196;
+      const AXIS_ALLOWANCE = 225;
       const w = Math.max(220, el.clientWidth - AXIS_ALLOWANCE);
       concatWidths[sel] = el.clientWidth;
       (specObj.vconcat || specObj.hconcat || specObj.concat || []).forEach(c => { c.width = w; });

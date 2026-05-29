@@ -21,8 +21,8 @@
           "field": "year",
           "type": "quantitative",
           "title": null,
-          "scale": {"domain": [1969, 2025]},
-          "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#555", "tickCount": 10}
+          "scale": {"domain": [1970, 2022], "nice": false},
+          "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#555", "values": [1971, 1980, 1990, 2000, 2010, 2021]}
         },
         "y": {
           "field": "weeks_at_1",
