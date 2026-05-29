@@ -20,8 +20,8 @@
       "field": "year",
       "type": "quantitative",
       "title": null,
-      "axis": {"format": "d", "labelFontSize": 12, "labelColor": "#555", "grid": false, "domain": false, "ticks": false, "labelPadding": 10, "tickCount": 8},
-      "scale": {"padding": 30}
+      "axis": {"format": "d", "labelFontSize": 12, "labelColor": "#555", "grid": false, "domain": false, "ticks": false, "labelPadding": 10, "values": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]},
+      "scale": {"domain": [2018, 2025], "nice": false, "padding": 28}
     },
     "y": {
       "field": "rank",
@@ -68,7 +68,7 @@
     {
       "data": {"values": [
         {"x": 2020, "y": 0.75, "t": "Tones and I held #1 three years running"},
-        {"x": 2024, "y": 0.75, "t": "Streaming-era newcomers take over"}
+        {"x": 2023.2, "y": 0.75, "t": "Streaming-era newcomers take over"}
       ]},
       "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "fontWeight": 600, "align": "center"},
       "encoding": {

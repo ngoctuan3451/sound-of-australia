@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
-  "height": 340,
+  "height": 360,
   "title": {
     "text": "Australia's share of the singles chart has faded since the 1980s",
     "subtitle": "% of ARIA Top 50 singles by Australian artists, each year. A quarter of the chart was local in the late 1980s; by the 2020s it is single digits.",
@@ -17,7 +17,7 @@
     {
       "mark": {"type": "area", "line": {"strokeWidth": 3, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.2, "interpolate": "monotone"},
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "title": null, "scale": {"domain": [1988, 2025]}, "axis": {"grid": false, "labelFontSize": 11, "format": "d"}},
+        "x": {"field": "year", "type": "quantitative", "title": null, "scale": {"domain": [1988, 2025], "nice": false}, "axis": {"grid": false, "labelFontSize": 11, "format": "d", "values": [1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024]}},
         "y": {"field": "aus_pct", "type": "quantitative", "title": "% Australian singles", "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}, "scale": {"domain": [0, 30]}},
         "tooltip": [
           {"field": "year", "title": "Year"},
@@ -36,26 +36,48 @@
     },
     {
       "transform": [{"filter": "datum.year == 1991"}],
-      "mark": {"type": "point", "filled": true, "size": 150, "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
+      "mark": {"type": "point", "filled": true, "size": 170, "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "aus_pct", "type": "quantitative"}
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13, "dx": 6, "dy": -10},
+      "data": {"values": [{"x": 1991, "y": 26, "x2": 1994, "y2": 29}]},
+      "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 1},
       "encoding": {
-        "x": {"datum": 1991},
-        "y": {"datum": 26},
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "x2": {"field": "x2"},
+        "y2": {"field": "y2"}
+      }
+    },
+    {
+      "data": {"values": [{"x": 1994.3, "y": 29}]},
+      "mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
         "text": {"value": "Late-80s / early-90s peak:|about 1 in 4 chart singles|were Australian"}
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#d35400", "lineBreak": "|", "lineHeight": 13, "dx": -2, "dy": 16},
+      "data": {"values": [{"x": 2018.5, "y": 22.5, "x2": 2023, "y2": 6.2}]},
+      "mark": {"type": "rule", "color": "#d35400", "strokeWidth": 1, "strokeDash": [3, 3]},
       "encoding": {
-        "x": {"datum": 2018},
-        "y": {"datum": 5},
-        "text": {"value": "By the 2020s,|under 1 in 10"}
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "x2": {"field": "x2"},
+        "y2": {"field": "y2"}
+      }
+    },
+    {
+      "data": {"values": [{"x": 2009.5, "y": 25}]},
+      "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#d35400", "lineBreak": "|", "lineHeight": 13},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"value": "By the 2020s, fewer than 1 in 10|chart singles are Australian"}
       }
     }
   ]

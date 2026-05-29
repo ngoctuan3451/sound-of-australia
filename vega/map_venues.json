@@ -18,8 +18,8 @@
   "height": 500,
   "projection": {
     "type": "mercator",
-    "center": [144.972, -37.815],
-    "scale": 280000
+    "center": [144.962, -37.812],
+    "scale": 290000
   },
   "layer": [
     {
@@ -107,6 +107,42 @@
           }
         }
       ]
+    },
+    {
+      "data": {"values": [{"lon": 144.97, "lat": -37.7835}]},
+      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "center", "lineBreak": "|", "lineHeight": 15, "stroke": "white", "strokeWidth": 3},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text": {"value": "Busiest live-music hub:|the dense CBD core"}
+      }
+    },
+    {
+      "data": {"values": [{"lon": 144.97, "lat": -37.7835}]},
+      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "center", "lineBreak": "|", "lineHeight": 15},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text": {"value": "Busiest live-music hub:|the dense CBD core"}
+      }
+    },
+    {
+      "data": {"values": [{"x": 144.9695, "y": -37.792, "x2": 144.9705, "y2": -37.8085}]},
+      "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 2},
+      "encoding": {
+        "longitude":  {"field": "x",  "type": "quantitative"},
+        "latitude":   {"field": "y",  "type": "quantitative"},
+        "longitude2": {"field": "x2"},
+        "latitude2":  {"field": "y2"}
+      }
+    },
+    {
+      "data": {"values": [{"lon": 144.9705, "lat": -37.8085}]},
+      "mark": {"type": "point", "shape": "triangle", "angle": 180, "size": 170, "fill": "#c0392b", "stroke": "white", "strokeWidth": 1, "filled": true},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"}
+      }
     }
   ]
 }
