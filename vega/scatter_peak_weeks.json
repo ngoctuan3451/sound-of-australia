@@ -30,13 +30,13 @@
           "type": "nominal",
           "sort": {"field": "neg_weeks", "op": "min"},
           "title": null,
-          "axis": {"labelFontSize": 12, "labelLimit": 320, "labelColor": "#333", "labelPadding": 8}
+          "axis": {"labelFontSize": 12, "labelLimit": 230, "labelColor": "#333", "labelPadding": 8}
         },
         "x": {
           "field": "weeks",
           "type": "quantitative",
           "title": "Total weeks on the ARIA singles chart",
-          "scale": {"domain": [0, 240]},
+          "scale": {"domain": [0, 300]},
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "color": {

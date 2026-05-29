@@ -14,21 +14,24 @@
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_decades.json"},
-  "transform": [{"filter": "datum.origin == 'Australian'"}],
+  "transform": [
+    {"filter": "datum.origin == 'Australian'"},
+    {"calculate": "parseInt(datum.decade)", "as": "dec"}
+  ],
   "encoding": {
     "x": {
-      "field": "decade",
-      "type": "ordinal",
-      "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"],
+      "field": "dec",
+      "type": "quantitative",
       "title": null,
-      "axis": {"labelFontSize": 14, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "labelPadding": 12, "domain": false, "ticks": false}
+      "scale": {"domain": [1980, 2020], "nice": false},
+      "axis": {"values": [1980, 1990, 2000, 2010, 2020], "labelExpr": "datum.value + 's'", "labelFontSize": 14, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "labelPadding": 12, "domain": true, "domainColor": "#bbb", "ticks": true, "tickColor": "#bbb", "grid": false}
     },
     "y": {
       "field": "share",
       "type": "quantitative",
       "title": "Australian share of the chart (%)",
       "scale": {"domain": [0, 30]},
-      "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666", "format": ".0f"}
+      "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666", "format": ".0f", "domain": true, "domainColor": "#bbb", "ticks": true, "tickColor": "#bbb"}
     },
     "color": {
       "field": "format",
@@ -60,7 +63,7 @@
       }
     },
     {
-      "transform": [{"filter": "datum.decade == '2020s'"}],
+      "transform": [{"filter": "datum.dec == 2020"}],
       "mark": {"type": "text", "align": "left", "dx": 16, "fontSize": 14, "fontWeight": 700, "baseline": "middle"},
       "encoding": {
         "text": {"field": "format"},
@@ -68,10 +71,10 @@
       }
     },
     {
-      "data": {"values": [{"decade": "1980s", "y": 28.5, "t": "Both near a quarter in the 1980s"}]},
+      "data": {"values": [{"dec": 1980, "y": 28.5, "t": "Both near a quarter in the 1980s"}]},
       "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "align": "left", "dx": -4, "dy": 0},
       "encoding": {
-        "x": {"field": "decade", "type": "ordinal", "sort": ["1980s","1990s","2000s","2010s","2020s"]},
+        "x": {"field": "dec", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
         "text": {"field": "t"},
         "color": {"value": "#c0392b"}

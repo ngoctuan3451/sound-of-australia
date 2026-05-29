@@ -109,8 +109,8 @@
       ]
     },
     {
-      "data": {"values": [{"lon": 144.97, "lat": -37.7835}]},
-      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "center", "lineBreak": "|", "lineHeight": 15, "stroke": "white", "strokeWidth": 3},
+      "data": {"values": [{"lon": 144.8985, "lat": -37.794}]},
+      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "left", "lineBreak": "|", "lineHeight": 15, "stroke": "white", "strokeWidth": 3},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"},
@@ -118,8 +118,8 @@
       }
     },
     {
-      "data": {"values": [{"lon": 144.97, "lat": -37.7835}]},
-      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "center", "lineBreak": "|", "lineHeight": 15},
+      "data": {"values": [{"lon": 144.8985, "lat": -37.794}]},
+      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "left", "lineBreak": "|", "lineHeight": 15},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"},
@@ -127,7 +127,7 @@
       }
     },
     {
-      "data": {"values": [{"x": 144.9695, "y": -37.792, "x2": 144.9705, "y2": -37.8085}]},
+      "data": {"values": [{"x": 144.9265, "y": -37.7981, "x2": 144.93495, "y2": -37.8068}]},
       "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 2},
       "encoding": {
         "longitude":  {"field": "x",  "type": "quantitative"},
@@ -137,8 +137,8 @@
       }
     },
     {
-      "data": {"values": [{"lon": 144.9705, "lat": -37.8085}]},
-      "mark": {"type": "point", "shape": "triangle", "angle": 180, "size": 170, "fill": "#c0392b", "stroke": "white", "strokeWidth": 1, "filled": true},
+      "data": {"values": [{"lon": 144.93495, "lat": -37.8068}]},
+      "mark": {"type": "point", "shape": "triangle", "angle": 135, "size": 170, "fill": "#c0392b", "stroke": "white", "strokeWidth": 1, "filled": true},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"}

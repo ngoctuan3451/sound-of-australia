@@ -21,6 +21,7 @@
           "field": "span",
           "type": "quantitative",
           "title": "Career span in the Hottest 100 (years)",
+          "scale": {"domain": [0, 33], "nice": false},
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "y": {
@@ -34,21 +35,13 @@
           "field": "total",
           "type": "quantitative",
           "scale": {"range": [40, 700]},
-          "legend": {
-            "title": "Total songs",
-            "orient": "bottom-right",
-            "values": [5, 15, 25],
-            "symbolFillColor": "#bbb",
-            "symbolStrokeColor": "#888",
-            "labelFontSize": 10,
-            "titleFontSize": 11
-          }
+          "legend": null
         },
         "color": {
           "field": "best",
           "type": "quantitative",
           "scale": {"scheme": "viridis", "reverse": true, "domain": [1, 100]},
-          "legend": {"title": "Best position", "orient": "bottom", "gradientLength": 180}
+          "legend": {"title": "Best position ever reached", "orient": "bottom", "direction": "horizontal", "gradientLength": 200, "titleFontSize": 11, "labelFontSize": 10}
         },
         "tooltip": [
           {"field": "artist", "title": "Artist"},

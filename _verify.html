@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+<style>#c{width:1030px}</style></head>
+<body><div id="c"></div>
+<script>
+window.V={};
+fetch('vega/map_venues.json?v='+Date.now()).then(r=>r.json()).then(s=>{
+  return vegaEmbed('#c', s, {actions:false, renderer:'svg'});
+}).then(r=>{window.V.v=r.view;});
+</script></body></html>

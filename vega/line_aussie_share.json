@@ -15,6 +15,14 @@
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_yearly.json"},
   "layer": [
     {
+      "data": {"values": [{"x": 2020, "x2": 2025}]},
+      "mark": {"type": "rect", "fill": "#c0392b", "fillOpacity": 0.08},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "x2": {"field": "x2"}
+      }
+    },
+    {
       "mark": {"type": "area", "line": {"strokeWidth": 3, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.2, "interpolate": "monotone"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative", "title": null, "scale": {"domain": [1988, 2025], "nice": false}, "axis": {"grid": false, "labelFontSize": 11, "format": "d", "values": [1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024]}},
@@ -62,22 +70,12 @@
       }
     },
     {
-      "data": {"values": [{"x": 2018.5, "y": 22.5, "x2": 2023, "y2": 6.2}]},
-      "mark": {"type": "rule", "color": "#d35400", "strokeWidth": 1, "strokeDash": [3, 3]},
+      "data": {"values": [{"x": 2022.5, "y": 27}]},
+      "mark": {"type": "text", "align": "center", "baseline": "top", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
-        "x2": {"field": "x2"},
-        "y2": {"field": "y2"}
-      }
-    },
-    {
-      "data": {"values": [{"x": 2009.5, "y": 25}]},
-      "mark": {"type": "text", "align": "left", "baseline": "bottom", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#d35400", "lineBreak": "|", "lineHeight": 13},
-      "encoding": {
-        "x": {"field": "x", "type": "quantitative"},
-        "y": {"field": "y", "type": "quantitative"},
-        "text": {"value": "By the 2020s, fewer than 1 in 10|chart singles are Australian"}
+        "text": {"value": "The 2020s —|fewer than 1 in 10|are Australian"}
       }
     }
   ]

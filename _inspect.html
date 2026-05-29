@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/>
+<script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+<style>body{margin:0;font-family:system-ui}#c{width:1030px;margin:10px}</style></head>
+<body><div id="c"></div>
+<script>
+window.V={};
+const q=new URLSearchParams(location.search);
+const spec=q.get('s')||'line_aussie_share';
+fetch('vega/'+spec+'.json?v='+Date.now()).then(r=>r.json()).then(s=>{
+  // concat specs need explicit width
+  (s.vconcat||s.hconcat||s.concat||[]).forEach(c=>c.width=820);
+  return vegaEmbed('#c', s, {actions:false, renderer:'svg'});
+}).then(r=>{window.V.v=r.view;}).catch(e=>{document.getElementById('c').innerHTML='<pre style="color:red">'+e+'</pre>';});
+</script></body></html>
