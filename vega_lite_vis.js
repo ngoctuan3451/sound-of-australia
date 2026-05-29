@@ -8,7 +8,7 @@ const charts = [
 
   // Section 2 — ARIA sales story
   ["#chart-line",            "vega/line_aussie_share.json"],
-  ["#chart-lollipop",        "vega/lollipop_number1.json"],
+  ["#chart-lollipop",        "vega/explore_singles_by_year.json"],
   ["#chart-bump",            "vega/bump_rankings.json"],
   ["#chart-dotplot",         "vega/bar_singles_albums.json"],
 
@@ -18,7 +18,7 @@ const charts = [
   ["#chart-scatter-j",       "vega/scatter_h100_longevity.json"],
 
   // Section 4 — the shape of a hit
-  ["#chart-grouped",         "vega/grouped_decade_share.json"],
+  ["#chart-grouped",         "vega/dumbbell_decade_gap.json"],
   ["#chart-slope",           "vega/slope_decade_share.json"],
   ["#chart-radial",          "vega/radial_seasonality.json"],
   ["#chart-scatter-release", "vega/scatter_peak_weeks.json"],
@@ -43,23 +43,106 @@ const cacheBust = '?v=' + Date.now();
 // to a too-narrow width and leave white space on the right. Re-running each
 // view on load + resize makes them snap back to the full container width.
 const liveViews = [];
+const viewBySel = {};
+
+// Concat / facet / repeat specs ignore width:"container" (a known Vega-Lite limit),
+// so we fetch them, inject the measured container width into each child, then embed —
+// and re-embed on resize. Everything else uses the normal URL + width:"container" path.
+const concatSelectors = new Set(['#chart-lollipop']);
+const concatWidths = {};   // last embedded width per concat sel, to avoid needless re-embeds
+
+function showError(sel, spec) {
+  return err => {
+    console.error(`Failed to embed ${sel} from ${spec}:`, err);
+    const el = document.querySelector(sel);
+    if (el) el.innerHTML =
+      `<p style="color:#c0392b;font-size:0.85rem;padding:1rem;">
+        Could not load <code>${spec}</code>. ${err.message || err}
+      </p>`;
+  };
+}
+
+function embedConcat(sel, spec) {
+  const el = document.querySelector(sel);
+  if (!el) return Promise.resolve();
+  return fetch(spec + cacheBust)
+    .then(r => r.json())
+    .then(specObj => {
+      const w = Math.max(280, el.clientWidth);
+      concatWidths[sel] = w;
+      (specObj.vconcat || specObj.hconcat || specObj.concat || []).forEach(c => { c.width = w; });
+      return vegaEmbed(sel, specObj, embedOpts);
+    })
+    .then(res => { if (res && res.view) { viewBySel[sel] = res.view; if (sel === '#chart-lollipop') wireExplorePlayer(); } })
+    .catch(showError(sel, spec));
+}
 
 charts.forEach(([sel, spec]) => {
+  if (concatSelectors.has(sel)) { embedConcat(sel, spec); return; }
   const url = spec + cacheBust;
   vegaEmbed(sel, url, embedOpts)
-    .then(res => { if (res && res.view) liveViews.push(res.view); })
-    .catch(err => {
-      console.error(`Failed to embed ${sel} from ${url}:`, err);
-      const el = document.querySelector(sel);
-      if (el) el.innerHTML =
-        `<p style="color:#c0392b;font-size:0.85rem;padding:1rem;">
-          Could not load <code>${spec}</code>. ${err.message || err}
-        </p>`;
-    });
+    .then(res => { if (res && res.view) { liveViews.push(res.view); viewBySel[sel] = res.view; } })
+    .catch(showError(sel, spec));
 });
 
 function refitCharts() {
   liveViews.forEach(v => { try { v.resize().run(); } catch (e) { /* ignore */ } });
+  // Concat specs can't just resize() to the container — re-embed, but only when
+  // the width actually changed (so load-time refits don't reset a running animation).
+  concatSelectors.forEach(sel => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    const w = Math.max(280, el.clientWidth);
+    if (Math.abs((concatWidths[sel] || 0) - w) < 2) return;
+    const found = charts.find(c => c[0] === sel);
+    if (found) embedConcat(sel, found[1]);
+  });
+}
+
+// ── Interactive "explore by year" player (Section 2) ───────────────────────
+// Drives the interval selection on the embedded explore chart by writing its
+// selection store directly, sweeping a moving window across the years.
+let _explorePlayerWired = false;
+function wireExplorePlayer() {
+  if (_explorePlayerWired) return;            // listeners attach once; handlers read the live view
+  const btn = document.getElementById('explore-play');
+  const reset = document.getElementById('explore-reset');
+  const label = document.getElementById('explore-window');
+  if (!btn) return;
+  _explorePlayerWired = true;
+
+  const FIRST = 1988, LAST = 2025, WIN = 5, STEP_MS = 750;
+  let timer = null, start = FIRST;
+
+  function tuple(s, e) {
+    return [{ unit: '', fields: [{ field: 'year', channel: 'x', type: 'R' }], values: [[s, e]] }];
+  }
+  function setWindow(s, e) {
+    const v = viewBySel['#chart-lollipop']; if (!v) return;
+    v.data('brush_store', tuple(s, e)); v.runAsync();
+    if (label) label.textContent = `Showing ${s}–${e}`;
+  }
+  function clearWindow() {
+    const v = viewBySel['#chart-lollipop']; if (!v) return;
+    v.data('brush_store', []); v.runAsync();
+    if (label) label.textContent = 'Showing all years (1988–2025)';
+  }
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+    btn.textContent = '▶ Play through the years';
+  }
+  function tick() {
+    const e = Math.min(start + WIN - 1, LAST);
+    setWindow(start, e);
+    if (e >= LAST) { stop(); return; }
+    start += 1;
+  }
+  btn.addEventListener('click', () => {
+    if (timer) { stop(); return; }
+    start = FIRST; btn.textContent = '⏸ Pause'; tick();
+    timer = setInterval(tick, STEP_MS);
+  });
+  if (reset) reset.addEventListener('click', () => { stop(); clearWindow(); });
 }
 
 // Refit after the page has fully loaded and once more shortly after, to catch

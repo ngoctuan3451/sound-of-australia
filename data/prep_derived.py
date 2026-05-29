@@ -274,6 +274,23 @@ json.dump(aus_alb_timeline, open(os.path.join(OUT, "aus_n1_albums_timeline.json"
 lolli = [{"artist": a, "weeks": w} for a, w in sing_weeks.most_common(15)]
 json.dump(lolli, open(os.path.join(OUT, "aria_top_singles_artists.json"), "w"), separators=(",", ":"))
 
+# ---------- 14. Aussie singles weeks per (artist, year) — Sec 2 cross-filter ----------
+# Powers the interactive brush+animation panel: brushing a year range lets the
+# view re-aggregate weeks-on-chart per artist and re-rank the top 15 on the fly.
+# Restricted to artists with >= 8 total singles weeks so the file stays small
+# while still containing anyone who could plausibly rank in a brushed window.
+ay = defaultdict(int)
+for r in singles:
+    if r["aus"]:
+        ay[(r["artist"], yr(r["date"]))] += 1
+eligible = {a for a, w in sing_weeks.items() if w >= 8}
+artist_year_rows = [
+    {"artist": a, "year": y, "weeks": w}
+    for (a, y), w in sorted(ay.items())
+    if a in eligible
+]
+json.dump(artist_year_rows, open(os.path.join(OUT, "aria_singles_artist_year.json"), "w"), separators=(",", ":"))
+
 # ---------- Report ----------
 print("Wrote:")
 for f in sorted(os.listdir(OUT)):

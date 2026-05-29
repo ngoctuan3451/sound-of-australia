@@ -449,3 +449,34 @@ footer a:hover { border-bottom-color: #f39c12; }
     font-size: 2.8rem;
   }
 }
+
+/* ── Interactive "explore by year" controls (Section 2) ── */
+.explore-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.75rem;
+}
+.explore-btn {
+  font: 600 0.85rem/1 "Inter", system-ui, sans-serif;
+  color: #fff;
+  background: #d35400;
+  border: none;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+.explore-btn:hover { background: #b8470a; }
+.explore-btn:active { transform: translateY(1px); }
+.explore-btn--ghost {
+  color: #d35400;
+  background: transparent;
+  border: 1.5px solid #e3a86b;
+}
+.explore-btn--ghost:hover { background: #fdf1e7; color: #b8470a; }
+.explore-window {
+  font: 600 0.85rem/1 "Inter", system-ui, sans-serif;
+  color: #888;
+}

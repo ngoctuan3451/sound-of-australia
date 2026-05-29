@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css?v=20260526-12"/>
+  <link rel="stylesheet" href="style.css?v=20260529-2"/>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <meta http-equiv="Pragma" content="no-cache"/>
   <meta http-equiv="Expires" content="0"/>
@@ -116,8 +116,13 @@
 
       <div class="chart-block">
         <div class="chart-header">
-          <h3>Australia's ARIA Singles Royalty</h3>
-          <p class="chart-desc">Top 15 Australian artists by total weeks on the ARIA singles chart since 1988. Kylie Minogue leads them all — her <strong>370 weeks</strong> on chart is a full 100 weeks clear of the next Australian act.</p>
+          <h3>Who Ruled the Singles Chart? Explore by Year</h3>
+          <p class="chart-desc">The top 15 Australian artists by weeks on the ARIA singles chart. <strong>Drag across the years</strong> in the top strip to re-rank them for just that span — or press <strong>Play</strong> to sweep through time and watch the #1 change era by era (Kylie → Savage Garden → The Veronicas → Tones and I). With nothing selected, you see the all-time leaders, with Kylie Minogue's <strong>370 weeks</strong> on top.</p>
+        </div>
+        <div class="explore-controls" style="order:0">
+          <button type="button" id="explore-play" class="explore-btn">▶ Play through the years</button>
+          <button type="button" id="explore-reset" class="explore-btn explore-btn--ghost">Show all years</button>
+          <span id="explore-window" class="explore-window">Showing all years (1988–2025)</span>
         </div>
         <div id="chart-lollipop"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -201,8 +206,8 @@
 
       <div class="chart-block">
         <div class="chart-header">
-          <h3>Australia's Year-by-Year Album Chart Domination</h3>
-          <p class="chart-desc">A simple yearly view: how many weeks per year was the ARIA #1 album by an Australian artist? Some years (2003, 2007) Aussie acts held #1 for over half the year; in other years they barely touched it.</p>
+          <h3>The Album–Singles Gap, Decade by Decade</h3>
+          <p class="chart-desc">Each row joins Australia's <strong>album</strong> share (blue dot) to its <strong>singles</strong> share (orange dot) for that decade; the bar between them is the gap. The two were neck-and-neck in the 1980s, then albums pulled away — the gap was widest in the 2010s, when Australians held a quarter of the album chart but barely a tenth of singles.</p>
         </div>
         <div id="chart-grouped"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -322,6 +327,6 @@
     </div>
   </footer>
 
-  <script src="vega_lite_vis.js?v=20260529-1"></script>
+  <script src="vega_lite_vis.js?v=20260529-2"></script>
 </body>
 </html>

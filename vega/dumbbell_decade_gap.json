@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 360,
+  "title": {
+    "text": "Australia kept its album chart long after losing its singles",
+    "subtitle": ["Australian share of the ARIA chart in each decade. Each row joins the album share (blue) to the singles share (orange);", "the longer the bar, the bigger the gap between the two formats."],
+    "fontSize": 19,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_decades.json"},
+  "transform": [{"filter": "datum.origin == 'Australian'"}],
+  "encoding": {
+    "y": {
+      "field": "decade",
+      "type": "ordinal",
+      "sort": ["1980s", "1990s", "2000s", "2010s", "2020s"],
+      "title": null,
+      "axis": {"labelFontSize": 14, "labelFontWeight": 600, "labelColor": "#333", "labelPadding": 10, "domain": false, "ticks": false}
+    },
+    "x": {
+      "field": "share",
+      "type": "quantitative",
+      "title": "Australian share of the chart (%)",
+      "scale": {"domain": [0, 30]},
+      "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666", "format": ".0f"}
+    }
+  },
+  "layer": [
+    {
+      "transform": [{"pivot": "format", "value": "share", "groupby": ["decade"]}],
+      "mark": {"type": "rule", "color": "#cdd4da", "strokeWidth": 6, "strokeCap": "round"},
+      "encoding": {
+        "x": {"field": "Albums", "type": "quantitative"},
+        "x2": {"field": "Singles"}
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "size": 320, "stroke": "white", "strokeWidth": 2.5},
+      "encoding": {
+        "color": {
+          "field": "format",
+          "type": "nominal",
+          "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
+          "legend": {"orient": "top", "direction": "horizontal", "title": null, "labelFontSize": 13, "symbolSize": 220, "padding": 6}
+        },
+        "tooltip": [
+          {"field": "decade", "title": "Decade"},
+          {"field": "format", "title": "Chart"},
+          {"field": "share", "title": "Australian share %", "format": ".1f"},
+          {"field": "weeks", "title": "Australian chart-weeks"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 700, "color": "white"},
+      "encoding": {"text": {"field": "share", "type": "quantitative", "format": ".0f"}}
+    },
+    {
+      "transform": [
+        {"pivot": "format", "value": "share", "groupby": ["decade"]},
+        {"filter": "datum.decade == '2010s'"}
+      ],
+      "mark": {"type": "text", "align": "left", "dx": 14, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "encoding": {
+        "x": {"field": "Albums", "type": "quantitative"},
+        "text": {"value": "Widest gap:|albums 25%, singles just 10%"}
+      }
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Explore: who ruled the singles chart, year by year",
+    "subtitle": ["Drag across the years in the top strip to re-rank the artists below — or press Play to sweep through time.", "With nothing selected, the ranking shows the all-time top 15."],
+    "fontSize": 19,
+    "subtitleFontSize": 12,
+    "font": "Playfair Display",
+    "subtitleColor": "#888",
+    "anchor": "start"
+  },
+  "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
+  "vconcat": [
+    {
+      "width": "container",
+      "height": 120,
+      "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_yearly.json"},
+      "params": [{"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}],
+      "mark": {"type": "area", "line": {"strokeWidth": 2.5, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.2, "interpolate": "monotone"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative", "title": null, "scale": {"domain": [1988, 2025], "nice": false}, "axis": {"grid": false, "labelFontSize": 11, "format": "d", "values": [1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024]}},
+        "y": {"field": "aus_pct", "type": "quantitative", "title": "% Aus", "axis": {"grid": true, "gridOpacity": 0.12, "labelFontSize": 10, "titleFontSize": 10, "titleColor": "#999", "tickCount": 3}},
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {"field": "aus_pct", "title": "% Australian", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "width": "container",
+      "height": 400,
+      "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_artist_year.json"},
+      "transform": [
+        {"filter": {"param": "brush"}},
+        {"aggregate": [{"op": "sum", "field": "weeks", "as": "w"}], "groupby": ["artist"]},
+        {"window": [{"op": "rank", "as": "r"}], "sort": [{"field": "w", "order": "descending"}]},
+        {"filter": "datum.r <= 15"}
+      ],
+      "layer": [
+        {
+          "mark": {"type": "bar", "color": "#f39c12", "cornerRadiusEnd": 3, "height": {"band": 0.7}},
+          "encoding": {
+            "y": {"field": "artist", "type": "nominal", "sort": "-x", "title": null, "axis": {"labelFontSize": 12, "labelLimit": 200, "labelColor": "#333"}},
+            "x": {"field": "w", "type": "quantitative", "title": "Weeks on chart in the selected years", "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}},
+            "tooltip": [
+              {"field": "artist", "title": "Artist"},
+              {"field": "w", "title": "Weeks on chart"},
+              {"field": "r", "title": "Rank"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "text", "align": "left", "dx": 5, "fontSize": 11, "fontWeight": 600, "color": "#333"},
+          "encoding": {
+            "y": {"field": "artist", "type": "nominal", "sort": "-x"},
+            "x": {"field": "w", "type": "quantitative"},
+            "text": {"field": "w"}
+          }
+        }
+      ]
+    }
+  ]
+}
