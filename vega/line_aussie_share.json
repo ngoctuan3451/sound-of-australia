@@ -3,8 +3,8 @@
   "width": "container",
   "height": 340,
   "title": {
-    "text": "Australian singles share spiked in the streaming era",
-    "subtitle": "% of ARIA Top 50 singles by Australian artists, by year.",
+    "text": "Australia's share of the singles chart has faded since the 1980s",
+    "subtitle": "% of ARIA Top 50 singles by Australian artists, each year. A quarter of the chart was local in the late 1980s; by the 2020s it is single digits.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -13,46 +13,49 @@
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_yearly.json"},
-  "transform": [{"filter": "datum.year >= 2015"}],
   "layer": [
     {
-      "mark": {"type": "area", "line": {"strokeWidth": 3, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.25, "interpolate": "monotone"},
+      "mark": {"type": "area", "line": {"strokeWidth": 3, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.2, "interpolate": "monotone"},
       "encoding": {
-        "x": {"field": "year", "type": "quantitative", "title": null, "axis": {"grid": false, "labelFontSize": 11, "format": "d"}},
-        "y": {"field": "aus_pct", "type": "quantitative", "title": "% Australian songs", "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}, "scale": {"domain": [0, 15]}},
+        "x": {"field": "year", "type": "quantitative", "title": null, "scale": {"domain": [1988, 2025]}, "axis": {"grid": false, "labelFontSize": 11, "format": "d"}},
+        "y": {"field": "aus_pct", "type": "quantitative", "title": "% Australian singles", "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}, "scale": {"domain": [0, 30]}},
         "tooltip": [
           {"field": "year", "title": "Year"},
-          {"field": "aus_pct", "title": "% Aussie", "format": ".1f"},
-          {"field": "aus", "title": "Aussie entries"},
+          {"field": "aus_pct", "title": "% Australian", "format": ".1f"},
+          {"field": "aus", "title": "Australian entries"},
           {"field": "total", "title": "Total entries"}
         ]
       }
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 90, "color": "#d35400", "stroke": "white", "strokeWidth": 2},
+      "mark": {"type": "point", "filled": true, "size": 70, "color": "#d35400", "stroke": "white", "strokeWidth": 1.5},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "aus_pct", "type": "quantitative"}
       }
     },
     {
-      "mark": {"type": "rule", "color": "#888", "strokeDash": [4, 4], "strokeWidth": 1},
-      "encoding": {"y": {"datum": 8.4}}
-    },
-    {
-      "mark": {"type": "text", "align": "right", "fontSize": 9, "color": "#999", "fontStyle": "italic", "dx": -4, "dy": -4},
+      "transform": [{"filter": "datum.year == 1991"}],
+      "mark": {"type": "point", "filled": true, "size": 150, "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
       "encoding": {
-        "x": {"datum": 2025},
-        "y": {"datum": 8.4},
-        "text": {"value": "8.4% avg"}
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "aus_pct", "type": "quantitative"}
       }
     },
     {
-      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontStyle": "italic", "color": "#c0392b"},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13, "dx": 6, "dy": -10},
       "encoding": {
-        "x": {"datum": 2020},
-        "y": {"datum": 14.5},
-        "text": {"value": "Tones and I era"}
+        "x": {"datum": 1991},
+        "y": {"datum": 26},
+        "text": {"value": "Late-80s / early-90s peak:|about 1 in 4 chart singles|were Australian"}
+      }
+    },
+    {
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#d35400", "lineBreak": "|", "lineHeight": 13, "dx": -2, "dy": 16},
+      "encoding": {
+        "x": {"datum": 2018},
+        "y": {"datum": 5},
+        "text": {"value": "By the 2020s,|under 1 in 10"}
       }
     }
   ]

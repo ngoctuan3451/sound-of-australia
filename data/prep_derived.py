@@ -31,6 +31,24 @@ def load_aria(path):
 singles = load_aria(os.path.join(ROOT, "single_charts.csv"))
 albums  = load_aria(os.path.join(ROOT, "album_charts.csv"))
 
+# ---------- Repair the singles "Australian" tag ----------
+# DATA-QUALITY FIX: the source aus_flag on the SINGLES chart is only populated
+# from 2019 onward — it is blank for every single from 1988-2018, which would
+# falsely imply Australian artists held 0% of the singles chart for 30 years
+# (Gotye, Sia, Kylie Minogue, Savage Garden, INXS, John Farnham, etc. all
+# charted). The ALBUM chart, by contrast, is correctly tagged across all years.
+#
+# We rebuild an authority list of Australian artists from every row that IS
+# reliably tagged (any album row, plus singles tagged from 2019 on), then mark
+# a singles row Australian when its artist string exactly matches that list.
+# This is a deliberately conservative recovery (solo acts are caught; some
+# collaboration strings are not), so the corrected shares are a lower bound.
+aus_artists = {r["artist"] for r in albums if r["aus"]}
+aus_artists |= {r["artist"] for r in singles if r["aus"]}
+for r in singles:
+    if r["artist"] in aus_artists:
+        r["aus"] = True
+
 # Helper: year from "YYYY-MM-DD"
 yr = lambda s: int(s[:4])
 mo = lambda s: int(s[5:7])

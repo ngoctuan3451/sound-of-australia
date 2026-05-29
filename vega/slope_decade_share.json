@@ -4,8 +4,8 @@
   "height": 420,
   "padding": {"right": 70},
   "title": {
-    "text": "Australia competes on albums — but barely on singles",
-    "subtitle": ["Share of the ARIA chart held by Australian artists, by decade. On the ALBUMS chart (blue) Australia has always had a real presence;", "on the SINGLES chart (orange) it sat at zero for 30 years — until streaming arrived in the 2010s."],
+    "text": "Australia held the album chart while its singles share slipped",
+    "subtitle": ["Share of the ARIA chart held by Australian artists, by decade. In the 1980s Australia held about a quarter of BOTH charts.", "Albums (blue) stayed near a quarter for 30 years; singles (orange) drifted down into single digits."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -68,8 +68,8 @@
       }
     },
     {
-      "data": {"values": [{"decade": "2010s", "y": 6, "t": "Streaming finally lifts"}, {"decade": "2010s", "y": 3.4, "t": "Aussie singles off zero"}]},
-      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "align": "center", "dy": 0},
+      "data": {"values": [{"decade": "1980s", "y": 28.5, "t": "Both near a quarter in the 1980s"}]},
+      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "align": "left", "dx": -4, "dy": 0},
       "encoding": {
         "x": {"field": "decade", "type": "ordinal", "sort": ["1980s","1990s","2000s","2010s","2020s"]},
         "y": {"field": "y", "type": "quantitative"},

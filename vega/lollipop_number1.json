@@ -3,8 +3,8 @@
   "width": "container",
   "height": 400,
   "title": {
-    "text": "Tones and I leads all Aussie singles artists by 60 %",
-    "subtitle": "Top 15 Australian artists by total weeks on the ARIA singles chart",
+    "text": "Kylie Minogue tops every Australian singles artist",
+    "subtitle": "Top 15 Australian artists by total weeks ever spent on the ARIA singles chart (1988–2025)",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -62,7 +62,7 @@
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": "-x"},
         "x": {"field": "weeks", "type": "quantitative"},
-        "text": {"value": "★ +60% over #2"}
+        "text": {"value": "★ 100 weeks clear of #2"}
       }
     }
   ]

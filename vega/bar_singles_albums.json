@@ -3,8 +3,8 @@
   "width": "container",
   "height": 540,
   "title": {
-    "text": "Most top-charted Aussie artists are album acts",
-    "subtitle": "Top 15 Australian artists by combined weeks on the ARIA charts, sorted by total. Some are album acts, others live on the singles chart.",
+    "text": "Australia's biggest chart careers span albums and singles",
+    "subtitle": "Top 15 Australian artists by combined weeks on the ARIA charts. Blue = weeks on the album chart, orange = weeks on the singles chart. Some acts (INXS, Cold Chisel) live on albums; others (Vance Joy, Guy Sebastian) on singles.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -63,14 +63,14 @@
     },
     {
       "transform": [
-        {"filter": "datum.artist == 'Tones and I' && datum.format == 'Singles'"}
+        {"filter": "datum.artist == 'Kylie Minogue' && datum.format == 'Albums'"}
       ],
       "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 50},
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
         "yOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},
         "x": {"field": "weeks", "type": "quantitative"},
-        "text": {"value": "← Only singles-first artist in the top 15"}
+        "text": {"value": "★ #1 overall — huge on both charts"}
       }
     }
   ]
