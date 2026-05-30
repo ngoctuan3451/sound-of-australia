@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 420,
-  "padding": {"right": 70},
+  "padding": {"left": 18, "right": 70},
   "title": {
     "text": "Australia held the album chart while its singles share slipped",
     "subtitle": ["Share of the ARIA chart held by Australian artists, by decade. In the 1980s Australia held about a quarter of BOTH charts.", "Albums (blue) stayed near a quarter for 30 years; singles (orange) drifted down into single digits."],
