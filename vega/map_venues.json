@@ -109,7 +109,7 @@
       ]
     },
     {
-      "data": {"values": [{"lon": 144.9895, "lat": -37.796}]},
+      "data": {"values": [{"lon": 145.008, "lat": -37.812}]},
       "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "left", "lineBreak": "|", "lineHeight": 15, "stroke": "white", "strokeWidth": 3},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
@@ -118,7 +118,7 @@
       }
     },
     {
-      "data": {"values": [{"lon": 144.9895, "lat": -37.796}]},
+      "data": {"values": [{"lon": 145.008, "lat": -37.812}]},
       "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "left", "lineBreak": "|", "lineHeight": 15},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
@@ -127,7 +127,7 @@
       }
     },
     {
-      "data": {"values": [{"x": 144.978, "y": -37.7993, "x2": 144.9658, "y2": -37.8185}]},
+      "data": {"values": [{"x": 145.005, "y": -37.813, "x2": 144.9658, "y2": -37.8185}]},
       "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 2},
       "encoding": {
         "longitude":  {"field": "x",  "type": "quantitative"},
@@ -138,7 +138,7 @@
     },
     {
       "data": {"values": [{"lon": 144.9658, "lat": -37.8185}]},
-      "mark": {"type": "point", "shape": "triangle", "angle": 205, "size": 170, "fill": "#c0392b", "stroke": "white", "strokeWidth": 1, "filled": true},
+      "mark": {"type": "point", "shape": "triangle", "angle": 265, "size": 170, "fill": "#c0392b", "stroke": "white", "strokeWidth": 1, "filled": true},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"}

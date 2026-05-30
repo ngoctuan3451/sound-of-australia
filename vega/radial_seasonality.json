@@ -21,7 +21,8 @@
       "field": "month",
       "type": "ordinal",
       "title": null,
-      "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "domain": false, "ticks": false, "labelExpr": "['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value]"}
+      "scale": {"padding": 0},
+      "axis": {"labelFontSize": 13, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "domain": true, "domainColor": "#bbb", "ticks": true, "tickColor": "#bbb", "labelExpr": "['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][datum.value]"}
     },
     "y": {
       "field": "total",

@@ -14,7 +14,7 @@
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/spotify_global_aus.json"},
   "transform": [
-    {"calculate": "datum.artist + ' — ' + datum.title", "as": "label"}
+    {"calculate": "datum.artist + ' — ' + datum.song", "as": "label"}
   ],
   "layer": [
     {

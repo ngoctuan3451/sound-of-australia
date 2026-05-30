@@ -183,6 +183,20 @@ window.addEventListener('resize', () => {
   _refitTimer = setTimeout(refitCharts, 150);
 });
 
+// ResizeObserver: robustly refit when any chart container's width changes.
+// width:"container" can measure 0/too-small if a chart embeds before its box
+// has laid out (leaving it stuck narrow, e.g. the singles-vs-albums bars). This
+// fires whenever a container resizes — including the initial layout pass — so
+// every chart snaps to its true width without relying on load-event timing.
+if (typeof ResizeObserver !== 'undefined') {
+  let _roTimer;
+  const ro = new ResizeObserver(() => {
+    clearTimeout(_roTimer);
+    _roTimer = setTimeout(refitCharts, 120);
+  });
+  charts.forEach(([sel]) => { const el = document.querySelector(sel); if (el) ro.observe(el); });
+}
+
 // Scroll-spy for the sticky section nav.
 // Hides nav while hero is on screen; highlights the current section pill.
 (function () {
