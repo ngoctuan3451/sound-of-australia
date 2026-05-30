@@ -65,10 +65,10 @@
         {"pivot": "format", "value": "share", "groupby": ["decade"]},
         {"filter": "datum.decade == '2010s'"}
       ],
-      "mark": {"type": "text", "align": "left", "dx": 14, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dx": -2, "dy": -16, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
-        "x": {"field": "Albums", "type": "quantitative"},
-        "text": {"value": "Widest gap:|albums 25%, singles just 10%"}
+        "x": {"field": "Singles", "type": "quantitative"},
+        "text": {"value": "Widest gap: albums 25%,|singles just 10%"}
       }
     }
   ]

@@ -77,7 +77,7 @@ function embedConcat(sel, spec) {
       (specObj.vconcat || specObj.hconcat || specObj.concat || []).forEach(c => { c.width = w; });
       return vegaEmbed(sel, specObj, embedOpts);
     })
-    .then(res => { if (res && res.view) { viewBySel[sel] = res.view; if (sel === '#chart-lollipop') wireExplorePlayer(); } })
+    .then(res => { if (res && res.view) { viewBySel[sel] = res.view; if (sel === '#chart-lollipop') wireExploreSelection(res.view); } })
     .catch(showError(sel, spec));
 }
 
@@ -85,7 +85,7 @@ charts.forEach(([sel, spec]) => {
   if (concatSelectors.has(sel)) { embedConcat(sel, spec); return; }
   const url = spec + cacheBust;
   vegaEmbed(sel, url, embedOpts)
-    .then(res => { if (res && res.view) { liveViews.push(res.view); viewBySel[sel] = res.view; } })
+    .then(res => { if (res && res.view) { liveViews.push(res.view); viewBySel[sel] = res.view; if (sel === '#chart-line') wireLinePlayer(); } })
     .catch(showError(sel, spec));
 });
 
@@ -103,50 +103,69 @@ function refitCharts() {
   });
 }
 
-// ── Interactive "explore by year" player (Section 2) ───────────────────────
-// Drives the interval selection on the embedded explore chart by writing its
-// selection store directly, sweeping a moving window across the years.
-let _explorePlayerWired = false;
-function wireExplorePlayer() {
-  if (_explorePlayerWired) return;            // listeners attach once; handlers read the live view
-  const btn = document.getElementById('explore-play');
-  const reset = document.getElementById('explore-reset');
+// ── Explore-by-year panel (Section 2): manual brush + selected-year readout ──
+// The user drags an interval brush on the year strip; we mirror the selected
+// span into a label below the chart. The signal listener is re-attached on each
+// embed (the concat view is recreated on resize).
+let _exploreResetWired = false;
+function wireExploreSelection(view) {
   const label = document.getElementById('explore-window');
+  function render(sel) {
+    const yr = sel && sel.year;
+    if (yr && yr.length === 2) {
+      const lo = Math.round(Math.min(yr[0], yr[1])), hi = Math.round(Math.max(yr[0], yr[1]));
+      if (label) label.textContent = `Showing ${lo}–${hi}`;
+    } else if (label) {
+      label.textContent = 'Showing all years (1988–2025)';
+    }
+  }
+  try {
+    view.addSignalListener('brush', (n, v) => render(v));
+    render(view.signal('brush'));
+  } catch (e) { /* ignore */ }
+
+  if (!_exploreResetWired) {
+    _exploreResetWired = true;
+    const reset = document.getElementById('explore-reset');
+    if (reset) reset.addEventListener('click', () => {
+      const v = viewBySel['#chart-lollipop']; if (!v) return;
+      v.data('brush_store', []); v.runAsync();
+      if (label) label.textContent = 'Showing all years (1988–2025)';
+    });
+  }
+}
+
+// ── Line-chart play-through (Section 2): sweep a playhead across the years ───
+// Advances the `playYear` param so the red line + marker move along the years.
+let _linePlayerWired = false;
+function wireLinePlayer() {
+  if (_linePlayerWired) return;               // wired once; reads the live view each tick
+  const btn = document.getElementById('line-play');
+  const reset = document.getElementById('line-reset');
+  const label = document.getElementById('line-year');
   if (!btn) return;
-  _explorePlayerWired = true;
+  _linePlayerWired = true;
 
-  const FIRST = 1988, LAST = 2025, WIN = 5, STEP_MS = 750;
-  let timer = null, start = FIRST;
+  const FIRST = 1988, LAST = 2025, STEP_MS = 320;
+  let timer = null, y = FIRST;
 
-  function tuple(s, e) {
-    return [{ unit: '', fields: [{ field: 'year', channel: 'x', type: 'R' }], values: [[s, e]] }];
+  function set(year) {
+    const v = viewBySel['#chart-line']; if (!v) return;
+    v.signal('playYear', year); v.runAsync();
+    if (label) label.textContent = year > 0 ? `${year}` : '';
   }
-  function setWindow(s, e) {
-    const v = viewBySel['#chart-lollipop']; if (!v) return;
-    v.data('brush_store', tuple(s, e)); v.runAsync();
-    if (label) label.textContent = `Showing ${s}–${e}`;
-  }
-  function clearWindow() {
-    const v = viewBySel['#chart-lollipop']; if (!v) return;
-    v.data('brush_store', []); v.runAsync();
-    if (label) label.textContent = 'Showing all years (1988–2025)';
-  }
-  function stop() {
-    if (timer) { clearInterval(timer); timer = null; }
-    btn.textContent = '▶ Play through the years';
-  }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } btn.textContent = '▶ Play through the years'; }
   function tick() {
-    const e = Math.min(start + WIN - 1, LAST);
-    setWindow(start, e);
-    if (e >= LAST) { stop(); return; }
-    start += 1;
+    set(y);
+    if (y >= LAST) { stop(); return; }
+    y += 1;
   }
   btn.addEventListener('click', () => {
     if (timer) { stop(); return; }
-    start = FIRST; btn.textContent = '⏸ Pause'; tick();
+    y = FIRST; btn.textContent = '⏸ Pause'; tick();
     timer = setInterval(tick, STEP_MS);
   });
-  if (reset) reset.addEventListener('click', () => { stop(); clearWindow(); });
+  if (reset) reset.addEventListener('click', () => { stop(); set(0); });
 }
 
 // Refit after the page has fully loaded and once more shortly after, to catch

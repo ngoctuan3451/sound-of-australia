@@ -13,20 +13,13 @@
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_yearly.json"},
+  "params": [{"name": "playYear", "value": 0}],
   "layer": [
-    {
-      "data": {"values": [{"x": 2020, "x2": 2025}]},
-      "mark": {"type": "rect", "fill": "#c0392b", "fillOpacity": 0.08},
-      "encoding": {
-        "x": {"field": "x", "type": "quantitative"},
-        "x2": {"field": "x2"}
-      }
-    },
     {
       "mark": {"type": "area", "line": {"strokeWidth": 3, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.2, "interpolate": "monotone"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative", "title": null, "scale": {"domain": [1988, 2025], "nice": false}, "axis": {"grid": false, "labelFontSize": 11, "format": "d", "values": [1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024]}},
-        "y": {"field": "aus_pct", "type": "quantitative", "title": "% Australian singles", "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}, "scale": {"domain": [0, 30]}},
+        "y": {"field": "aus_pct", "type": "quantitative", "title": "% Australian singles", "scale": {"domain": [0, 30]}, "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}},
         "tooltip": [
           {"field": "year", "title": "Year"},
           {"field": "aus_pct", "title": "% Australian", "format": ".1f"},
@@ -37,46 +30,56 @@
     },
     {
       "mark": {"type": "point", "filled": true, "size": 70, "color": "#d35400", "stroke": "white", "strokeWidth": 1.5},
-      "encoding": {
-        "x": {"field": "year", "type": "quantitative"},
-        "y": {"field": "aus_pct", "type": "quantitative"}
-      }
+      "encoding": {"x": {"field": "year", "type": "quantitative"}, "y": {"field": "aus_pct", "type": "quantitative"}}
     },
     {
       "transform": [{"filter": "datum.year == 1991"}],
       "mark": {"type": "point", "filled": true, "size": 170, "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
-      "encoding": {
-        "x": {"field": "year", "type": "quantitative"},
-        "y": {"field": "aus_pct", "type": "quantitative"}
-      }
+      "encoding": {"x": {"field": "year", "type": "quantitative"}, "y": {"field": "aus_pct", "type": "quantitative"}}
     },
     {
       "data": {"values": [{"x": 1991, "y": 26, "x2": 1994, "y2": 29}]},
       "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 1},
       "encoding": {
-        "x": {"field": "x", "type": "quantitative"},
-        "y": {"field": "y", "type": "quantitative"},
-        "x2": {"field": "x2"},
-        "y2": {"field": "y2"}
+        "x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"},
+        "x2": {"field": "x2"}, "y2": {"field": "y2"}
       }
     },
     {
       "data": {"values": [{"x": 1994.3, "y": 29}]},
       "mark": {"type": "text", "align": "left", "baseline": "top", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
-        "x": {"field": "x", "type": "quantitative"},
-        "y": {"field": "y", "type": "quantitative"},
+        "x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"},
         "text": {"value": "Late-80s / early-90s peak:|about 1 in 4 chart singles|were Australian"}
       }
+    },
+    {
+      "data": {"values": [{"yr": 2020}, {"yr": 2025}]},
+      "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 1.5, "strokeDash": [4, 3]},
+      "encoding": {"x": {"field": "yr", "type": "quantitative"}}
     },
     {
       "data": {"values": [{"x": 2022.5, "y": 27}]},
       "mark": {"type": "text", "align": "center", "baseline": "top", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
-        "x": {"field": "x", "type": "quantitative"},
-        "y": {"field": "y", "type": "quantitative"},
-        "text": {"value": "The 2020s —|fewer than 1 in 10|are Australian"}
+        "x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"},
+        "text": {"value": "The 2020s:|fewer than|1 in 10"}
       }
+    },
+    {
+      "transform": [{"filter": "playYear > 0 && datum.year <= playYear"}],
+      "mark": {"type": "line", "strokeWidth": 4, "color": "#c0392b", "interpolate": "monotone"},
+      "encoding": {"x": {"field": "year", "type": "quantitative"}, "y": {"field": "aus_pct", "type": "quantitative"}}
+    },
+    {
+      "transform": [{"filter": "datum.year == playYear"}],
+      "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 1, "strokeDash": [2, 2]},
+      "encoding": {"x": {"field": "year", "type": "quantitative"}}
+    },
+    {
+      "transform": [{"filter": "datum.year == playYear"}],
+      "mark": {"type": "point", "filled": true, "size": 200, "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
+      "encoding": {"x": {"field": "year", "type": "quantitative"}, "y": {"field": "aus_pct", "type": "quantitative"}}
     }
   ]
 }

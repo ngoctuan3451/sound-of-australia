@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css?v=20260529-2"/>
+  <link rel="stylesheet" href="style.css?v=20260530-1"/>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <meta http-equiv="Pragma" content="no-cache"/>
   <meta http-equiv="Expires" content="0"/>
@@ -108,7 +108,12 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Australian Singles: A Slow Fade from the Charts</h3>
-          <p class="chart-desc">Percentage of Top 50 ARIA singles by Australian artists each year. Local acts held about a quarter of the chart in the late 1980s and early 1990s, then slid into single digits — by the 2020s fewer than one in ten chart singles is Australian.</p>
+          <p class="chart-desc">Percentage of Top 50 ARIA singles by Australian artists each year. Local acts held about a quarter of the chart in the late 1980s and early 1990s, then slid into single digits — by the 2020s fewer than one in ten chart singles is Australian. Press <strong>Play</strong> to trace the line year by year.</p>
+        </div>
+        <div class="explore-controls" style="order:0">
+          <button type="button" id="line-play" class="explore-btn">▶ Play through the years</button>
+          <button type="button" id="line-reset" class="explore-btn explore-btn--ghost">Reset</button>
+          <span id="line-year" class="explore-window"></span>
         </div>
         <div id="chart-line"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -117,14 +122,14 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Who Ruled the Singles Chart? Explore by Year</h3>
-          <p class="chart-desc">The top 15 Australian artists by weeks on the ARIA singles chart. <strong>Drag across the years</strong> in the top strip to re-rank them for just that span — or press <strong>Play</strong> to sweep through time and watch the #1 change era by era (Kylie → Savage Garden → The Veronicas → Tones and I). With nothing selected, you see the all-time leaders, with Kylie Minogue's <strong>370 weeks</strong> on top.</p>
+          <p class="chart-desc">The top 15 Australian artists by weeks on the ARIA singles chart. <strong>Drag across the year strip</strong> at the top to re-rank them for just that span (Kylie rules overall, but the Tones and I era looks very different). With nothing selected, you see the all-time leaders, with Kylie Minogue's <strong>370 weeks</strong> on top.</p>
         </div>
         <div class="explore-controls" style="order:0">
-          <button type="button" id="explore-play" class="explore-btn">▶ Play through the years</button>
           <button type="button" id="explore-reset" class="explore-btn explore-btn--ghost">Show all years</button>
-          <span id="explore-window" class="explore-window">Showing all years (1988–2025)</span>
+          <span class="explore-window">Drag across the year strip above to select a span</span>
         </div>
         <div id="chart-lollipop"></div>
+        <div class="explore-selection" style="order:1"><span id="explore-window">Showing all years (1988–2025)</span></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
       </div>
 
@@ -327,6 +332,6 @@
     </div>
   </footer>
 
-  <script src="vega_lite_vis.js?v=20260529-5"></script>
+  <script src="vega_lite_vis.js?v=20260530-1"></script>
 </body>
 </html>
