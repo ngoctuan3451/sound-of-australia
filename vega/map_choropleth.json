@@ -24,6 +24,7 @@
     {
       "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_country_totals.json"},
       "transform": [
+        {"filter": "datum.location && datum.location != 'NA'"},
         {
           "calculate": "datum.location == 'United States' ? 'United States of America' : datum.location",
           "as": "location_fixed"

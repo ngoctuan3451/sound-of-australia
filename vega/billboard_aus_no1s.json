@@ -37,12 +37,16 @@
           "scale": {"range": [120, 1200]},
           "legend": {
             "title": "Weeks at #1",
-            "orient": "bottom-right",
+            "orient": "bottom",
+            "direction": "horizontal",
             "values": [2, 5, 10],
             "symbolFillColor": "#bbb",
             "symbolStrokeColor": "#888",
             "labelFontSize": 10,
-            "titleFontSize": 11
+            "titleFontSize": 11,
+            "symbolOpacity": 0.7,
+            "padding": 4,
+            "offset": 8
           }
         },
         "color": {
@@ -52,7 +56,16 @@
             "domain": ["70s/80s legacy", "90s/00s wave", "Streaming era"],
             "range":  ["#2980b9", "#16a085", "#f39c12"]
           },
-          "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 200}
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "title": "Era",
+            "labelFontSize": 12,
+            "titleFontSize": 11,
+            "symbolSize": 200,
+            "padding": 4,
+            "offset": 8
+          }
         },
         "tooltip": [
           {"field": "year",       "title": "Year"},
@@ -73,9 +86,9 @@
     },
     {
       "data": {"values": [
-        {"x": 2006.5, "y": 9.5, "t": "15-year gap between Savage Garden (1999) and Iggy Azalea (2014)"}
+        {"x": 2006.5, "y": 9.5, "t": "15-year gap|Savage Garden (1999) to Iggy Azalea (2014)"}
       ]},
-      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},

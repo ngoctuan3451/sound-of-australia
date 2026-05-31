@@ -8,7 +8,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css?v=20260530-1"/>
+  <link rel="stylesheet" href="style.css?v=20260531-4"/>
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
   <meta http-equiv="Pragma" content="no-cache"/>
   <meta http-equiv="Expires" content="0"/>
@@ -76,7 +76,7 @@
     <div class="chart-block">
       <div class="chart-header">
         <h3>Where Does ARIA Album Competition Come From?</h3>
-        <p class="chart-desc">Each country is shaded by how many album-chart entries its artists have sent into Australia (darker = more). Australia ranks highest, followed by the USA, UK, Canada and Sweden. Grey countries have no recorded entries. Hover a country for the exact figure.</p>
+        <p class="chart-desc">Each country is shaded by how many known-country album-chart weeks its artists have spent in Australia (darker = more). The USA ranks first, followed by Australia and the UK; Canada, Ireland and Sweden form the next tier. Grey countries have no recorded entries, and rows without country metadata are excluded from the map. Hover a country for exact weeks.</p>
       </div>
       <div id="map-choropleth"></div>
       <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -167,12 +167,12 @@
     <div class="section-label">Part 3</div>
     <h2>What Australia Loves: The Triple J Story</h2>
     <p class="section-body">The Triple J Hottest 100 is a listener vote held every January. Unlike the ARIA charts, which are based on <em>sales</em>, the Hottest 100 reflects what people actually want to hear. The two rankings often don't agree.</p>
-    <p class="section-body">Since 1993 the poll has covered about <strong>4,200 songs</strong> across more than thirty years. A small group of artists keeps coming back, while every year also brings artists appearing for the first time. The charts below look at who returns, who makes their debut, and what a long Hottest 100 career actually looks like.</p>
+    <p class="section-body">The full dataset contains about <strong>4,200 Hottest 100 entries</strong>: 3,300 entries from regular annual polls between 1993 and 2025, plus 900 entries from special all-time countdowns. For the time-series charts below, I use only the 33 regular annual polls so the year-to-year comparisons stay consistent.</p>
 
     <div class="chart-block">
       <div class="chart-header">
         <h3>Triple J Royalty: Who Keeps Coming Back</h3>
-        <p class="chart-desc">The 25 artists with the most total entries across all Hottest 100 polls. Each cell is one year; darker = more songs in that year's countdown. Artists with long horizontal dark bands kept getting voted in year after year.</p>
+        <p class="chart-desc">The 25 artists with the most total entries across regular Hottest 100 polls. Use the dropdown to focus on one artist: other rows fade back, and yearly entry counts appear only for the selected artist. Hover any cell for the exact year, count, and all-time total.</p>
       </div>
       <div id="chart-heatmap"></div>
       <p class="source">Source: Triple J Hottest 100 — ABC Australia, abc.net.au/triplej/hottest100</p>
@@ -322,7 +322,7 @@
         <p><strong>Data Sources</strong></p>
         <ul class="source-list">
           <li><strong>ARIA Charts (1988–2025):</strong> <a href="https://github.com/caseybriggs/ARIA-charts">caseybriggs/ARIA-charts</a> on GitHub — 95,800 weekly chart rows for singles and albums, with Australian-artist flags and country of origin.</li>
-          <li><strong>Triple J Hottest 100 (1993–2025):</strong> <a href="https://www.abc.net.au/triplej/hottest100">ABC Australia</a> — 4,200 song entries across 33 annual listener polls.</li>
+          <li><strong>Triple J Hottest 100 (1993-2025):</strong> <a href="https://www.abc.net.au/triplej/hottest100">ABC Australia</a> - 3,300 regular annual-poll entries, plus 900 all-time/special countdown entries.</li>
           <li><strong>Melbourne Live-Music Venues (2024):</strong> <a href="https://data.melbourne.vic.gov.au">City of Melbourne Open Data Portal</a> — 227 registered venues with location, type, and address.</li>
           <li><strong>Basemap geometry:</strong> Victoria locality polygons and Natural Earth countries via the <a href="https://github.com/FIT3179/Vega-Lite">FIT3179 Vega-Lite repository</a>.</li>
         <li><strong>Eurovision Australia entries (2015–2025):</strong> Wikipedia, <a href="https://en.wikipedia.org/wiki/Australia_in_the_Eurovision_Song_Contest">Australia in the Eurovision Song Contest</a>.</li>
@@ -330,6 +330,7 @@
         <li><strong>Spotify Daily Global #1 records:</strong> <a href="https://www.guinnessworldrecords.com/world-records/777707-most-days-at-no-1-on-spotify%E2%80%99s-%E2%80%9Cdaily-top-songs-global%E2%80%9D-chart">Guinness World Records</a>; <a href="https://themusicnetwork.com/tones-and-i-dance-monkey-spotify-global-chart/">The Music Network</a>.</li>
         <li><strong>Spotify all-time most-streamed songs (top 50):</strong> <a href="https://en.wikipedia.org/wiki/List_of_most-streamed_songs_on_Spotify">Wikipedia — List of most-streamed songs on Spotify</a>, snapshotted May 2026.</li>
         </ul>
+        <p class="method-note"><strong>Method note:</strong> ARIA country totals use known-country album-chart rows; rows with missing country metadata are excluded from the world map. Historic ARIA singles rows had incomplete Australian-artist flags, so singles-share values use a conservative lower-bound repair based on reliably tagged album rows and post-2019 singles rows. Spotify all-time rankings are a May 2026 snapshot.</p>
       </div>
 
       <p class="ai-note">AI acknowledgement: ChatGPT and Claude (Anthropic) assisted with code structure, debugging, prose grammar, and chart-design iteration. All data interpretation, design decisions, final wording, and visual encoding choices were reviewed and approved by the author.</p>

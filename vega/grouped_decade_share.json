@@ -22,7 +22,7 @@
           "field": "year",
           "type": "ordinal",
           "title": null,
-          "axis": {"labelFontSize": 10, "labelAngle": -45, "labelColor": "#555", "labelOverlap": false}
+          "axis": {"labelFontSize": 11, "labelAngle": 0, "labelColor": "#555", "values": [1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024]}
         },
         "y": {
           "field": "weeks",
@@ -52,7 +52,7 @@
     },
     {
       "data": {"values": [{"x": 1988, "y": 52, "t": "52 weeks = whole year"}]},
-      "mark": {"type": "text", "align": "left", "fontSize": 9, "color": "#888", "fontStyle": "italic", "dx": 4, "dy": -4},
+      "mark": {"type": "text", "align": "left", "fontSize": 10, "color": "#777", "fontStyle": "italic", "dx": 4, "dy": -4},
       "encoding": {
         "x": {"field": "x", "type": "ordinal"},
         "y": {"field": "y", "type": "quantitative"},

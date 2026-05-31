@@ -335,6 +335,19 @@ footer a:hover { border-bottom-color: #f39c12; }
 }
 .source-list strong { color: #fff; }
 
+.method-note {
+  font-size: 0.8rem;
+  color: #99a;
+  line-height: 1.6;
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.method-note strong {
+  color: #fff;
+}
+
 .ai-note {
   font-size: 0.76rem;
   color: #778;
@@ -442,6 +455,24 @@ footer a:hover { border-bottom-color: #f39c12; }
   background: #fdf1e7;
   color: #b8470a;
   font: 700 0.9rem/1 "Inter", system-ui, sans-serif;
+}
+
+.vega-bindings {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0.25rem 0 0.65rem;
+  font: 600 0.85rem/1.2 "Inter", system-ui, sans-serif;
+  color: #555;
+}
+
+.vega-bind select {
+  font: 600 0.85rem/1.2 "Inter", system-ui, sans-serif;
+  color: #1a1a2e;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.35rem 0.55rem;
 }
 
 /* ── About strip ── */

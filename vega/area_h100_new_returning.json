@@ -4,7 +4,7 @@
   "height": 340,
   "title": {
     "text": "Triple J's pool of returning artists keeps growing",
-    "subtitle": "Each year's Hottest 100 split between artists never heard before and those returning from a previous poll.",
+    "subtitle": "Each year's Hottest 100 split by share of artists never heard before versus artists returning from a previous poll.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -18,6 +18,10 @@
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/h100_new_returning.json"},
   "layer": [
     {
+      "transform": [
+        {"joinaggregate": [{"op": "sum", "field": "count", "as": "total_artists"}], "groupby": ["year"]},
+        {"calculate": "datum.count / datum.total_artists", "as": "share"}
+      ],
       "mark": {"type": "area", "interpolate": "monotone", "line": {"strokeWidth": 1}},
       "encoding": {
         "x": {
@@ -28,11 +32,11 @@
           "axis": {"format": "d", "grid": false, "labelFontSize": 11, "labelColor": "#666", "values": [1993, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2025]}
         },
         "y": {
-          "field": "count",
+          "field": "share",
           "type": "quantitative",
-          "title": "Artists in that year's Hottest 100",
+          "title": "Share of distinct artists",
           "stack": "zero",
-          "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
+          "axis": {"format": ".0%", "grid": true, "gridOpacity": 0.2, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "color": {
           "field": "status",
@@ -43,7 +47,9 @@
         "tooltip": [
           {"field": "year", "title": "Poll year"},
           {"field": "status", "title": "Type"},
-          {"field": "count", "title": "Distinct artists"}
+          {"field": "count", "title": "Distinct artists"},
+          {"field": "share", "title": "Share of artists", "format": ".0%"},
+          {"field": "total_artists", "title": "Distinct artists that year"}
         ]
       }
     },
@@ -52,7 +58,7 @@
       "mark": {"type": "text", "align": "left", "fontSize": 10, "fontStyle": "italic", "color": "#555", "dy": -8},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
-        "y": {"datum": 92},
+        "y": {"datum": 0.92},
         "text": {"field": "label"}
       }
     },
@@ -61,7 +67,7 @@
       "mark": {"type": "text", "align": "right", "fontSize": 10, "fontStyle": "italic", "color": "#1a1a2e", "dy": -8},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
-        "y": {"datum": 95},
+        "y": {"datum": 0.94},
         "text": {"field": "label"}
       }
     }

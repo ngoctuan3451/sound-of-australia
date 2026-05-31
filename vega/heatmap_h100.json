@@ -5,7 +5,7 @@
   "padding": {"left": 10, "right": 10, "top": 10, "bottom": 10},
   "title": {
     "text": "The 25 artists Triple J listeners keep voting back",
-    "subtitle": "The 25 artists with the most entries across every Hottest 100 (1993–2025). Darker cells = more songs that year. Sorted by total entries (top = most).",
+    "subtitle": "Choose an artist to highlight their Hottest 100 history. Darker cells mean more songs in that year's countdown.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -18,16 +18,66 @@
     "font": "Inter, system-ui, sans-serif",
     "axis": {"domain": false, "ticks": false}
   },
-  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/h100_heatmap.json"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/h100_heatmap.json"
+  },
+  "params": [
+    {
+      "name": "artistFocus",
+      "value": "All artists",
+      "bind": {
+        "input": "select",
+        "name": "Focus artist: ",
+        "options": [
+          "All artists",
+          "Hilltop Hoods",
+          "Billie Eilish",
+          "Powderfinger",
+          "G Flip",
+          "Tame Impala",
+          "Foo Fighters",
+          "Spacey Jane",
+          "Ocean Alley",
+          "Silverchair",
+          "Muse",
+          "Lime Cordiale",
+          "Grinspoon",
+          "Kanye West",
+          "The Living End",
+          "Arctic Monkeys",
+          "The Wombats",
+          "Regurgitator",
+          "Ball Park Music",
+          "Bring Me The Horizon",
+          "Placebo",
+          "Flume",
+          "You Am I",
+          "Lorde",
+          "Pearl Jam",
+          "Kendrick Lamar"
+        ]
+      }
+    }
+  ],
   "layer": [
     {
-      "mark": {"type": "rect", "stroke": "#fafafa", "strokeWidth": 1},
+      "mark": {
+        "type": "rect",
+        "stroke": "#fafafa",
+        "strokeWidth": 1,
+        "cursor": "pointer"
+      },
       "encoding": {
         "x": {
           "field": "year",
           "type": "ordinal",
           "title": null,
-          "axis": {"labelAngle": 0, "labelFontSize": 9, "labelOverlap": true, "labelColor": "#777"}
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 10,
+            "labelColor": "#666",
+            "values": [1993, 1997, 2001, 2005, 2009, 2013, 2017, 2021, 2025]
+          }
         },
         "y": {
           "field": "artist",
@@ -35,7 +85,7 @@
           "sort": {"field": "total", "op": "max", "order": "descending"},
           "title": null,
           "axis": {
-            "labelFontSize": 11,
+            "labelFontSize": 12,
             "labelLimit": 220,
             "labelColor": "#333"
           }
@@ -44,36 +94,52 @@
           "field": "count",
           "type": "quantitative",
           "scale": {"scheme": "oranges", "domainMin": 0},
-          "legend": {"title": "Songs in poll", "orient": "bottom", "gradientLength": 220, "titleFontSize": 11, "labelFontSize": 10}
+          "legend": {
+            "title": "Songs in poll",
+            "orient": "bottom",
+            "gradientLength": 220,
+            "titleFontSize": 11,
+            "labelFontSize": 10
+          }
+        },
+        "opacity": {
+          "condition": {
+            "test": "artistFocus == 'All artists' || datum.artist == artistFocus",
+            "value": 1
+          },
+          "value": 0.16
         },
         "tooltip": [
           {"field": "artist", "title": "Artist"},
           {"field": "year", "title": "Poll year"},
           {"field": "count", "title": "Songs in this poll"},
-          {"field": "total", "title": "Total all-time entries"}
+          {"field": "total", "title": "Total entries, 1993-2025"}
         ]
       }
     },
     {
       "transform": [
-        {"filter": "datum.count >= 4"}
+        {
+          "filter": "artistFocus != 'All artists' && datum.artist == artistFocus && datum.count > 0"
+        }
       ],
-      "mark": {"type": "text", "fontSize": 9, "fontWeight": 700, "color": "white"},
+      "mark": {
+        "type": "text",
+        "fontSize": 10,
+        "fontWeight": 700
+      },
       "encoding": {
         "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
-        "text": {"field": "count"}
-      }
-    },
-    {
-      "transform": [
-        {"filter": "datum.artist == 'Hilltop Hoods' && datum.year == 2006"}
-      ],
-      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -2, "fontSize": 10, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
-      "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
-        "text": {"value": "◀ 25 entries — most in Hottest 100 history"}
+        "y": {
+          "field": "artist",
+          "type": "nominal",
+          "sort": {"field": "total", "op": "max", "order": "descending"}
+        },
+        "text": {"field": "count"},
+        "color": {
+          "condition": {"test": "datum.count >= 3", "value": "white"},
+          "value": "#1a1a2e"
+        }
       }
     }
   ]

@@ -34,7 +34,7 @@
       "field": "artist",
       "type": "nominal",
       "scale": {"scheme": "tableau10"},
-      "legend": {"title": null, "labelFontSize": 11, "labelFontWeight": 500, "symbolSize": 160, "symbolStrokeWidth": 3, "orient": "bottom", "direction": "horizontal", "columns": 0, "labelLimit": 220, "padding": 6}
+      "legend": null
     }
   },
   "layer": [

@@ -90,7 +90,7 @@
           }
         },
         {
-          "mark": {"type": "text", "fontSize": 9, "fontStyle": "italic", "color": "#999", "dy": 12},
+          "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#777", "dy": 13},
           "encoding": {
             "x": {"field": "x", "type": "quantitative"},
             "y": {"field": "y", "type": "quantitative"},
