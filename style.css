@@ -168,11 +168,6 @@ h2 {
   padding: 0 1.1rem;
 }
 
-.section-inner > .chart-block + .section-body {
-  margin-top: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
 .section-body + .section-body { margin-top: -0.15rem; }
 
 /* ── Grid ── */
