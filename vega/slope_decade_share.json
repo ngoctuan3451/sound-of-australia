@@ -4,7 +4,7 @@
   "height": 420,
   "title": {
     "text": "Australian albums stayed stronger than singles",
-    "subtitle": ["Australian share of ARIA charts by year, 1988-2025.", "Blue = albums; orange = singles. Press Play to trace both lines."],
+    "subtitle": ["Australian share of ARIA charts by year, 1988-2025.", "Teal = albums; coral = singles. Press Play to trace both lines."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -32,7 +32,7 @@
     "color": {
       "field": "format",
       "type": "nominal",
-      "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
+      "scale": {"domain": ["Albums", "Singles"], "range": ["#00a99d", "#ff4f7b"]},
       "legend": {"orient": "top", "direction": "horizontal", "title": null, "labelFontSize": 13, "symbolSize": 220, "padding": 6}
     }
   },
@@ -66,7 +66,7 @@
     },
     {
       "data": {"values": [{"year": 1991, "y": 27.5, "t": "Both near 25% in the late 1980s"}]},
-      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#555", "stroke": "white", "strokeWidth": 2.5},
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#5e5a68", "stroke": "white", "strokeWidth": 2.5},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
@@ -75,7 +75,7 @@
     },
     {
       "data": {"values": [{"year": 2015, "y": 5, "t": "Singles under 10% and still falling"}]},
-      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#f39c12", "stroke": "white", "strokeWidth": 2.5},
+      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#b92752", "stroke": "white", "strokeWidth": 2.5},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},

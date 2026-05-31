@@ -25,7 +25,7 @@
   "layer": [
     {
       "transform": [{"filter": "datum.qualified"}],
-      "mark": {"type": "line", "color": "#f39c12", "strokeWidth": 3, "interpolate": "monotone"},
+      "mark": {"type": "line", "color": "#00a99d", "strokeWidth": 3, "interpolate": "monotone"},
       "encoding": {
         "y": {
           "field": "place",
@@ -44,7 +44,7 @@
         "color": {
           "field": "result",
           "type": "nominal",
-          "scale": {"domain": ["Made the grand final", "Did not qualify (DNQ)"], "range": ["#f39c12", "#999"]},
+          "scale": {"domain": ["Made the grand final", "Did not qualify (DNQ)"], "range": ["#00a99d", "#7b7484"]},
           "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 11, "symbolSize": 180}
         },
         "shape": {
@@ -62,7 +62,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 600, "color": "#1a1a2e", "dy": -18},
+      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 600, "color": "#17131f", "dy": -18},
       "encoding": {
         "y": {"field": "place", "type": "quantitative"},
         "text": {"field": "artist"}
@@ -73,7 +73,7 @@
         {"year": 2016, "y": -1, "t": "★ Best ever: Dami Im, 2nd (2016)"},
         {"year": 2021, "y": 29, "t": "First-ever DNQ — Montaigne (2021)"}
       ]},
-      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#b92752"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},

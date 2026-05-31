@@ -37,7 +37,7 @@
         "color": {
           "field": "status",
           "type": "nominal",
-          "scale": {"domain": ["Returning", "New artist"], "range": ["#1a1a2e", "#f39c12"]},
+          "scale": {"domain": ["Returning", "New artist"], "range": ["#5e5a68", "#ffb000"]},
           "legend": {"orient": "top", "title": null, "labelFontSize": 11}
         },
         "tooltip": [
@@ -49,7 +49,7 @@
     },
     {
       "data": {"values": [{"x": 1998, "label": "First poll era — almost everyone is new"}]},
-      "mark": {"type": "text", "align": "left", "fontSize": 10, "fontStyle": "italic", "color": "#555", "dy": -8},
+      "mark": {"type": "text", "align": "left", "fontSize": 10, "fontStyle": "italic", "color": "#5e5a68", "dy": -8},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"datum": 92},
@@ -58,7 +58,7 @@
     },
     {
       "data": {"values": [{"x": 2018, "label": "Streaming era: returning artists dominate"}]},
-      "mark": {"type": "text", "align": "right", "fontSize": 10, "fontStyle": "italic", "color": "#1a1a2e", "dy": -8},
+      "mark": {"type": "text", "align": "right", "fontSize": 10, "fontStyle": "italic", "color": "#17131f", "dy": -8},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"datum": 95},

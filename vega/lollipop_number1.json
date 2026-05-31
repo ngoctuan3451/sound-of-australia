@@ -15,7 +15,7 @@
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_top_singles_artists.json"},
   "layer": [
     {
-      "mark": {"type": "rule", "color": "#f39c12", "strokeWidth": 2.5},
+      "mark": {"type": "rule", "color": "#ff4f7b", "strokeWidth": 2.5},
       "encoding": {
         "y": {
           "field": "artist",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "mark": {"type": "circle", "color": "#d35400", "size": 280, "stroke": "white", "strokeWidth": 2.5},
+      "mark": {"type": "circle", "color": "#b92752", "size": 280, "stroke": "white", "strokeWidth": 2.5},
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": "-x"},
         "x": {"field": "weeks", "type": "quantitative"},
@@ -58,7 +58,7 @@
         {"window": [{"op": "rank", "as": "lead"}], "sort": [{"field": "weeks", "order": "descending"}]},
         {"filter": "datum.lead == 2"}
       ],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 18, "dy": 0, "baseline": "middle"},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "dx": 18, "dy": 0, "baseline": "middle"},
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": "-x"},
         "x": {"field": "weeks", "type": "quantitative"},

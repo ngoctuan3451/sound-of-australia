@@ -4,7 +4,7 @@
   "height": 380,
   "title": {
     "text": "Two of Spotify's top 20 songs are Australian",
-    "subtitle": "Top 20 most-streamed Spotify songs as of May 2026. Orange = Australian.",
+    "subtitle": "Top 20 most-streamed Spotify songs as of May 2026. Coral = Australian.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -39,7 +39,7 @@
         "color": {
           "field": "origin",
           "type": "nominal",
-          "scale": {"domain": ["Australian", "Rest of world"], "range": ["#f39c12", "#dcdcdc"]},
+          "scale": {"domain": ["Australian", "Rest of world"], "range": ["#ff4f7b", "#d8d2dc"]},
           "legend": {"orient": "top", "direction": "horizontal", "title": null, "labelFontSize": 12, "symbolSize": 200}
         },
         "tooltip": [
@@ -53,7 +53,7 @@
     },
     {
       "transform": [{"filter": "datum.aus"}],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "color": "#c0392b", "dx": 8},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "color": "#b92752", "dx": 8},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "op": "min", "order": "ascending"}},
         "x": {"field": "streams", "type": "quantitative"},
@@ -64,7 +64,7 @@
       "transform": [
         {"filter": "datum.aus && datum.rank == 10"}
       ],
-      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
+      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "stroke": "white", "strokeWidth": 2},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "op": "min", "order": "ascending"}},
         "x": {"datum": 6},
@@ -75,7 +75,7 @@
       "transform": [
         {"filter": "datum.aus && datum.rank == 20"}
       ],
-      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
+      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "stroke": "white", "strokeWidth": 2},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "op": "min", "order": "ascending"}},
         "x": {"datum": 6},

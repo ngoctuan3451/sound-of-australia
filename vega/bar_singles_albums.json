@@ -4,7 +4,7 @@
   "height": 540,
   "title": {
     "text": "Kylie Minogue leads albums and singles",
-    "subtitle": ["Top 15 Australian artists by total ARIA album and singles chart weeks, 1988-2025.", "Blue = album weeks; orange = singles weeks."],
+    "subtitle": ["Top 15 Australian artists by total ARIA album and singles chart weeks, 1988-2025.", "Teal = album weeks; coral = singles weeks."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -34,7 +34,7 @@
         "color": {
           "field": "format",
           "type": "nominal",
-          "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
+          "scale": {"domain": ["Albums", "Singles"], "range": ["#00a99d", "#ff4f7b"]},
           "legend": {
             "orient": "top",
             "direction": "horizontal",
@@ -65,7 +65,7 @@
       "transform": [
         {"filter": "datum.artist == 'Kylie Minogue' && datum.format == 'Albums'"}
       ],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 50},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "dx": 50},
       "encoding": {
         "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
         "yOffset": {"field": "format", "type": "nominal", "sort": ["Albums", "Singles"]},

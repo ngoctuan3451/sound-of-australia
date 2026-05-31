@@ -19,7 +19,7 @@
         "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
-      "mark": {"type": "geoshape", "fill": "#e8e8e8", "stroke": "white", "strokeWidth": 0.4}
+      "mark": {"type": "geoshape", "fill": "#ede8ec", "stroke": "white", "strokeWidth": 0.4}
     },
     {
       "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_country_totals.json"},
@@ -47,7 +47,7 @@
         "color": {
           "field": "weeks",
           "type": "quantitative",
-          "scale": {"type": "log", "scheme": "yelloworangered"},
+          "scale": {"type": "log", "range": ["#fff4ea", "#ffd166", "#ff4f7b", "#6c3a8c", "#201827"]},
           "legend": {
             "title": "Weeks on chart",
             "format": ",",
@@ -79,7 +79,7 @@
             "longitude": {"field": "lon"},
             "latitude": {"field": "lat"},
             "text": {"field": "label"},
-            "color": {"value": "#c0392b"}
+            "color": {"value": "#b92752"}
           }
         },
         {
@@ -88,7 +88,7 @@
             "longitude": {"field": "lon"},
             "latitude": {"field": "lat"},
             "text": {"field": "label"},
-            "color": {"value": "#c0392b"}
+            "color": {"value": "#b92752"}
           }
         },
         {

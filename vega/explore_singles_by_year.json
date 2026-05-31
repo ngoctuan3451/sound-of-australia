@@ -16,7 +16,7 @@
       "height": 120,
       "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_yearly.json"},
       "params": [{"name": "brush", "select": {"type": "interval", "encodings": ["x"]}}],
-      "mark": {"type": "area", "line": {"strokeWidth": 2.5, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.2, "interpolate": "monotone"},
+      "mark": {"type": "area", "line": {"strokeWidth": 2.5, "color": "#ff4f7b"}, "color": "#ff4f7b", "fillOpacity": 0.18, "interpolate": "monotone"},
       "encoding": {
         "x": {"field": "year", "type": "quantitative", "title": null, "scale": {"domain": [1988, 2025], "nice": false}, "axis": {"grid": false, "labelFontSize": 11, "format": "d", "values": [1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024]}},
         "y": {"field": "aus_pct", "type": "quantitative", "title": "% Australian singles", "axis": {"grid": true, "gridOpacity": 0.12, "labelFontSize": 10, "titleFontSize": 10, "titleColor": "#999", "titlePadding": 4, "tickCount": 3}},
@@ -38,7 +38,7 @@
       ],
       "layer": [
         {
-          "mark": {"type": "bar", "color": "#f39c12", "cornerRadiusEnd": 3, "height": {"band": 0.7}},
+          "mark": {"type": "bar", "color": "#ff4f7b", "cornerRadiusEnd": 3, "height": {"band": 0.7}},
           "encoding": {
             "y": {"field": "artist", "type": "nominal", "sort": "-x", "title": null, "axis": {"labelFontSize": 12, "labelLimit": 150, "labelColor": "#333", "minExtent": 160, "maxExtent": 160}},
             "x": {"field": "w", "type": "quantitative", "title": "Weeks on chart in the selected years", "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}},

@@ -4,7 +4,7 @@
   "height": 360,
   "title": {
     "text": "Albums stayed more Australian than singles after the 1980s",
-    "subtitle": ["Australian share of ARIA albums vs singles by decade, 1988-2025.", "Blue = albums; orange = singles; longer line = bigger gap."],
+    "subtitle": ["Australian share of ARIA albums vs singles by decade, 1988-2025.", "Teal = albums; coral = singles; longer line = bigger gap."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -33,7 +33,7 @@
   "layer": [
     {
       "transform": [{"pivot": "format", "value": "share", "groupby": ["decade"]}],
-      "mark": {"type": "rule", "color": "#cdd4da", "strokeWidth": 6, "strokeCap": "round"},
+      "mark": {"type": "rule", "color": "#ddd5dc", "strokeWidth": 6, "strokeCap": "round"},
       "encoding": {
         "x": {"field": "Albums", "type": "quantitative"},
         "x2": {"field": "Singles"}
@@ -45,7 +45,7 @@
         "color": {
           "field": "format",
           "type": "nominal",
-          "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
+          "scale": {"domain": ["Albums", "Singles"], "range": ["#00a99d", "#ff4f7b"]},
           "legend": {"orient": "top", "direction": "horizontal", "title": null, "labelFontSize": 13, "symbolSize": 220, "padding": 6}
         },
         "tooltip": [
@@ -57,7 +57,7 @@
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 10, "fontWeight": 700, "color": "white"},
+      "mark": {"type": "text", "fontSize": 10, "fontWeight": 700, "color": "#17131f"},
       "encoding": {"text": {"field": "share", "type": "quantitative", "format": ".0f"}}
     },
     {
@@ -65,7 +65,7 @@
         {"pivot": "format", "value": "share", "groupby": ["decade"]},
         {"filter": "datum.decade == '2010s'"}
       ],
-      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dx": -2, "dy": -26, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dx": -2, "dy": -26, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#b92752", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "x": {"field": "Singles", "type": "quantitative"},
         "text": {"value": "Widest gap — 15 points:|albums 25% vs singles 10%"}
@@ -76,7 +76,7 @@
         {"pivot": "format", "value": "share", "groupby": ["decade"]},
         {"filter": "datum.decade == '1980s'"}
       ],
-      "mark": {"type": "text", "align": "left", "baseline": "top", "dx": 6, "dy": 16, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#555", "lineBreak": "|", "lineHeight": 13},
+      "mark": {"type": "text", "align": "left", "baseline": "top", "dx": 6, "dy": 16, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#5e5a68", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "x": {"field": "Albums", "type": "quantitative"},
         "text": {"value": "Smallest gap:|singles slightly ahead"}

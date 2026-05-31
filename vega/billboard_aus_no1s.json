@@ -54,7 +54,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["70s/80s legacy", "90s/00s wave", "Streaming era"],
-            "range":  ["#2980b9", "#16a085", "#f39c12"]
+            "range":  ["#6c3a8c", "#00a99d", "#ff4f7b"]
           },
           "legend": {
             "orient": "right",
@@ -77,7 +77,7 @@
     },
     {
       "transform": [{"filter": "datum.weeks_at_1 >= 7"}],
-      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 700, "color": "#1a1a2e", "dy": -22},
+      "mark": {"type": "text", "align": "center", "fontSize": 10, "fontWeight": 700, "color": "#17131f", "dy": -22},
       "encoding": {
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "weeks_at_1", "type": "quantitative"},
@@ -88,7 +88,7 @@
       "data": {"values": [
         {"x": 2006.5, "y": 9.5, "t": "15-year gap|Savage Garden (1999) to Iggy Azalea (2014)"}
       ]},
-      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#b92752", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},

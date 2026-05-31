@@ -93,7 +93,7 @@
         "color": {
           "field": "count",
           "type": "quantitative",
-          "scale": {"scheme": "oranges", "domainMin": 0},
+          "scale": {"domainMin": 0, "range": ["#fff4ea", "#ffd166", "#ff7aa2", "#ff4f7b", "#b92752"]},
           "legend": {
             "title": "Songs in poll",
             "orient": "bottom",
@@ -138,7 +138,7 @@
         "text": {"field": "count"},
         "color": {
           "condition": {"test": "datum.count >= 3", "value": "white"},
-          "value": "#1a1a2e"
+          "value": "#17131f"
         }
       }
     }

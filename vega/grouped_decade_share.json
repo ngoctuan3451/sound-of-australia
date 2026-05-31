@@ -16,7 +16,7 @@
   "transform": [{"filter": "datum.origin == 'Australian'"}],
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 3, "color": "#f39c12"},
+      "mark": {"type": "bar", "cornerRadiusEnd": 3, "color": "#00a99d"},
       "encoding": {
         "x": {
           "field": "year",
@@ -39,7 +39,7 @@
     },
     {
       "transform": [{"filter": "datum.weeks >= 15"}],
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#1a1a2e", "dy": -6},
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#17131f", "dy": -6},
       "encoding": {
         "x": {"field": "year", "type": "ordinal"},
         "y": {"field": "weeks", "type": "quantitative"},
@@ -61,7 +61,7 @@
     },
     {
       "data": {"values": [{"x": 2003, "y": 40, "t": "★ Delta Goodrem ruled 2003 (29 weeks at #1)"}]},
-      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "center"},
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "align": "center"},
       "encoding": {
         "x": {"field": "x", "type": "ordinal"},
         "y": {"field": "y", "type": "quantitative"},

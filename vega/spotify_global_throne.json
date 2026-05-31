@@ -18,7 +18,7 @@
   ],
   "layer": [
     {
-      "mark": {"type": "bar", "cornerRadiusEnd": 6, "color": "#f39c12"},
+      "mark": {"type": "bar", "cornerRadiusEnd": 6, "color": "#007c75"},
       "encoding": {
         "y": {
           "field": "label",
@@ -43,7 +43,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "fontSize": 13, "fontWeight": 700, "color": "#1a1a2e", "dx": 8},
+      "mark": {"type": "text", "align": "left", "fontSize": 13, "fontWeight": 700, "color": "#17131f", "dx": 8},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": "-x"},
         "x": {"field": "days_at_1", "type": "quantitative"},

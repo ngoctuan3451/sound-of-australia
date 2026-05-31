@@ -44,7 +44,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Peaked at #1", "Peaked in top 5", "Peaked #6–10", "Peaked outside top 10"],
-            "range":  ["#c0392b", "#e67e22", "#2980b9", "#bdc3c7"]
+            "range":  ["#ff4f7b", "#a86300", "#00a99d", "#b8a9c9"]
           },
           "legend": {"orient": "bottom", "direction": "horizontal", "title": null, "labelFontSize": 11, "symbolSize": 160}
         },
@@ -57,7 +57,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "left", "fontSize": 12, "fontWeight": 700, "color": "#1a1a2e", "dx": 8},
+      "mark": {"type": "text", "align": "left", "fontSize": 12, "fontWeight": 700, "color": "#17131f", "dx": 8},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "neg_weeks", "op": "min"}},
         "x": {"field": "weeks", "type": "quantitative"},
@@ -65,7 +65,7 @@
       }
     },
     {
-      "mark": {"type": "text", "align": "right", "fontSize": 11, "fontWeight": 700, "color": "white", "dx": -10},
+      "mark": {"type": "text", "align": "right", "fontSize": 11, "fontWeight": 700, "color": "#17131f", "dx": -10},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "neg_weeks", "op": "min"}},
         "x": {"field": "weeks", "type": "quantitative"},
@@ -74,7 +74,7 @@
     },
     {
       "transform": [{"filter": "datum.artist == 'The Killers'"}],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "dx": 36, "baseline": "middle"},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "dx": 36, "baseline": "middle"},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "neg_weeks", "op": "min"}},
         "x": {"field": "weeks", "type": "quantitative"},
@@ -83,7 +83,7 @@
     },
     {
       "transform": [{"filter": "datum.artist == 'Glass Animals'"}],
-      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#1a4a3a", "dx": 36, "baseline": "middle", "lineBreak": "|", "lineHeight": 13},
+      "mark": {"type": "text", "align": "left", "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#007c75", "dx": 36, "baseline": "middle", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "y": {"field": "label", "type": "nominal", "sort": {"field": "neg_weeks", "op": "min"}},
         "x": {"field": "weeks", "type": "quantitative"},

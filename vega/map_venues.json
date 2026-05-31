@@ -55,7 +55,7 @@
           "type": "nominal",
           "scale": {
             "domain": ["Bar", "Hotel", "Nightclub", "Performance space", "Theatre", "Venue", "Other"],
-            "range":  ["#c0392b", "#e67e22", "#8e44ad", "#16a085", "#2980b9", "#27ae60", "#7f8c8d"]
+            "range":  ["#ff4f7b", "#ffb000", "#6c3a8c", "#00a99d", "#8a4fff", "#b92752", "#7b7484"]
           },
           "legend": {
             "title": "Venue type",
@@ -110,7 +110,7 @@
     },
     {
       "data": {"values": [{"lon": 145.008, "lat": -37.812}]},
-      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "left", "lineBreak": "|", "lineHeight": 15, "stroke": "white", "strokeWidth": 3},
+      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "align": "left", "lineBreak": "|", "lineHeight": 15, "stroke": "white", "strokeWidth": 3},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"},
@@ -119,7 +119,7 @@
     },
     {
       "data": {"values": [{"lon": 145.008, "lat": -37.812}]},
-      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "align": "left", "lineBreak": "|", "lineHeight": 15},
+      "mark": {"type": "text", "fontSize": 12.5, "fontWeight": 700, "fontStyle": "italic", "color": "#b92752", "align": "left", "lineBreak": "|", "lineHeight": 15},
       "encoding": {
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"},
@@ -128,7 +128,7 @@
     },
     {
       "data": {"values": [{"x": 145.005, "y": -37.813, "x2": 144.970, "y2": -37.813}]},
-      "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 2},
+      "mark": {"type": "rule", "color": "#b92752", "strokeWidth": 2},
       "encoding": {
         "longitude":  {"field": "x",  "type": "quantitative"},
         "latitude":   {"field": "y",  "type": "quantitative"},

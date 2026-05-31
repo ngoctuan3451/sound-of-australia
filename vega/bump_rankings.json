@@ -33,7 +33,7 @@
     "color": {
       "field": "artist",
       "type": "nominal",
-      "scale": {"scheme": "tableau10"},
+      "scale": {"range": ["#ff4f7b", "#00a99d", "#ffb000", "#6c3a8c", "#1cc7d0", "#b92752", "#7bdcb5", "#8a4fff", "#5e5a68", "#ffd166"]},
       "legend": null
     }
   },
@@ -75,7 +75,7 @@
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "rank", "type": "quantitative"},
         "text": {"field": "artist"},
-        "color": {"field": "artist", "type": "nominal", "scale": {"scheme": "tableau10"}},
+        "color": {"field": "artist", "type": "nominal", "scale": {"range": ["#ff4f7b", "#00a99d", "#ffb000", "#6c3a8c", "#1cc7d0", "#b92752", "#7bdcb5", "#8a4fff", "#5e5a68", "#ffd166"]}},
         "opacity": {"value": 1}
       }
     },
@@ -89,7 +89,7 @@
         "x": {"field": "x", "type": "quantitative"},
         "y": {"field": "y", "type": "quantitative"},
         "text": {"field": "t"},
-        "color": {"value": "#c0392b"},
+        "color": {"value": "#b92752"},
         "opacity": {"value": 1}
       }
     }

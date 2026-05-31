@@ -34,10 +34,10 @@
   },
   "layer": [
     {
-      "mark": {"type": "area", "interpolate": "monotone", "line": {"color": "#2980b9", "strokeWidth": 3}, "color": {"x1": 1, "y1": 1, "x2": 1, "y2": 0, "gradient": "linear", "stops": [{"offset": 0, "color": "#eaf4fc"}, {"offset": 1, "color": "#aed6f1"}]}}
+      "mark": {"type": "area", "interpolate": "monotone", "line": {"color": "#00a99d", "strokeWidth": 3}, "color": {"x1": 1, "y1": 1, "x2": 1, "y2": 0, "gradient": "linear", "stops": [{"offset": 0, "color": "#eef7f6"}, {"offset": 1, "color": "#93ddd6"}]}}
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 90, "color": "#2980b9", "stroke": "white", "strokeWidth": 1.5},
+      "mark": {"type": "point", "filled": true, "size": 90, "color": "#00a99d", "stroke": "white", "strokeWidth": 1.5},
       "encoding": {
         "tooltip": [
           {"field": "label", "title": "Month"},
@@ -47,16 +47,16 @@
     },
     {
       "transform": [{"filter": "datum.label == 'Dec'"}],
-      "mark": {"type": "point", "filled": true, "size": 150, "color": "#c0392b", "stroke": "white", "strokeWidth": 2}
+      "mark": {"type": "point", "filled": true, "size": 150, "color": "#b92752", "stroke": "white", "strokeWidth": 2}
     },
     {
       "transform": [{"filter": "datum.label == 'Dec'"}],
-      "mark": {"type": "text", "align": "right", "dx": -10, "dy": -4, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "mark": {"type": "text", "align": "right", "dx": -10, "dy": -4, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#b92752", "lineBreak": "|", "lineHeight": 13},
       "encoding": {"text": {"value": "Quietest month:|the Christmas slowdown"}}
     },
     {
       "transform": [{"filter": "datum.label == 'May'"}],
-      "mark": {"type": "text", "align": "center", "dy": -16, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#2980b9"},
+      "mark": {"type": "text", "align": "center", "dy": -16, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#007c75"},
       "encoding": {"text": {"value": "Busiest month for new releases"}}
     }
   ]
