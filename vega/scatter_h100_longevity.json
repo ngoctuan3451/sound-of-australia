@@ -4,7 +4,7 @@
   "height": 380,
   "title": {
     "text": "Few artists stay in the Hottest 100 for years",
-    "subtitle": "Artists with 3+ entries. Right = more years; up = more songs; colour = best rank.",
+    "subtitle": "Artists with 3+ entries. Right = more years; up = more songs; colour = best rank group.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -15,6 +15,12 @@
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/h100_longevity.json"},
   "layer": [
     {
+      "transform": [
+        {
+          "calculate": "datum.best == 1 ? '#1' : datum.best == 2 ? '#2' : datum.best == 3 ? '#3' : datum.best == 4 ? '#4' : datum.best <= 10 ? '#5-10' : datum.best <= 25 ? '#11-25' : datum.best <= 50 ? '#26-50' : '#51-100'",
+          "as": "best_band"
+        }
+      ],
       "mark": {"type": "circle", "opacity": 0.75, "stroke": "white", "strokeWidth": 0.5},
       "encoding": {
         "x": {
@@ -28,7 +34,7 @@
           "field": "total",
           "type": "quantitative",
           "title": "Total songs voted in",
-          "scale": {"domain": [0, 30]},
+          "scale": {"domain": [0, 31]},
           "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },
         "size": {
@@ -47,10 +53,13 @@
           }
         },
         "color": {
-          "field": "best",
-          "type": "quantitative",
-          "scale": {"domain": [1, 100], "range": ["#ff4f7b", "#ffb000", "#00a99d", "#6c3a8c"]},
-          "legend": {"title": "Best position ever reached", "orient": "right", "direction": "vertical", "gradientLength": 180, "values": [1, 20, 40, 60, 80, 100], "titleFontSize": 11, "labelFontSize": 10}
+          "field": "best_band",
+          "type": "ordinal",
+          "scale": {
+            "domain": ["#1", "#2", "#3", "#4", "#5-10", "#11-25", "#26-50", "#51-100"],
+            "range": ["#ff2f75", "#00a99d", "#ffb000", "#6c3a8c", "#1cc7d0", "#b92752", "#7b7484", "#d8d2dc"]
+          },
+          "legend": {"title": "Best position ever reached", "orient": "right", "direction": "vertical", "titleFontSize": 11, "labelFontSize": 10, "symbolSize": 120}
         },
         "tooltip": [
           {"field": "artist", "title": "Artist"},
@@ -76,12 +85,12 @@
     },
     {
       "data": {"values": [
-        {"x": 2,  "y": 29, "t": "↑ BURN BRIGHT",  "sub": "lots of songs, short career"},
-        {"x": 30, "y": 29, "t": "LEGENDS →",      "sub": "lots of songs, long career"}
+        {"x": 1.1,  "y": 28.4, "t": "BURN BRIGHT ↑",  "sub": "lots of songs, short career"},
+        {"x": 31.4, "y": 28.4, "t": "LEGENDS →",      "sub": "lots of songs, long career"}
       ]},
       "layer": [
         {
-          "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#7b7484"},
+          "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#7b7484", "baseline": "top"},
           "encoding": {
             "x": {"field": "x", "type": "quantitative"},
             "y": {"field": "y", "type": "quantitative"},
@@ -90,7 +99,7 @@
           }
         },
         {
-          "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#5e5a68", "dy": 13},
+          "mark": {"type": "text", "fontSize": 10, "fontStyle": "italic", "color": "#5e5a68", "baseline": "top", "dy": 14},
           "encoding": {
             "x": {"field": "x", "type": "quantitative"},
             "y": {"field": "y", "type": "quantitative"},

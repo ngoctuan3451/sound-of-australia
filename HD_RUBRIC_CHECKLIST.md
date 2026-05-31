@@ -58,16 +58,15 @@ Source: `FIT2179 Data Visualisation 2.pdf`, Semester 1 2026 brief.
 - Justify visualisation idioms using Munzer's What/Why/How framework.
 - Explain special features and custom-built elements.
 
-## Current Project Audit, 20 May 2026
+## Current Project Audit, 31 May 2026
 
 - Topic: Australian music charts, Triple J Hottest 100, and Melbourne live music venues. This is relevant to an Australian audience and has a strong storytelling angle.
-- Current page has 12 chart/map containers in `index.html`.
-- Current `vega_lite_vis.js` embeds only 5 specs, so 7 chart slots are currently empty.
-- Existing Vega-Lite specs: two maps, one area/line chart, one lollipop chart, one bump chart.
-- Existing specs contain some custom/layered idioms and tooltips, but need more annotations and a fuller story arc for HD.
-- Current raw data files total more than a few megabytes. The page also fetches large CSVs directly from GitHub raw URLs, so derived smaller datasets should be created for performance and rubric compliance.
-- Several visible text strings show mojibake / broken dash characters; these should be replaced with normal punctuation before submission.
-- Footer already includes authorship/date, data sources, and an AI acknowledgement, but source metadata can be polished.
+- Current page has 17 embedded Vega-Lite visualisations, including two maps.
+- Current `vega_lite_vis.js` embeds the completed specs and the public GitHub Pages URL is live.
+- Specs include custom/layered idioms: dot map, choropleth, brush-linked ranking, bump chart, dumbbell chart, animated dual-line chart, heatmap, stacked area, bubble scatter and highlighted bar charts.
+- The page uses compact derived JSON/CSV files for visualisation loading; raw source files remain in the repo for reproducibility but are not loaded by the web page.
+- Visible text, chart titles and chart descriptions have been simplified for a general Australian audience.
+- Footer includes authorship, student ID, date, data sources and AI acknowledgement.
 
 ## Working Standard For Future Edits
 

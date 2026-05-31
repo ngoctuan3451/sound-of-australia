@@ -19,6 +19,8 @@ pick ~10–12 representative ones across all five sections.
 ├───────────────────────────────────────────────┤
 │  PART 2 — WHAT we buy (ARIA)                    │  heading + text
 │  [ LINE: Aussie singles share, 1988–2025 ]      │  declining line + 2020s band
+│  [ DUMBBELL: album vs singles gap by decade ]   │  two dots + connecting bar
+│  [ ANIMATED DUAL-LINE + ▶Play ]                 │  two lines + play button
 │  [ BRUSH PANEL: mini-line + top-15 bar ]        │  note "drag to re-rank"
 │  [ BUMP chart of yearly #1 artists ]            │  crossing ranked lines
 │  [ GROUPED BARS: singles vs albums ]            │  paired bars per artist
@@ -28,9 +30,7 @@ pick ~10–12 representative ones across all five sections.
 │  [ STACKED AREA: new vs returning ]             │
 │  [ BUBBLE SCATTER: career span × songs ]        │  dots sized + colour legend
 ├───────────────────────────────────────────────┤
-│  PART 4 — SHAPE of a hit                        │  heading + text
-│  [ DUMBBELL: album vs singles gap by decade ]   │  two dots + connecting bar
-│  [ ANIMATED DUAL-LINE + ▶Play ]                 │  two lines + play button
+│  PART 4 — WHEN songs arrive and last            │  heading + text
 │  [ SEASONALITY area by month ]                  │
 │  [ BARS: longest-running songs, colour=peak ]   │
 ├───────────────────────────────────────────────┤
