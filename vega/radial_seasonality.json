@@ -13,12 +13,6 @@
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_seasonality.json"},
-  "params": [
-    {
-      "name": "monthHover",
-      "select": {"type": "point", "fields": ["label"], "on": "mouseover", "clear": "mouseout"}
-    }
-  ],
   "transform": [
     {"aggregate": [{"op": "sum", "field": "debuts", "as": "total"}], "groupby": ["month", "label"]}
   ],
@@ -43,6 +37,12 @@
       "mark": {"type": "area", "interpolate": "monotone", "line": {"color": "#2980b9", "strokeWidth": 3}, "color": {"x1": 1, "y1": 1, "x2": 1, "y2": 0, "gradient": "linear", "stops": [{"offset": 0, "color": "#eaf4fc"}, {"offset": 1, "color": "#aed6f1"}]}}
     },
     {
+      "params": [
+        {
+          "name": "monthHover",
+          "select": {"type": "point", "fields": ["label"], "on": "mouseover", "clear": "mouseout"}
+        }
+      ],
       "mark": {"type": "point", "filled": true, "color": "#2980b9", "stroke": "white", "strokeWidth": 1.5, "cursor": "pointer"},
       "encoding": {
         "size": {"condition": {"param": "monthHover", "value": 190, "empty": false}, "value": 90},
