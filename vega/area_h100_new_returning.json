@@ -30,7 +30,7 @@
         "y": {
           "field": "count",
           "type": "quantitative",
-          "title": "Distinct artists",
+          "title": "Artists in that year's Hottest 100",
           "stack": "zero",
           "axis": {"grid": true, "gridOpacity": 0.2, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
         },

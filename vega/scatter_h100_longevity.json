@@ -4,7 +4,7 @@
   "height": 380,
   "title": {
     "text": "Hottest 100 artists: short bursts vs long careers",
-    "subtitle": "Each dot is a Hottest 100 artist. X = years between their first and last appearance. Y = total songs voted in. Colour = their best-ever position.",
+    "subtitle": "Each dot is one artist. Placed left-to-right by how many years their career spanned; bottom-to-top by how many songs they had voted in. Colour shows their best-ever position.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

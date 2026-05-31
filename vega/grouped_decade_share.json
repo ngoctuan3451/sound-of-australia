@@ -3,8 +3,8 @@
   "width": "container",
   "height": 380,
   "title": {
-    "text": "Australia's Year-by-Year Domination of the Album Chart",
-    "subtitle": "Each bar is one year. Height = number of weeks that year when the ARIA #1 album was by an Australian artist. The 2003 spike is the Australian Idol / Delta Goodrem era.",
+    "text": "Weeks an Australian album held #1, year by year",
+    "subtitle": "Each bar shows how many weeks in that year the ARIA #1 album was by an Australian artist (max possible = 52 weeks). Some years Australians held the top spot almost all year; in others they barely appeared.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
