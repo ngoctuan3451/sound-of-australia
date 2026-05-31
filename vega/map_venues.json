@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "227 live-music venues across Melbourne",
-    "subtitle": "Each dot is one registered venue, coloured by venue type. The scene clusters along the CBD spine and the Fitzroy / Collingwood corridor.",
+    "text": "Melbourne music venues cluster in the city centre",
+    "subtitle": "Registered City of Melbourne venues, 2024. Each dot = one venue; colour = venue type.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

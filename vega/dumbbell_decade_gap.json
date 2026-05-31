@@ -3,8 +3,8 @@
   "width": "container",
   "height": 360,
   "title": {
-    "text": "Australia kept its album chart long after losing its singles",
-    "subtitle": ["Australian share of the ARIA chart in each decade. Each row joins the album share (blue) to the singles share (orange);", "the longer the bar, the bigger the gap between the two formats."],
+    "text": "Albums stayed more Australian than singles after the 1980s",
+    "subtitle": ["Australian share of ARIA albums vs singles by decade, 1988-2025.", "Blue = albums; orange = singles; longer line = bigger gap."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

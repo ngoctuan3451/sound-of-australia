@@ -3,8 +3,8 @@
   "width": "container",
   "height": 420,
   "title": {
-    "text": "Australia held the album chart while its singles share slipped",
-    "subtitle": ["Australian share of the ARIA chart each year, 1988–2025 — albums (blue) versus singles (orange).", "Press Play to trace both lines through the years."],
+    "text": "Australian albums stayed stronger than singles",
+    "subtitle": ["Australian share of ARIA charts by year, 1988-2025.", "Blue = albums; orange = singles. Press Play to trace both lines."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

@@ -8,6 +8,8 @@ const charts = [
 
   // Section 2 — ARIA sales story
   ["#chart-line",            "vega/line_aussie_share.json"],
+  ["#chart-grouped",         "vega/dumbbell_decade_gap.json"],
+  ["#chart-slope",           "vega/slope_decade_share.json"],
   ["#chart-lollipop",        "vega/explore_singles_by_year.json"],
   ["#chart-bump",            "vega/bump_rankings.json"],
   ["#chart-dotplot",         "vega/bar_singles_albums.json"],
@@ -17,9 +19,7 @@ const charts = [
   ["#chart-area",            "vega/area_h100_new_returning.json"],
   ["#chart-scatter-j",       "vega/scatter_h100_longevity.json"],
 
-  // Section 4 — the shape of a hit
-  ["#chart-grouped",         "vega/dumbbell_decade_gap.json"],
-  ["#chart-slope",           "vega/slope_decade_share.json"],
+  // Section 4 — release timing and staying power
   ["#chart-radial",          "vega/radial_seasonality.json"],
   ["#chart-scatter-release", "vega/scatter_peak_weeks.json"],
 
@@ -140,7 +140,7 @@ function wireExploreSelection(view) {
   }
 }
 
-// ── Album-vs-singles play-through (Section 4): sweep a playhead across years ─
+// ── Album-vs-singles play-through (Section 2): sweep a playhead across years ─
 // Advances the `playYear` param so both lines trace out + a marker moves along.
 let _slopePlayerWired = false;
 function wireSlopePlayer() {

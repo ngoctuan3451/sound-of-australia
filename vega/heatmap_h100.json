@@ -4,8 +4,8 @@
   "height": 460,
   "padding": {"left": 10, "right": 10, "top": 10, "bottom": 10},
   "title": {
-    "text": "The 25 artists Triple J listeners keep voting back",
-    "subtitle": "Choose an artist to highlight their Hottest 100 history. Darker cells mean more songs in that year's countdown.",
+    "text": "Triple J listeners keep voting for these artists",
+    "subtitle": "Top 25 artists by regular Hottest 100 entries, 1993-2025. Darker cells = more songs that year.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

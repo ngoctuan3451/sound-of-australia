@@ -3,8 +3,8 @@
   "width": "container",
   "height": 360,
   "title": {
-    "text": "Australia's share of the singles chart has faded since the 1980s",
-    "subtitle": "% of ARIA Top 50 singles by Australian artists, each year. A quarter of the chart was local in the late 1980s; by the 2020s it is single digits.",
+    "text": "Australian singles became rarer after 1990",
+    "subtitle": "Share of ARIA Top 50 singles by Australian artists, 1988-2025.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

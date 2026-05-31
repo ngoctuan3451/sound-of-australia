@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": {
-    "text": "Explore: who ruled the singles chart, year by year",
-    "subtitle": ["Drag across the years in the top strip to re-rank the artists below — or press Play to sweep through time.", "With nothing selected, the ranking shows the all-time top 15."],
+    "text": "Australian singles artists by chart weeks",
+    "subtitle": ["Drag across the years to re-rank artists for that period.", "Bars show total weeks on the ARIA singles chart."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

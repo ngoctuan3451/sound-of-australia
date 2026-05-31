@@ -3,8 +3,8 @@
   "width": "container",
   "height": 540,
   "title": {
-    "text": "Australia's biggest chart careers span albums and singles",
-    "subtitle": ["Top 15 Australian artists by combined weeks on the ARIA charts.", "Blue = album-chart weeks, orange = singles-chart weeks."],
+    "text": "Kylie Minogue leads albums and singles",
+    "subtitle": ["Top 15 Australian artists by total ARIA album and singles chart weeks, 1988-2025.", "Blue = album weeks; orange = singles weeks."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

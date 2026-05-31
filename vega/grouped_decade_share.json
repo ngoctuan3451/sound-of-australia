@@ -3,8 +3,8 @@
   "width": "container",
   "height": 380,
   "title": {
-    "text": "Weeks an Australian album held #1, year by year",
-    "subtitle": "Each bar shows how many weeks in that year the ARIA #1 album was by an Australian artist (max possible = 52 weeks). Some years Australians held the top spot almost all year; in others they barely appeared.",
+    "text": "Australian number 1 albums rise and fall by year",
+    "subtitle": "Weeks per year when an Australian album was #1 on ARIA, 1988-2025. Max = 52 weeks.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

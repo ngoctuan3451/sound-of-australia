@@ -3,8 +3,8 @@
   "width": "container",
   "height": 380,
   "title": {
-    "text": "New songs arrive all year — then go quiet at Christmas",
-    "subtitle": ["Total brand-new entries onto the ARIA singles chart in each calendar month, summed across 37 years (1988–2024).", "Record labels release steadily from autumn to spring, then ease off over the summer holidays."],
+    "text": "New songs slow down in December",
+    "subtitle": ["New ARIA singles-chart entries by month, summed across 1988-2024.", "Record labels release steadily from autumn to spring, then ease off over summer."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -27,7 +27,7 @@
     "y": {
       "field": "total",
       "type": "quantitative",
-      "title": "New chart entries that month (1988–2024)",
+      "title": "New chart entries that month (1988-2024)",
       "scale": {"domain": [0, 900]},
       "axis": {"grid": true, "gridOpacity": 0.15, "labelFontSize": 11, "titleFontSize": 11, "titleColor": "#666"}
     }

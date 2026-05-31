@@ -4,8 +4,8 @@
   "height": 440,
   "padding": {"left": 20, "right": 55, "top": 10, "bottom": 10},
   "title": {
-    "text": "Tones and I's three-year reign, then a streaming shake-up",
-    "subtitle": "Top 5 Australian artists by weeks on chart, each year from 2018. Hover any line to highlight one artist.",
+    "text": "Tones and I led Australian singles for three years",
+    "subtitle": "Top 5 Australian artists by ARIA singles-chart weeks each year, 2018-2025. Rank 1 = most weeks.",
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",

@@ -3,8 +3,8 @@
   "width": "container",
   "height": 510,
   "title": {
-    "text": "Three countries supply most of Australia's album chart",
-    "subtitle": ["Each country is shaded by how many weeks its artists have spent on the ARIA album chart.", "The USA, Australia and the UK do most of the heavy lifting; Sweden punches above its weight."],
+    "text": "USA artists lead Australia's album chart",
+    "subtitle": ["Total weeks on the ARIA album chart by artist country, 1988-2025.", "Darker countries = more weeks; missing-country rows are excluded."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
