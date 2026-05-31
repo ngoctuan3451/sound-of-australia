@@ -59,6 +59,28 @@
         "x": {"field": "streams", "type": "quantitative"},
         "text": {"field": "streams", "type": "quantitative", "format": ".2f"}
       }
+    },
+    {
+      "transform": [
+        {"filter": "datum.aus && datum.rank == 10"}
+      ],
+      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "op": "min", "order": "ascending"}},
+        "x": {"datum": 6},
+        "text": {"value": "★ Australian"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.aus && datum.rank == 20"}
+      ],
+      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "y": {"field": "label", "type": "nominal", "sort": {"field": "rank", "op": "min", "order": "ascending"}},
+        "x": {"datum": 6},
+        "text": {"value": "★ Australian"}
+      }
     }
   ]
 }

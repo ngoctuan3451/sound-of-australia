@@ -64,6 +64,17 @@
         "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
         "text": {"field": "count"}
       }
+    },
+    {
+      "transform": [
+        {"filter": "datum.artist == 'Hilltop Hoods' && datum.year == 2006"}
+      ],
+      "mark": {"type": "text", "align": "left", "dx": 6, "dy": -2, "fontSize": 10, "fontWeight": 700, "fontStyle": "italic", "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "artist", "type": "nominal", "sort": {"field": "total", "op": "max", "order": "descending"}},
+        "text": {"value": "◀ 25 entries — most in Hottest 100 history"}
+      }
     }
   ]
 }

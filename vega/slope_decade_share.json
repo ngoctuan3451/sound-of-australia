@@ -63,6 +63,24 @@
     {
       "transform": [{"filter": "datum.year == playYear"}],
       "mark": {"type": "point", "filled": true, "size": 170, "stroke": "white", "strokeWidth": 2}
+    },
+    {
+      "data": {"values": [{"year": 1991, "y": 27.5, "t": "Both near 25% in the late 1980s"}]},
+      "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#555", "stroke": "white", "strokeWidth": 2.5},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "t"}
+      }
+    },
+    {
+      "data": {"values": [{"year": 2015, "y": 5, "t": "Singles under 10% and still falling"}]},
+      "mark": {"type": "text", "align": "right", "dx": -4, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#f39c12", "stroke": "white", "strokeWidth": 2.5},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "t"}
+      }
     }
   ]
 }
