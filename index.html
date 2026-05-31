@@ -30,7 +30,7 @@
       <p class="hero-eyebrow">FIT2179 Data Visualisation 2 · Semester 1, 2026</p>
       <h1>The Sound of Australia</h1>
       <p class="subtitle">What We Buy, What We Love, What We Stream</p>
-      <p class="intro">Melbourne has one of the most vibrant live music scenes in the world. Australian artists have dominated our own charts — and occasionally broken the world's. But what does the data actually say about how we consume music? This visualisation traces three decades of ARIA chart data, Triple J listener votes, and Melbourne's live music venues to tell the real story of Australian music.</p>
+      <p class="intro">I grew up hearing the Triple J Hottest 100 every January and assumed Australian music was everywhere. This project tests that assumption against the data. I pulled together almost four decades of ARIA chart records, Triple J listener votes, and Melbourne's live-music venues to look at who actually charts, where the scene is based, and how often Australian artists break through overseas.</p>
       <div class="stats-row">
         <div class="stat">
           <span class="stat-num">37</span>
@@ -56,13 +56,13 @@
   <section class="section" id="part1">
     <div class="section-label">Part 1</div>
     <h2>Where Does Australian Music Come From?</h2>
-    <p class="section-body">Australia's music scene is heavily concentrated in two cities. <strong>Melbourne and Sydney</strong> produce the vast majority of ARIA-charting artists — but Melbourne punches above its weight, hosting over <strong>227 registered live music venues</strong> in the CBD alone. The map below shows exactly where that scene lives, suburb by suburb.</p>
-    <p class="section-body">Internationally, the ARIA album charts tell a different story. <strong>The United States and United Kingdom</strong> have dominated Australian charts for decades, with Sweden emerging as a surprising powerhouse through pop exports like ABBA and more recently through the Swedish songwriting machine behind global hits.</p>
+    <p class="section-body">Most ARIA-charting artists come out of <strong>Melbourne and Sydney</strong>. Melbourne in particular has a dense live scene — the City of Melbourne alone lists <strong>227 registered live-music venues</strong>. The map below shows where they sit, suburb by suburb.</p>
+    <p class="section-body">The album chart looks more international. The <strong>United States and United Kingdom</strong> have supplied most entries for decades, and <strong>Sweden</strong> shows up far more than its size would suggest — largely through ABBA and the Swedish writers behind a lot of modern pop.</p>
 
     <div class="chart-block">
       <div class="chart-header">
         <h3>227 live-music venues across Melbourne</h3>
-        <p class="chart-desc">Each dot is one registered live-music venue in the City of Melbourne, coloured by venue type. Bars and hotels dominate the scene; theatres and performance spaces anchor the serious side. The cluster speaks for itself — the CBD spine and the Fitzroy / Collingwood corridor carry the city's live-music nightlife.</p>
+        <p class="chart-desc">Each dot is one registered live-music venue in the City of Melbourne, coloured by type. Bars and hotels make up most of them, with a smaller set of theatres and performance spaces. Almost everything clusters in the CBD and along the Fitzroy–Collingwood strip.</p>
       </div>
       <div id="map-venues"></div>
       <p class="source">Source: City of Melbourne Open Data — Live Music Venues, 2024. <a href="https://data.melbourne.vic.gov.au">data.melbourne.vic.gov.au</a></p>
@@ -71,7 +71,7 @@
     <div class="chart-block">
       <div class="chart-header">
         <h3>Where Does ARIA Album Competition Come From?</h3>
-        <p class="chart-desc">Darker countries have sent more album chart entries into Australia. Australia itself ranks highest — followed by the USA, UK, Canada and Sweden. Grey countries have no chart entries recorded. Hover any country for exact figures.</p>
+        <p class="chart-desc">Each country is shaded by how many album-chart entries its artists have sent into Australia (darker = more). Australia ranks highest, followed by the USA, UK, Canada and Sweden. Grey countries have no recorded entries. Hover a country for the exact figure.</p>
       </div>
       <div id="map-choropleth"></div>
       <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -80,20 +80,20 @@
     <div class="grid-2col">
       <div class="text-block">
         <h3>🥇 USA Dominates Australian Album Charts</h3>
-        <p>American artists account for <strong>32,046 weeks</strong> on the ARIA album charts — more than any other country, including Australia itself.</p>
-        <p>Australia ranks <strong>second with 20,666 weeks</strong> — impressive for a country of 26 million. The UK comes third with 15,255 weeks.</p>
-        <p>Sweden's <strong>648 weeks</strong> is remarkable for a country of just 10 million people — a testament to Swedish pop's global dominance through ABBA, Robyn and modern hitmakers.</p>
+        <p>American artists account for <strong>32,046 weeks</strong> on the ARIA album chart — more than any other country, Australia included.</p>
+        <p>Australia is <strong>second with 20,666 weeks</strong>, which is a lot for a country of 26 million. The UK is third with 15,255.</p>
+        <p>Sweden's <strong>648 weeks</strong> stands out for a country of about 10 million — mostly ABBA, Robyn, and the Swedish writers behind a lot of today's pop.</p>
       </div>
       <div class="text-block">
         <h3>Singles Tell a Different Story</h3>
-        <p>On the <strong>singles chart</strong>, the Australian share has fallen to <strong>single digits</strong> in recent years — a dramatic drop from the quarter of the chart they held in the late 1980s.</p>
-        <p>This gap suggests Australians actively seek out local albums but increasingly reach for international singles through radio and streaming — a gap that has <strong>widened steadily since the early 1990s</strong>.</p>
+        <p>On the <strong>singles chart</strong> the Australian share is much lower — <strong>single digits</strong> in recent years, down from about a quarter in the late 1980s.</p>
+        <p>So Australians still seem to reach for local albums but mostly play international singles on radio and streaming. That gap has been <strong>widening since the early 1990s</strong>.</p>
       </div>
     </div>
 
     <div class="takeaway">
       <span class="takeaway-label">Key takeaway</span>
-      <p>Melbourne's live-music scene is heavily clustered along the CBD spine and the Fitzroy / Collingwood corridor — and on the ARIA album chart, Australia ranks <strong>second only to the USA</strong> for total weeks held.</p>
+      <p>Melbourne's live-music venues cluster tightly in the CBD and along the Fitzroy–Collingwood strip. On the album chart, Australia sits <strong>second only to the USA</strong> for total weeks on chart.</p>
     </div>
   </section>
 
@@ -102,13 +102,13 @@
     <div class="section-inner">
       <div class="section-label">Part 2</div>
       <h2>What Australia Buys: The ARIA Story</h2>
-      <p class="section-body">In the late 1980s, Australian artists held about <strong>a quarter</strong> of their own singles chart — local acts like Kylie Minogue, INXS and John Farnham were everywhere on the ARIA Top 50. But across the next three decades that share drifted steadily downward as American and British pop took over the chart.</p>
-      <p class="section-body">The streaming era brought bright moments — Tones and I's <em>Dance Monkey</em> spent <strong>64 consecutive weeks</strong> in the top 10 in 2019, and The Kid LAROI became the first Australian-born artist to top charts globally. But these were spikes against a long decline: by the 2020s, fewer than <strong>one in ten</strong> chart singles is Australian.</p>
+      <p class="section-body">In the late 1980s, Australian artists held about <strong>a quarter</strong> of their own singles chart — Kylie Minogue, INXS and John Farnham were regulars in the ARIA Top 50. Over the next three decades that share fell as American and British pop took over.</p>
+      <p class="section-body">The streaming era had some big moments — Tones and I's <em>Dance Monkey</em> spent <strong>64 weeks</strong> in the top 10 in 2019, and The Kid LAROI topped charts overseas. But these were spikes against a longer decline: by the 2020s, fewer than <strong>one in ten</strong> chart singles is Australian.</p>
 
       <div class="chart-block">
         <div class="chart-header">
           <h3>Australian Singles: A Slow Fade from the Charts</h3>
-          <p class="chart-desc">Percentage of Top 50 ARIA singles by Australian artists each year. Local acts held about a quarter of the chart in the late 1980s and early 1990s, then slid into single digits — by the 2020s fewer than one in ten chart singles is Australian.</p>
+          <p class="chart-desc">Share of the ARIA Top 50 singles held by Australian artists each year. It sat around a quarter in the late 1980s and early 1990s, then drifted into single digits — under one in ten by the 2020s.</p>
         </div>
         <div id="chart-line"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -117,7 +117,7 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Who Ruled the Singles Chart? Explore by Year</h3>
-          <p class="chart-desc">The top 15 Australian artists by weeks on the ARIA singles chart. <strong>Drag across the year strip</strong> at the top to re-rank them for just that span (Kylie rules overall, but the Tones and I era looks very different). With nothing selected, you see the all-time leaders, with Kylie Minogue's <strong>370 weeks</strong> on top.</p>
+          <p class="chart-desc">The 15 Australian artists with the most weeks on the ARIA singles chart. <strong>Drag across the year strip</strong> at the top to re-rank them for that span — Kylie leads overall, but the Tones and I years look very different. With nothing selected, it shows the all-time leaders, led by Kylie Minogue on <strong>370 weeks</strong>.</p>
         </div>
         <div class="explore-controls" style="order:0">
           <button type="button" id="explore-reset" class="explore-btn explore-btn--ghost">Show all years</button>
@@ -131,7 +131,7 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Australia's Chart Royalty: Year by Year</h3>
-          <p class="chart-desc">Annual ranking of the top Australian artists on ARIA singles charts (2018–2025). A rank of 1 means that artist had the most weeks on chart that year. Watch how Tones and I dominates 2019–2021 before The Kid LAROI and others rise.</p>
+          <p class="chart-desc">Each line is one Australian artist, ranked by weeks on the ARIA singles chart for that year (1 = most weeks). The chart covers 2018–2025 and shows how Tones and I held the top spot for three years running before The Kid LAROI and Vance Joy moved up.</p>
         </div>
         <div id="chart-bump"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -140,19 +140,19 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Singles vs Albums: Who Owns Which Format?</h3>
-          <p class="chart-desc">For each of Australia's 15 most-charted artists, the chart pairs their album weeks (blue) against their singles weeks (orange). Bars are sorted by combined total — some artists are clearly album acts, others live on the singles chart.</p>
+          <p class="chart-desc">For each of the 15 most-charted Australian artists, this shows their album weeks (blue) alongside their singles weeks (orange), sorted by combined total. Some artists built their career almost entirely on albums (INXS, Cold Chisel), others mainly on singles (Vance Joy, Guy Sebastian).</p>
         </div>
         <div id="chart-dotplot"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
       </div>
 
       <aside class="pullquote">
-        <p>Some Australian artists are <strong>album artists</strong> — INXS, Cold Chisel — who built loyal audiences through cohesive records. Others are <strong>singles machines</strong> — Kylie Minogue, Vance Joy, Guy Sebastian — who rack up week after week on the singles chart. A rare few, like Kylie, dominate <strong>both</strong> at once.</p>
+        <p>Looking at the data, there seem to be two types of Australian chart career. Some acts — INXS, Cold Chisel — are almost entirely album-driven. Others — Vance Joy, Guy Sebastian — built their careers on sustained singles chart presence. Kylie Minogue is unusual in that she sits near the top of <strong>both</strong>.</p>
       </aside>
 
       <div class="takeaway">
         <span class="takeaway-label">Key takeaway</span>
-        <p>Australia held roughly a quarter of <strong>both</strong> its singles and album charts in the late 1980s. Albums stayed near that level for decades, but the <strong>singles share slid into single digits</strong> — Australians kept buying local albums while reaching for international singles.</p>
+        <p>In the late 1980s, Australian artists held about a quarter of <strong>both</strong> the singles and album charts. Album share stayed near that level for decades, but the <strong>singles share dropped to single digits</strong>. The pattern suggests local album buying held up, while singles listening shifted overseas.</p>
       </div>
     </div>
   </section>
@@ -161,13 +161,13 @@
   <section class="section" id="part3">
     <div class="section-label">Part 3</div>
     <h2>What Australia Loves: The Triple J Story</h2>
-    <p class="section-body">Every January, millions of Australians vote in the Triple J Hottest 100 — the world's largest music poll. Unlike the ARIA charts, which measure <em>sales</em>, the Hottest 100 measures <em>love</em>. The results are often very different. Songs that top ARIA are often absent from Triple J, and vice versa.</p>
-    <p class="section-body">Since the first poll in 1993, the Hottest 100 has featured roughly <strong>4,200 song entries</strong> across more than thirty annual countdowns. A small group of artists shows up year after year, while every January brings a fresh wave of debutants. The next three charts trace who returns, who arrives, and who builds a real career out of it.</p>
+    <p class="section-body">The Triple J Hottest 100 is a listener vote held every January. Unlike the ARIA charts, which are based on <em>sales</em>, the Hottest 100 reflects what people actually want to hear. The two rankings often don't agree.</p>
+    <p class="section-body">Since 1993 the poll has covered about <strong>4,200 songs</strong> across more than thirty years. A small group of artists keeps coming back, while every year also brings artists appearing for the first time. The charts below look at who returns, who makes their debut, and what a long Hottest 100 career actually looks like.</p>
 
     <div class="chart-block">
       <div class="chart-header">
         <h3>Triple J Royalty: Who Keeps Coming Back</h3>
-        <p class="chart-desc">A heatmap of the 25 most-played artists across every Hottest 100. Each cell is one year; darker cells mean more songs in that year's poll. Look for the long horizontal bands — those artists never went away.</p>
+        <p class="chart-desc">The 25 artists with the most total entries across all Hottest 100 polls. Each cell is one year; darker = more songs in that year's countdown. Artists with long horizontal dark bands kept getting voted in year after year.</p>
       </div>
       <div id="chart-heatmap"></div>
       <p class="source">Source: Triple J Hottest 100 — ABC Australia, abc.net.au/triplej/hottest100</p>
@@ -176,7 +176,7 @@
     <div class="chart-block">
       <div class="chart-header">
         <h3>Fresh Faces vs Familiar Voices</h3>
-        <p class="chart-desc">Stacked-area split of every poll into <strong>new artists</strong> (never charted before) and <strong>returning artists</strong>. The orange band shrinks over time as the cumulative pool of past artists grows — a healthy sign that voters reward consistency, not just novelty.</p>
+        <p class="chart-desc">Each poll split into <strong>new artists</strong> (first time in the Hottest 100) and <strong>returning artists</strong> (voted in before). The new-artist portion shrinks over time — not because fewer new acts enter, but because the pool of eligible returning artists keeps growing.</p>
       </div>
       <div id="chart-area"></div>
       <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
@@ -185,7 +185,7 @@
     <div class="chart-block">
       <div class="chart-header">
         <h3>Burn Bright, or Burn Long?</h3>
-        <p class="chart-desc">Each dot is one artist. <strong>X</strong> = years between their first and last appearance. <strong>Y</strong> = total songs voted in. <strong>Colour</strong> = best position ever reached. Long-career legends sit to the upper right; one-hit wonders cluster bottom-left.</p>
+        <p class="chart-desc">Each dot is one artist with at least three Hottest 100 entries. <strong>X</strong> = how many years passed between their first and last appearance. <strong>Y</strong> = total number of songs voted in. <strong>Colour</strong> = their best-ever finish. Artists in the upper-right had long careers and a lot of entries; the bottom-left is mainly artists who appeared briefly.</p>
       </div>
       <div id="chart-scatter-j"></div>
       <p class="source">Source: Triple J Hottest 100 — ABC Australia</p>
@@ -193,7 +193,7 @@
 
     <div class="takeaway">
       <span class="takeaway-label">Key takeaway</span>
-      <p><strong>Hilltop Hoods are the most-played artist in Triple J Hottest 100 history</strong>. The polls increasingly reward returning artists over fresh debuts — once you make it onto Triple J, voters tend to keep voting you back.</p>
+      <p><strong>Hilltop Hoods have the most Hottest 100 entries of any artist in the data.</strong> The share of returning artists in each poll has grown over time — listeners keep voting for acts they already know, which makes the countdown harder to crack for newer names.</p>
     </div>
   </section>
 
@@ -202,12 +202,12 @@
     <div class="section-inner">
       <div class="section-label">Part 4</div>
       <h2>The Shape of a Hit</h2>
-      <p class="section-body">Australia's chart story splits in two by <strong>format</strong>. On the <strong>albums</strong> chart, local acts have always held their ground — <strong>267 Australian albums</strong> have reached #1 since 1988, from Delta Goodrem's <em>Innocent Eyes</em> (29 weeks at #1) to Savage Garden's debut. On the <strong>singles</strong> chart, they have steadily lost it. The next two charts trace that widening gap, decade by decade.</p>
+      <p class="section-body">The pattern for albums and singles looks quite different once you look at the data by format. Australian acts have held their ground on the <strong>albums</strong> chart — <strong>267 Australian albums</strong> have reached #1 since 1988, including Delta Goodrem's <em>Innocent Eyes</em> (29 weeks at #1) and Savage Garden's debut. On <strong>singles</strong> the share has steadily fallen. This section traces that split and looks at what actually keeps a song on the chart.</p>
 
       <div class="chart-block">
         <div class="chart-header">
           <h3>The Album–Singles Gap, Decade by Decade</h3>
-          <p class="chart-desc">Each row joins Australia's <strong>album</strong> share (blue dot) to its <strong>singles</strong> share (orange dot) for that decade; the bar between them is the gap. The two were neck-and-neck in the 1980s, then albums pulled away — the gap was widest in the 2010s, when Australians held a quarter of the album chart but barely a tenth of singles.</p>
+          <p class="chart-desc">Each row shows Australia's <strong>album</strong> share (blue) and <strong>singles</strong> share (orange) for that decade. The connecting bar is the gap between them. The two were close in the 1980s, then diverged — by the 2010s the album share was still around 25% while singles had dropped to 10%.</p>
         </div>
         <div id="chart-grouped"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -216,7 +216,7 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Australia Held the Album Chart, Lost the Singles Chart</h3>
-          <p class="chart-desc">Two lines track the share of the ARIA chart held by Australian artists every year from 1988. In the late 1980s Australia held about a quarter of <em>both</em> charts. The <strong>blue</strong> line (albums) stayed high for decades; the <strong>orange</strong> line (singles) drifted steadily down into single digits. Press <strong>Play</strong> to trace both lines year by year.</p>
+          <p class="chart-desc">Australian share of the ARIA chart year by year for both albums (blue) and singles (orange). Both started around 25% in the late 1980s, then moved in different directions — albums held up while singles kept declining. Press <strong>Play</strong> to step through the years and watch both lines move.</p>
         </div>
         <div class="explore-controls" style="order:0">
           <button type="button" id="slope-play" class="explore-btn">▶ Play through the years</button>
@@ -230,18 +230,18 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>When New Songs Arrive on the Chart, Month by Month</h3>
-          <p class="chart-desc">Counting every brand-new entry onto the ARIA singles chart across 37 years, grouped by calendar month. New music pours in fairly steadily from autumn through spring, peaking around May — then drops to its lowest point in December as the industry slows for the Christmas summer break.</p>
+          <p class="chart-desc">Total new entries onto the ARIA singles chart per calendar month, summed across 37 years. Releases are fairly steady from February through November, with the highest volume around May. December drops sharply — the industry typically slows down over the summer and Christmas period.</p>
         </div>
         <div id="chart-radial"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
       </div>
 
-      <p class="section-body">Chart success has two dimensions — <em>how high</em> a song peaks and <em>how long</em> it stays. They are not the same. A song can hit #1 for one week and vanish. Another can sit at #18 for two years and quietly outsell the lot.</p>
+      <p class="section-body">Chart success has two dimensions — <em>peak position</em> and <em>weeks on chart</em>. They are not the same thing. A song can reach #1 and drop off within a month; another can sit around #15 for two years. The chart below looks at which songs actually lasted the longest, and whether they peaked high.</p>
 
       <div class="chart-block">
         <div class="chart-header">
           <h3>Long-Running Hits Aren't Always #1 Hits</h3>
-          <p class="chart-desc">The 15 songs that spent the most weeks on the ARIA singles chart. Bars are coloured by how high each song actually peaked — <strong>red</strong> = #1, <strong>orange</strong> = top 5, <strong>blue</strong> = #6–10, <strong>grey</strong> = never made top 10. A grey bar means the song was a slow burn that never went to #1.</p>
+          <p class="chart-desc">The 15 songs with the most weeks on the ARIA singles chart. Each bar is coloured by peak position: <strong>red</strong> = reached #1, <strong>orange</strong> = top 5, <strong>blue</strong> = #6–10, <strong>grey</strong> = outside the top 10. Several of the longest-running songs never reached #1 at all.</p>
         </div>
         <div id="chart-scatter-release"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -249,7 +249,7 @@
 
       <div class="takeaway">
         <span class="takeaway-label">Key takeaway</span>
-        <p><strong>Hitting #1 does not predict longevity.</strong> Several of the ARIA chart's longest-running songs — including <em>Mr Brightside</em>, peaking at #19 — never made the top 10. Chart success has two independent dimensions.</p>
+        <p><strong>Reaching #1 does not mean a song will stay on the chart for long.</strong> Several of the longest-running songs — including <em>Mr Brightside</em>, which peaked at #19 — never made the top 10. Peak position and weeks on chart appear to be largely independent of each other.</p>
       </div>
     </div>
   </section>
@@ -258,13 +258,13 @@
   <section class="section" id="part5">
     <div class="section-label">Part 5</div>
     <h2>Australia on the World Stage</h2>
-    <p class="section-body">Charting at home is one thing — charting overseas is another sport entirely. For most of the last 50 years, Australian artists have broken through abroad only in narrow bursts. The Bee Gees and Olivia Newton-John dominated American radio in the late 1970s. INXS broke through once in 1987. Savage Garden made a brief surge in the late 90s. Then a 17-year drought. Streaming changed all of that.</p>
-    <p class="section-body">In the streaming era, two Australian songs have done something no Aussie act had ever done before: sit at the top of the Spotify Daily Global #1 chart for months at a time. And Australia has — gamely — kept showing up at <em>Eurovision</em>, the world's largest music spectacle, since 2015.</p>
+    <p class="section-body">Charting at home and charting overseas are very different things. Looking at the US Billboard Hot 100, Australian artists have only managed brief windows of success — the Bee Gees and Olivia Newton-John in the late 1970s, INXS in 1987, Savage Garden in the late 1990s, then a 27-year gap before the next #1.</p>
+    <p class="section-body">Streaming has changed the picture somewhat. Two Australian songs have held the Spotify Global #1 for extended periods, which would have been nearly impossible under the old radio and sales model. Australia has also been entering Eurovision since 2015, with mixed results.</p>
 
     <div class="chart-block">
       <div class="chart-header">
         <h3>Every Time an Australian Hit #1 on the US Billboard Hot 100</h3>
-        <p class="chart-desc">Each circle is one Australian #1 hit on the US Billboard Hot 100 (1971–2021). Circle size = weeks at #1. Colour bands the era. Vertical dashed lines mark the <strong>27-year gap</strong> between INXS in 1987 and Iggy Azalea in 2014 — the longest dry spell for Aussie acts in America.</p>
+        <p class="chart-desc">Every time an Australian artist reached #1 on the US Billboard Hot 100 (1971–2021). Circle size shows how many weeks they held the spot; colour indicates the era. The dashed vertical lines mark the <strong>27-year gap</strong> between INXS in 1987 and Iggy Azalea in 2014.</p>
       </div>
       <div id="chart-billboard"></div>
       <p class="source">Source: <a href="https://www.billboard.com/articles/columns/chart-beat/7655245/top-australian-artists-all-time-hot-100-chart-bee-gees-olivia-newton-john">Billboard — Down Under on Top (2017)</a>, cross-referenced with the Wikipedia <a href="https://en.wikipedia.org/wiki/List_of_Billboard_Hot_100_number-ones_by_Australian_artists">List of Billboard Hot 100 number-ones by Australian artists</a>.</p>
@@ -273,7 +273,7 @@
     <div class="chart-block">
       <div class="chart-header">
         <h3>Two Australian Songs Have Ruled the Spotify Global #1</h3>
-        <p class="chart-desc">Of the millions of songs released since Spotify launched, only <strong>two</strong> by Australian artists have ever held the #1 spot on the Daily Top Songs Global chart — and they did it for an extraordinary number of days. Tones and I's <em>Dance Monkey</em> still holds the record for the longest non-seasonal #1 in Spotify history.</p>
+        <p class="chart-desc">Only <strong>two</strong> Australian songs have ever held #1 on the Spotify Daily Global chart. Both did it for a remarkably long time. Tones and I's <em>Dance Monkey</em> spent 120 days at the top — a record for a non-seasonal song in Spotify history at the time.</p>
       </div>
       <div id="chart-spotify"></div>
       <p class="source">Sources: <a href="https://themusicnetwork.com/tones-and-i-dance-monkey-spotify-global-chart/">The Music Network — Tones and I, Spotify Global Chart</a>; <a href="https://www.guinnessworldrecords.com/world-records/777707-most-days-at-no-1-on-spotify%E2%80%99s-%E2%80%9Cdaily-top-songs-global%E2%80%9D-chart">Guinness World Records — Most days at No. 1 on Spotify Global</a>.</p>
@@ -282,7 +282,7 @@
     <div class="chart-block">
       <div class="chart-header">
         <h3>Australia at Eurovision: A Decade of Trying</h3>
-        <p class="chart-desc">Australia has been a Eurovision wildcard since 2015. Circles = entries that made the grand final; crosses = "did not qualify" (DNQ). Y-axis is final placement, with #1 at the very top. Dami Im came within a whisker of winning in 2016; since 2021, Australia has missed the grand final more often than not.</p>
+        <p class="chart-desc">Australia's results at Eurovision since 2015. Circles show entries that made the grand final; crosses are "did not qualify" (DNQ). The y-axis is final placement — higher means a better result. Dami Im finished second in 2016. From 2021 onwards, Australia has failed to qualify more often than it has made the final.</p>
       </div>
       <div id="chart-eurovision"></div>
       <p class="source">Source: <a href="https://en.wikipedia.org/wiki/Australia_in_the_Eurovision_Song_Contest">Wikipedia — Australia in the Eurovision Song Contest</a>.</p>
@@ -291,19 +291,19 @@
     <div class="chart-block">
       <div class="chart-header">
         <h3>2 of the 20 Most-Streamed Songs Ever Are Australian</h3>
-        <p class="chart-desc">The all-time top 20 most-streamed songs on Spotify, ranked by total streams in billions. Australian songs are picked out in orange against grey. <strong>Stay</strong> (#10, 3.94B streams) and <strong>Riptide</strong> (#20, 3.69B) both sit inside the global top 20 — and just outside it at #27 is <strong>Dance Monkey</strong> (3.45B). For a country of 26 million, that's an extraordinary slice of the global streaming pie.</p>
+        <p class="chart-desc">The 20 most-streamed songs on Spotify (as of May 2026), ranked by total streams in billions. Australian songs are highlighted in orange. <strong>Stay</strong> (#10, 3.94B) and <strong>Riptide</strong> (#20, 3.69B) are both inside the top 20, with <strong>Dance Monkey</strong> just outside at #27 (3.45B). Three songs in the global all-time top 30 is a notable result for a country of 26 million.</p>
       </div>
       <div id="chart-spotify-alltime"></div>
       <p class="source">Source: <a href="https://en.wikipedia.org/wiki/List_of_most-streamed_songs_on_Spotify">Wikipedia — List of most-streamed songs on Spotify</a>, as of May 2026.</p>
     </div>
 
     <aside class="pullquote">
-      <p>It took 50 years of Australian artists chasing American radio for the streaming era to deliver what the record industry never could: <strong>three songs</strong> in the global Spotify all-time top 30, and <strong>two consecutive years</strong> when an Aussie track held the world's biggest streaming chart at #1 for months at a time.</p>
+      <p>It took decades of limited overseas success for Australian artists to reach this point. Streaming gave local acts direct access to global audiences — and the numbers show it: <strong>three songs</strong> in the Spotify all-time top 30, and two Australian tracks each holding the global #1 for months.</p>
     </aside>
 
     <div class="takeaway">
       <span class="takeaway-label">Key takeaway</span>
-      <p><strong>Three of the 50 most-streamed songs ever on Spotify are Australian</strong> — Stay (#10), Riptide (#20), and Dance Monkey (#27). For a country of 26 million, that is an extraordinary slice of the global streaming pie.</p>
+      <p>Three of the 50 most-streamed songs on Spotify are Australian — <strong>Stay (#10), Riptide (#20), and Dance Monkey (#27)</strong>. The data suggests streaming gave Australian artists a level of global reach that the old radio and sales model rarely did.</p>
     </div>
   </section>
 
