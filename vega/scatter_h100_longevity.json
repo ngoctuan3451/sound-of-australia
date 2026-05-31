@@ -37,8 +37,8 @@
           "scale": {"range": [40, 700]},
           "legend": {
             "title": "Total songs (dot size)",
-            "orient": "bottom",
-            "direction": "horizontal",
+            "orient": "right",
+            "direction": "vertical",
             "values": [5, 15, 25],
             "symbolFillColor": "#bbb",
             "symbolStrokeColor": "#888",
@@ -50,7 +50,7 @@
           "field": "best",
           "type": "quantitative",
           "scale": {"scheme": "viridis", "reverse": true, "domain": [1, 100]},
-          "legend": {"title": "Best position ever reached", "orient": "bottom", "direction": "horizontal", "gradientLength": 200, "titleFontSize": 11, "labelFontSize": 10}
+          "legend": {"title": "Best position ever reached", "orient": "right", "direction": "vertical", "gradientLength": 180, "titleFontSize": 11, "labelFontSize": 10}
         },
         "tooltip": [
           {"field": "artist", "title": "Artist"},

@@ -4,7 +4,7 @@
   "height": 380,
   "title": {
     "text": "New songs arrive all year — then go quiet at Christmas",
-    "subtitle": ["Total brand-new entries onto the ARIA singles chart in each calendar month, summed across 37 years (1988–2024).", "Record labels release steadily from autumn to spring, then ease off over the summer holidays."],
+    "subtitle": ["Total brand-new entries onto the ARIA singles chart in each calendar month, summed across 37 years (1988–2024).", "Hover a month to inspect the exact total."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -13,6 +13,12 @@
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_seasonality.json"},
+  "params": [
+    {
+      "name": "monthHover",
+      "select": {"type": "point", "fields": ["label"], "on": "mouseover", "clear": "mouseout"}
+    }
+  ],
   "transform": [
     {"aggregate": [{"op": "sum", "field": "debuts", "as": "total"}], "groupby": ["month", "label"]}
   ],
@@ -37,12 +43,30 @@
       "mark": {"type": "area", "interpolate": "monotone", "line": {"color": "#2980b9", "strokeWidth": 3}, "color": {"x1": 1, "y1": 1, "x2": 1, "y2": 0, "gradient": "linear", "stops": [{"offset": 0, "color": "#eaf4fc"}, {"offset": 1, "color": "#aed6f1"}]}}
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 90, "color": "#2980b9", "stroke": "white", "strokeWidth": 1.5},
+      "mark": {"type": "point", "filled": true, "color": "#2980b9", "stroke": "white", "strokeWidth": 1.5, "cursor": "pointer"},
       "encoding": {
+        "size": {"condition": {"param": "monthHover", "value": 190, "empty": false}, "value": 90},
         "tooltip": [
           {"field": "label", "title": "Month"},
           {"field": "total", "title": "New chart entries"}
         ]
+      }
+    },
+    {
+      "transform": [{"filter": {"param": "monthHover"}}],
+      "mark": {"type": "rule", "color": "#1a1a2e", "strokeDash": [3, 3], "strokeWidth": 1, "opacity": 0.45},
+      "encoding": {"x": {"field": "month", "type": "ordinal"}}
+    },
+    {
+      "transform": [
+        {"filter": {"param": "monthHover"}},
+        {"calculate": "datum.label + ': ' + format(datum.total, ',') + ' new entries'", "as": "hover_label"}
+      ],
+      "mark": {"type": "text", "align": "center", "dy": -24, "fontSize": 12, "fontWeight": 700, "color": "#1a1a2e", "stroke": "white", "strokeWidth": 2},
+      "encoding": {
+        "x": {"field": "month", "type": "ordinal"},
+        "y": {"field": "total", "type": "quantitative"},
+        "text": {"field": "hover_label"}
       }
     },
     {

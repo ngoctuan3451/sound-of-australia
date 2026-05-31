@@ -37,8 +37,8 @@
           "scale": {"range": [120, 1200]},
           "legend": {
             "title": "Weeks at #1",
-            "orient": "bottom",
-            "direction": "horizontal",
+            "orient": "right",
+            "direction": "vertical",
             "values": [2, 5, 10],
             "symbolFillColor": "#bbb",
             "symbolStrokeColor": "#888",
@@ -57,8 +57,8 @@
             "range":  ["#2980b9", "#16a085", "#f39c12"]
           },
           "legend": {
-            "orient": "bottom",
-            "direction": "horizontal",
+            "orient": "right",
+            "direction": "vertical",
             "title": "Era",
             "labelFontSize": 12,
             "titleFontSize": 11,

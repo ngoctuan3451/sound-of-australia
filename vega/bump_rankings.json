@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 440,
-  "padding": {"left": 20, "right": 140, "top": 10, "bottom": 10},
+  "padding": {"left": 20, "right": 55, "top": 10, "bottom": 10},
   "title": {
     "text": "Tones and I's three-year reign, then a streaming shake-up",
     "subtitle": "Top 5 Australian artists by weeks on chart, each year from 2018. Hover any line to highlight one artist.",
@@ -21,7 +21,7 @@
       "type": "quantitative",
       "title": null,
       "axis": {"format": "d", "labelFontSize": 12, "labelColor": "#555", "grid": false, "domain": false, "ticks": false, "labelPadding": 10, "values": [2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]},
-      "scale": {"domain": [2018, 2025], "nice": false, "padding": 28}
+      "scale": {"domain": [2017.8, 2025.7], "nice": false}
     },
     "y": {
       "field": "rank",
