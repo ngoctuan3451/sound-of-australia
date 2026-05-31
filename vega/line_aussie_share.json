@@ -13,7 +13,6 @@
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
   "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_singles_yearly.json"},
-  "params": [{"name": "playYear", "value": 0}],
   "layer": [
     {
       "mark": {"type": "area", "line": {"strokeWidth": 3, "color": "#f39c12"}, "color": "#f39c12", "fillOpacity": 0.2, "interpolate": "monotone"},
@@ -65,21 +64,6 @@
         "x": {"field": "x", "type": "quantitative"}, "y": {"field": "y", "type": "quantitative"},
         "text": {"value": "The 2020s:|fewer than|1 in 10"}
       }
-    },
-    {
-      "transform": [{"filter": "playYear > 0 && datum.year <= playYear"}],
-      "mark": {"type": "line", "strokeWidth": 4, "color": "#c0392b", "interpolate": "monotone"},
-      "encoding": {"x": {"field": "year", "type": "quantitative"}, "y": {"field": "aus_pct", "type": "quantitative"}}
-    },
-    {
-      "transform": [{"filter": "datum.year == playYear"}],
-      "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 1, "strokeDash": [2, 2]},
-      "encoding": {"x": {"field": "year", "type": "quantitative"}}
-    },
-    {
-      "transform": [{"filter": "datum.year == playYear"}],
-      "mark": {"type": "point", "filled": true, "size": 200, "color": "#c0392b", "stroke": "white", "strokeWidth": 2},
-      "encoding": {"x": {"field": "year", "type": "quantitative"}, "y": {"field": "aus_pct", "type": "quantitative"}}
     }
   ]
 }

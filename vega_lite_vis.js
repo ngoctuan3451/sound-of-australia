@@ -42,14 +42,12 @@ const cacheBust = '?v=' + Date.now();
 // is still reflowing (fonts loading, scrollbars, flex re-order) they can lock
 // to a too-narrow width and leave white space on the right. Re-running each
 // view on load + resize makes them snap back to the full container width.
-const liveViews = [];
 const viewBySel = {};
+const lastWidth = {};      // container width each chart was last embedded at
 
-// Concat / facet / repeat specs ignore width:"container" (a known Vega-Lite limit),
-// so we fetch them, inject the measured container width into each child, then embed —
-// and re-embed on resize. Everything else uses the normal URL + width:"container" path.
+// Concat / facet / repeat specs ignore width:"container" (a Vega-Lite limit), so
+// we fetch them and inject the measured container width into each child.
 const concatSelectors = new Set(['#chart-lollipop']);
-const concatWidths = {};   // last embedded width per concat sel, to avoid needless re-embeds
 
 function showError(sel, spec) {
   return err => {
@@ -65,6 +63,7 @@ function showError(sel, spec) {
 function embedConcat(sel, spec) {
   const el = document.querySelector(sel);
   if (!el) return Promise.resolve();
+  lastWidth[sel] = el.clientWidth;
   return fetch(spec + cacheBust)
     .then(r => r.json())
     .then(specObj => {
@@ -73,7 +72,6 @@ function embedConcat(sel, spec) {
       // padding so the whole chart fits the container instead of overflowing.
       const AXIS_ALLOWANCE = 225;
       const w = Math.max(220, el.clientWidth - AXIS_ALLOWANCE);
-      concatWidths[sel] = el.clientWidth;
       (specObj.vconcat || specObj.hconcat || specObj.concat || []).forEach(c => { c.width = w; });
       return vegaEmbed(sel, specObj, embedOpts);
     })
@@ -81,25 +79,32 @@ function embedConcat(sel, spec) {
     .catch(showError(sel, spec));
 }
 
-charts.forEach(([sel, spec]) => {
-  if (concatSelectors.has(sel)) { embedConcat(sel, spec); return; }
-  const url = spec + cacheBust;
-  vegaEmbed(sel, url, embedOpts)
-    .then(res => { if (res && res.view) { liveViews.push(res.view); viewBySel[sel] = res.view; if (sel === '#chart-line') wireLinePlayer(); } })
+function embedSingle(sel, spec) {
+  const el = document.querySelector(sel);
+  if (!el) return Promise.resolve();
+  lastWidth[sel] = el.clientWidth;
+  return vegaEmbed(sel, spec + cacheBust, embedOpts)
+    .then(res => { if (res && res.view) { viewBySel[sel] = res.view; if (sel === '#chart-slope') wireSlopePlayer(); } })
     .catch(showError(sel, spec));
-});
+}
 
+function embedChart(sel, spec) {
+  return concatSelectors.has(sel) ? embedConcat(sel, spec) : embedSingle(sel, spec);
+}
+
+charts.forEach(([sel, spec]) => embedChart(sel, spec));
+
+// width:"container" only measures correctly if the container already has its final
+// width when the chart embeds; view.resize() does NOT re-fit it afterwards. So when
+// a container's width actually changes we RE-EMBED that chart — reliably rescuing any
+// chart that first embedded into a not-yet-laid-out (narrow) box.
 function refitCharts() {
-  liveViews.forEach(v => { try { v.resize().run(); } catch (e) { /* ignore */ } });
-  // Concat specs can't just resize() to the container — re-embed, but only when
-  // the width actually changed (so load-time refits don't reset a running animation).
-  concatSelectors.forEach(sel => {
+  charts.forEach(([sel, spec]) => {
     const el = document.querySelector(sel);
     if (!el) return;
-    const w = Math.max(280, el.clientWidth);
-    if (Math.abs((concatWidths[sel] || 0) - w) < 2) return;
-    const found = charts.find(c => c[0] === sel);
-    if (found) embedConcat(sel, found[1]);
+    const w = el.clientWidth;
+    if (w > 0 && Math.abs((lastWidth[sel] || 0) - w) < 2) return;
+    embedChart(sel, spec);
   });
 }
 
@@ -135,22 +140,22 @@ function wireExploreSelection(view) {
   }
 }
 
-// ── Line-chart play-through (Section 2): sweep a playhead across the years ───
-// Advances the `playYear` param so the red line + marker move along the years.
-let _linePlayerWired = false;
-function wireLinePlayer() {
-  if (_linePlayerWired) return;               // wired once; reads the live view each tick
-  const btn = document.getElementById('line-play');
-  const reset = document.getElementById('line-reset');
-  const label = document.getElementById('line-year');
+// ── Album-vs-singles play-through (Section 4): sweep a playhead across years ─
+// Advances the `playYear` param so both lines trace out + a marker moves along.
+let _slopePlayerWired = false;
+function wireSlopePlayer() {
+  if (_slopePlayerWired) return;              // wired once; reads the live view each tick
+  const btn = document.getElementById('slope-play');
+  const reset = document.getElementById('slope-reset');
+  const label = document.getElementById('slope-year');
   if (!btn) return;
-  _linePlayerWired = true;
+  _slopePlayerWired = true;
 
   const FIRST = 1988, LAST = 2025, STEP_MS = 320;
   let timer = null, y = FIRST;
 
   function set(year) {
-    const v = viewBySel['#chart-line']; if (!v) return;
+    const v = viewBySel['#chart-slope']; if (!v) return;
     v.signal('playYear', year); v.runAsync();
     if (label) label.textContent = year > 0 ? `${year}` : '';
   }

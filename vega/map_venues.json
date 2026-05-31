@@ -135,14 +135,6 @@
         "longitude2": {"field": "x2"},
         "latitude2":  {"field": "y2"}
       }
-    },
-    {
-      "data": {"values": [{"lon": 144.9658, "lat": -37.8185}]},
-      "mark": {"type": "point", "shape": "triangle", "angle": 265, "size": 170, "fill": "#c0392b", "stroke": "white", "strokeWidth": 1, "filled": true},
-      "encoding": {
-        "longitude": {"field": "lon", "type": "quantitative"},
-        "latitude":  {"field": "lat", "type": "quantitative"}
-      }
     }
   ]
 }

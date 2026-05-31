@@ -291,6 +291,26 @@ artist_year_rows = [
 ]
 json.dump(artist_year_rows, open(os.path.join(OUT, "aria_singles_artist_year.json"), "w"), separators=(",", ":"))
 
+# ---------- 15. Annual Australian share, albums vs singles (Sec 4 animated lines) ----------
+# Same idea as the singles yearly share, but for BOTH formats, so the chart can
+# trace album share and singles share year by year (1988-2025).
+def yearly_share(rows):
+    yc = defaultdict(lambda: {"aus": 0, "total": 0})
+    for r in rows:
+        y = yr(r["date"]); yc[y]["total"] += 1
+        if r["aus"]: yc[y]["aus"] += 1
+    return yc
+
+sing_yc = yearly_share(singles)
+alb_yc  = yearly_share(albums)
+share_rows = []
+for y in sorted(set(sing_yc) | set(alb_yc)):
+    if alb_yc[y]["total"]:
+        share_rows.append({"year": y, "format": "Albums",  "share": alb_yc[y]["aus"] / alb_yc[y]["total"] * 100})
+    if sing_yc[y]["total"]:
+        share_rows.append({"year": y, "format": "Singles", "share": sing_yc[y]["aus"] / sing_yc[y]["total"] * 100})
+json.dump(share_rows, open(os.path.join(OUT, "aria_share_yearly.json"), "w"), separators=(",", ":"))
+
 # ---------- Report ----------
 print("Wrote:")
 for f in sorted(os.listdir(OUT)):

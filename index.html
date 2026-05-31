@@ -108,12 +108,7 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Australian Singles: A Slow Fade from the Charts</h3>
-          <p class="chart-desc">Percentage of Top 50 ARIA singles by Australian artists each year. Local acts held about a quarter of the chart in the late 1980s and early 1990s, then slid into single digits — by the 2020s fewer than one in ten chart singles is Australian. Press <strong>Play</strong> to trace the line year by year.</p>
-        </div>
-        <div class="explore-controls" style="order:0">
-          <button type="button" id="line-play" class="explore-btn">▶ Play through the years</button>
-          <button type="button" id="line-reset" class="explore-btn explore-btn--ghost">Reset</button>
-          <span id="line-year" class="explore-window"></span>
+          <p class="chart-desc">Percentage of Top 50 ARIA singles by Australian artists each year. Local acts held about a quarter of the chart in the late 1980s and early 1990s, then slid into single digits — by the 2020s fewer than one in ten chart singles is Australian.</p>
         </div>
         <div id="chart-line"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -221,7 +216,12 @@
       <div class="chart-block">
         <div class="chart-header">
           <h3>Australia Held the Album Chart, Lost the Singles Chart</h3>
-          <p class="chart-desc">Two lines track the share of the ARIA chart held by Australian artists across five decades. In the 1980s Australia held about a quarter of <em>both</em> charts. The <strong>blue</strong> line (albums) stayed near that level for thirty years before easing off; the <strong>orange</strong> line (singles) drifted steadily down into single digits.</p>
+          <p class="chart-desc">Two lines track the share of the ARIA chart held by Australian artists every year from 1988. In the late 1980s Australia held about a quarter of <em>both</em> charts. The <strong>blue</strong> line (albums) stayed high for decades; the <strong>orange</strong> line (singles) drifted steadily down into single digits. Press <strong>Play</strong> to trace both lines year by year.</p>
+        </div>
+        <div class="explore-controls" style="order:0">
+          <button type="button" id="slope-play" class="explore-btn">▶ Play through the years</button>
+          <button type="button" id="slope-reset" class="explore-btn explore-btn--ghost">Reset</button>
+          <span id="slope-year" class="explore-window"></span>
         </div>
         <div id="chart-slope"></div>
         <p class="source">Source: ARIA Charts — caseybriggs/ARIA-charts, GitHub</p>
@@ -332,6 +332,6 @@
     </div>
   </footer>
 
-  <script src="vega_lite_vis.js?v=20260530-2"></script>
+  <script src="vega_lite_vis.js?v=20260530-3"></script>
 </body>
 </html>

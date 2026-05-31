@@ -2,10 +2,9 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
   "height": 420,
-  "padding": {"left": 18, "right": 70},
   "title": {
     "text": "Australia held the album chart while its singles share slipped",
-    "subtitle": ["Share of the ARIA chart held by Australian artists, by decade. In the 1980s Australia held about a quarter of BOTH charts.", "Albums (blue) stayed near a quarter for 30 years; singles (orange) drifted down into single digits."],
+    "subtitle": ["Australian share of the ARIA chart each year, 1988–2025 — albums (blue) versus singles (orange).", "Press Play to trace both lines through the years."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
@@ -13,18 +12,15 @@
     "anchor": "start"
   },
   "config": {"view": {"stroke": null}, "font": "Inter, system-ui, sans-serif"},
-  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_decades.json"},
-  "transform": [
-    {"filter": "datum.origin == 'Australian'"},
-    {"calculate": "parseInt(datum.decade)", "as": "dec"}
-  ],
+  "data": {"url": "https://raw.githubusercontent.com/ngoctuan3451/FIT2179/main/data/derived/aria_share_yearly.json"},
+  "params": [{"name": "playYear", "value": 0}],
   "encoding": {
     "x": {
-      "field": "dec",
+      "field": "year",
       "type": "quantitative",
       "title": null,
-      "scale": {"domain": [1980, 2020], "nice": false},
-      "axis": {"values": [1980, 1990, 2000, 2010, 2020], "labelExpr": "datum.value + 's'", "labelFontSize": 14, "labelFontWeight": 600, "labelColor": "#333", "labelAngle": 0, "labelPadding": 12, "domain": true, "domainColor": "#bbb", "ticks": true, "tickColor": "#bbb", "grid": false}
+      "scale": {"domain": [1988, 2025], "nice": false},
+      "axis": {"values": [1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024], "format": "d", "labelFontSize": 11, "labelColor": "#333", "domain": true, "domainColor": "#bbb", "ticks": true, "tickColor": "#bbb", "grid": false}
     },
     "y": {
       "field": "share",
@@ -37,48 +33,36 @@
       "field": "format",
       "type": "nominal",
       "scale": {"domain": ["Albums", "Singles"], "range": ["#2980b9", "#f39c12"]},
-      "legend": null
+      "legend": {"orient": "top", "direction": "horizontal", "title": null, "labelFontSize": 13, "symbolSize": 220, "padding": 6}
     }
   },
   "layer": [
     {
-      "mark": {"type": "line", "strokeWidth": 4, "interpolate": "monotone"},
-      "encoding": {"detail": {"field": "format"}}
+      "mark": {"type": "line", "strokeWidth": 3, "interpolate": "monotone"},
+      "encoding": {
+        "detail": {"field": "format"},
+        "opacity": {"condition": {"test": "playYear > 0", "value": 0.18}, "value": 1}
+      }
     },
     {
-      "mark": {"type": "point", "filled": true, "size": 300, "stroke": "white", "strokeWidth": 2.5},
+      "mark": {"type": "point", "filled": true, "size": 45, "stroke": "white", "strokeWidth": 1},
       "encoding": {
+        "opacity": {"condition": {"test": "playYear > 0", "value": 0.12}, "value": 0.9},
         "tooltip": [
-          {"field": "decade", "title": "Decade"},
+          {"field": "year", "title": "Year"},
           {"field": "format", "title": "Chart"},
-          {"field": "share",  "title": "Australian share %", "format": ".1f"},
-          {"field": "weeks",  "title": "Australian chart-weeks"}
+          {"field": "share", "title": "Australian share %", "format": ".1f"}
         ]
       }
     },
     {
-      "mark": {"type": "text", "fontSize": 10, "fontWeight": 700, "color": "white"},
-      "encoding": {
-        "text": {"field": "share", "type": "quantitative", "format": ".0f"}
-      }
+      "transform": [{"filter": "playYear > 0 && datum.year <= playYear"}],
+      "mark": {"type": "line", "strokeWidth": 4, "interpolate": "monotone"},
+      "encoding": {"detail": {"field": "format"}}
     },
     {
-      "transform": [{"filter": "datum.dec == 2020"}],
-      "mark": {"type": "text", "align": "left", "dx": 16, "fontSize": 14, "fontWeight": 700, "baseline": "middle"},
-      "encoding": {
-        "text": {"field": "format"},
-        "color": {"field": "format", "type": "nominal"}
-      }
-    },
-    {
-      "data": {"values": [{"dec": 1980, "y": 28.5, "t": "Both near a quarter in the 1980s"}]},
-      "mark": {"type": "text", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "align": "left", "dx": -4, "dy": 0},
-      "encoding": {
-        "x": {"field": "dec", "type": "quantitative"},
-        "y": {"field": "y", "type": "quantitative"},
-        "text": {"field": "t"},
-        "color": {"value": "#c0392b"}
-      }
+      "transform": [{"filter": "datum.year == playYear"}],
+      "mark": {"type": "point", "filled": true, "size": 170, "stroke": "white", "strokeWidth": 2}
     }
   ]
 }
