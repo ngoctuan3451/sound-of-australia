@@ -73,7 +73,7 @@
     },
     {
       "data": {"values": [
-        {"x": 2000, "y": 9.5, "t": "27-year drought between INXS (1987) and Iggy Azalea (2014)"}
+        {"x": 2006.5, "y": 9.5, "t": "15-year gap between Savage Garden (1999) and Iggy Azalea (2014)"}
       ]},
       "mark": {"type": "text", "align": "center", "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b"},
       "encoding": {
@@ -85,7 +85,7 @@
     {
       "mark": {"type": "rule", "color": "#ccc", "strokeDash": [3, 3], "strokeWidth": 1},
       "encoding": {
-        "x": {"datum": 1987, "type": "quantitative"}
+        "x": {"datum": 1999, "type": "quantitative"}
       }
     },
     {
