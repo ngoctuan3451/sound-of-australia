@@ -1,31 +1,24 @@
-# 500-word Moodle Description — paste this into the Moodle form
+# 500-word Moodle Description — paste the prose below into the Moodle form
 
-(Word count ≈ 490. Trim a sentence if Moodle's counter pushes over 500.)
+(Prose ≈ 480 words. Paste only the text under the rules; drop the markdown headings if the counter is tight.)
 
 ---
 
-## Domain, Why and Who
+**Domain, Why and Who.** *The Sound of Australia* traces how Australian music has been bought, voted for, and exported over nearly four decades. It is written for the average Australian — someone who has heard a Triple J Hottest 100 countdown, watched Eurovision on SBS, or caught *Dance Monkey* on the radio — but has never seen the data behind those moments. The aim is to turn that cultural familiarity into an evidence-based story: who has really dominated the charts, where Melbourne's live-music scene physically sits, how Australia's share of its own charts has shifted, and how rarely local acts break through overseas.
 
-*The Sound of Australia* examines how Australian music has been bought, voted for, broadcast and exported over almost four decades. The audience is the average Australian — someone who has heard a *Hottest 100* countdown on Triple J, watched Eurovision on SBS, or stumbled across *Dance Monkey* on the radio — but has never seen the data behind those moments. The "why" is to convert that ambient cultural familiarity into a coherent, evidence-based story: which artists have actually dominated, where the live-music scene physically lives in Melbourne, how recent the streaming era really is, and how rarely Australian artists have cracked the international charts.
+**What (Data).** Six real datasets are combined. ARIA Charts (caseybriggs/ARIA-charts, GitHub) supply 95,800 weekly singles and album rows (1988–2025), each flagged by artist origin — the spine of the project. Triple J Hottest 100 (ABC Australia) adds 4,200 entries across 33 listener polls. City of Melbourne Open Data lists 227 live-music venues with coordinates and types. Eurovision (2015–2025), Australian Billboard Hot 100 #1s, and Spotify Global #1 records come from Wikipedia, Billboard, and Guinness World Records. A single Python script aggregates everything into compact derived JSON (about 950 KB total) committed to the repository for reproducibility.
 
-## Data (What)
+**How (Idioms and custom elements).** Five sections follow Munzer's What/Why/How framework, each answering one question: where the music comes from, what we buy, what we love, what shape a hit takes, and how we rate globally. Marks and channels are matched to tasks: a Mercator dot map and an equal-Earth, log-scaled choropleth (geoshape + colour value) for geography; position and length for rankings; colour hue for origin (orange = Australian, blue = albums); size on the Hottest 100 longevity bubble scatter; and area for seasonal and new-versus-returning trends. Standard bars and lines are paired with custom-built idioms: a **dumbbell** showing the album-versus-singles gap each decade; an **animated dual-line** that plays through the years to trace album and singles share; an **interactive brush-linked panel** where dragging a year range re-ranks the top-15 artists; an **annotated bump chart** of yearly number-one artists; a **callout dot map** pointing into the dense CBD core; and an **era-segmented Billboard timeline** marking the 27-year drought between INXS (1987) and Iggy Azalea (2014). Every chart carries an in-spec annotation that turns data into insight — Kylie Minogue's 370 chart-weeks (100 clear of number two), the album-singles gap peaking at 25% versus 10% in the 2010s, Hilltop Hoods as Triple J's most-played act, and *Dance Monkey*'s record Spotify reign. A consistent palette and Playfair Display + Inter typography give the page an editorial, music-journalism tone.
 
-Six real-world datasets are combined. **ARIA Charts** (caseybriggs/ARIA-charts on GitHub) provides 95,800 weekly chart rows for both singles and albums (1988–2025), each row flagged with Australian-artist status and country of origin — this is the spine of the project. **Triple J Hottest 100** (ABC Australia) supplies 4,200 song entries across 33 annual listener polls. **City of Melbourne Open Data** lists 227 registered live-music venues with coordinates and venue types. **Eurovision Australia** entries (2015–2025) come from Wikipedia. **Billboard Hot 100 #1s by Australian artists** were compiled from Billboard's *Down Under on Top* article and the corresponding Wikipedia list. **Spotify Global #1 records** come from Guinness World Records and The Music Network. All raw data is aggregated into compact derived JSON files (≈800 KB total page weight) using a single Python preparation script committed to the repository for full reproducibility.
-
-## How (Idioms and Custom Elements)
-
-The page is structured as five "story" sections following Munzer's What/Why/How framework, each answering one question: where Aussie music comes from, what we buy (ARIA), what we love (Triple J), what shape a hit takes, and how Australia rates globally. Marks and channels are matched to each task: *position + size* on the longevity bubble scatter, *colour* hue for the streaming-era inflection on the rise-of-Aus-music line, and *position* on a step chart for Eurovision placement. Standard idioms (bar, line, area) are paired with several custom-built ones: a **hex-density map** of Melbourne venues using an offset-tile coordinate transform and a custom SVG hex path; an **annotated bump chart** with mouseover-highlight interaction; a **categorical-colour longevity leaderboard** with per-row callouts; an **annotated quadrant bubble scatter** for Hottest 100 careers; and a **timeline scatter** of every Australian Billboard #1, segmented by era. Every chart carries at least one specific in-spec annotation that turns raw data into an insight — *"Tones and I: 215 weeks, 60% more than #2 Vance Joy"*, *"27-year gap between INXS and Iggy Azalea on Billboard"*, *"★ Hilltop Hoods — most-played artist in Triple J history"*. A consistent palette (orange = Australian, navy = international, blue = albums) supports figure–ground clarity, and Playfair Display + Inter typography mirrors the editorial tone of music journalism.
-
-## AI acknowledgement
-
-ChatGPT and Claude (Anthropic) assisted with code structure, JSON debugging, prose grammar, and chart-design iteration. All data interpretation, design choices, and final wording were reviewed and approved by the author.
+**AI acknowledgement.** ChatGPT and Claude (Anthropic) assisted with code structure, debugging, grammar, and design iteration; all data interpretation, design choices, and final wording were reviewed and approved by the author.
 
 ---
 
 ## Submission checklist
 
-- [ ] Push everything to https://github.com/ngoctuan3451/FIT2179 main branch
-- [ ] Verify the live page renders at https://ngoctuan3451.github.io/FIT2179/ (all 14 charts visible, no 404s)
-- [ ] Hand-draw the sketch PDF on paper (4+ sections, headings, varied chart types, tidy), photograph or scan it, commit it to the repo, link the GitHub URL on Moodle
-- [ ] Paste the 500-word description above into the Moodle form
-- [ ] Confirm Moodle URL submission: live GitHub Pages URL + sketch PDF URL
+- [ ] Push everything to https://github.com/ngoctuan3451/FIT2179 (main branch)
+- [ ] Verify the live page at https://ngoctuan3451.github.io/FIT2179/ — all 17 charts render, no 404s
+- [ ] Hand-draw the sketch on paper (4+ sections, headings, varied chart types, tidy), photograph/scan to PDF, commit it, link the GitHub URL on Moodle
+- [ ] Paste the prose above into the Moodle form (confirm ≤ 500 words in the counter)
+- [ ] Submit on Moodle: live GitHub Pages URL + sketch PDF URL
+- [ ] Confirm this domain is clearly different from your Data Visualisation 1 (otherwise the mark is 0)
