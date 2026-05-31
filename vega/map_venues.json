@@ -127,7 +127,7 @@
       }
     },
     {
-      "data": {"values": [{"x": 145.005, "y": -37.813, "x2": 144.9758, "y2": -37.818}]},
+      "data": {"values": [{"x": 145.005, "y": -37.813, "x2": 144.970, "y2": -37.813}]},
       "mark": {"type": "rule", "color": "#c0392b", "strokeWidth": 2},
       "encoding": {
         "longitude":  {"field": "x",  "type": "quantitative"},
