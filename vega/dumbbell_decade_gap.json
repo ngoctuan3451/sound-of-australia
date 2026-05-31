@@ -65,7 +65,7 @@
         {"pivot": "format", "value": "share", "groupby": ["decade"]},
         {"filter": "datum.decade == '2010s'"}
       ],
-      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dx": -2, "dy": -16, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
+      "mark": {"type": "text", "align": "left", "baseline": "bottom", "dx": -2, "dy": -26, "fontSize": 11, "fontStyle": "italic", "fontWeight": 700, "color": "#c0392b", "lineBreak": "|", "lineHeight": 13},
       "encoding": {
         "x": {"field": "Singles", "type": "quantitative"},
         "text": {"value": "Widest gap — 15 points:|albums 25% vs singles 10%"}

@@ -4,7 +4,7 @@
   "height": 540,
   "title": {
     "text": "Australia's biggest chart careers span albums and singles",
-    "subtitle": "Top 15 Australian artists by combined weeks on the ARIA charts. Blue = weeks on the album chart, orange = weeks on the singles chart. Some acts (INXS, Cold Chisel) live on albums; others (Vance Joy, Guy Sebastian) on singles.",
+    "subtitle": ["Top 15 Australian artists by combined weeks on the ARIA charts.", "Blue = album-chart weeks, orange = singles-chart weeks."],
     "fontSize": 19,
     "subtitleFontSize": 12,
     "font": "Playfair Display",
