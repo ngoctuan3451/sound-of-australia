@@ -443,3 +443,24 @@ footer a:hover { border-bottom-color: #f39c12; }
   color: #b8470a;
   font: 700 0.9rem/1 "Inter", system-ui, sans-serif;
 }
+
+/* ── About strip ── */
+.about-strip {
+  background: #f4f5f7;
+  border-top: 2px solid #f39c12;
+  padding: 0.65rem 1.5rem;
+}
+.about-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0;
+  align-items: center;
+  font: 500 0.8rem/1.4 "Inter", system-ui, sans-serif;
+  color: #555;
+}
+.about-item { white-space: nowrap; }
+.about-item strong { color: #1a1a2e; font-weight: 700; }
+.about-sep { color: #ccc; padding: 0 0.75rem; }
+@media (max-width: 768px) { .about-sep { display: none; } .about-inner { flex-direction: column; gap: 0.25rem; } }

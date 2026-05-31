@@ -1,24 +1,24 @@
-# 500-word Moodle Description — paste the prose below into the Moodle form
-
-(Prose ≈ 480 words. Paste only the text under the rules; drop the markdown headings if the counter is tight.)
+# 500-word Moodle Description — paste the prose below (≈490 words)
 
 ---
 
-**Domain, Why and Who.** *The Sound of Australia* traces how Australian music has been bought, voted for, and exported over nearly four decades. It is written for the average Australian — someone who has heard a Triple J Hottest 100 countdown, watched Eurovision on SBS, or caught *Dance Monkey* on the radio — but has never seen the data behind those moments. The aim is to turn that cultural familiarity into an evidence-based story: who has really dominated the charts, where Melbourne's live-music scene physically sits, how Australia's share of its own charts has shifted, and how rarely local acts break through overseas.
+**Domain, Why and Who.** This visualisation examines how Australian music has been bought, voted for, and exported across almost four decades. The intended audience is the average Australian — someone familiar with Triple J's Hottest 100, the ARIA charts, and Melbourne's live scene, but who has never seen the underlying data. The why: to turn ambient cultural knowledge into a data-driven story, testing the assumption that Australian music is everywhere against what the numbers actually show.
 
-**What (Data).** Six real datasets are combined. ARIA Charts (caseybriggs/ARIA-charts, GitHub) supply 95,800 weekly singles and album rows (1988–2025), each flagged by artist origin — the spine of the project. Triple J Hottest 100 (ABC Australia) adds 4,200 entries across 33 listener polls. City of Melbourne Open Data lists 227 live-music venues with coordinates and types. Eurovision (2015–2025), Australian Billboard Hot 100 #1s, and Spotify Global #1 records come from Wikipedia, Billboard, and Guinness World Records. A single Python script aggregates everything into compact derived JSON (about 950 KB total) committed to the repository for reproducibility.
+**What (Data).** Six real-world datasets are combined — satisfying Munzner's *what* dimension. ARIA Charts (caseybriggs/ARIA-charts on GitHub) supplies 95,800 weekly singles and album rows (1988–2025), each flagged with Australian-artist status. Triple J Hottest 100 (ABC Australia) adds 4,200 entries across 33 listener polls. City of Melbourne Open Data lists 227 live-music venues with coordinates and types. Eurovision Australia entries (2015–2025), Australian Billboard Hot 100 number-ones, and Spotify Global records come from Wikipedia, Billboard, and Guinness World Records. All raw data is aggregated into compact derived JSON files using a committed Python script.
 
-**How (Idioms and custom elements).** Five sections follow Munzer's What/Why/How framework, each answering one question: where the music comes from, what we buy, what we love, what shape a hit takes, and how we rate globally. Marks and channels are matched to tasks: a Mercator dot map and an equal-Earth, log-scaled choropleth (geoshape + colour value) for geography; position and length for rankings; colour hue for origin (orange = Australian, blue = albums); size on the Hottest 100 longevity bubble scatter; and area for seasonal and new-versus-returning trends. Standard bars and lines are paired with custom-built idioms: a **dumbbell** showing the album-versus-singles gap each decade; an **animated dual-line** that plays through the years to trace album and singles share; an **interactive brush-linked panel** where dragging a year range re-ranks the top-15 artists; an **annotated bump chart** of yearly number-one artists; a **callout dot map** pointing into the dense CBD core; and an **era-segmented Billboard timeline** marking the 27-year drought between INXS (1987) and Iggy Azalea (2014). Every chart carries an in-spec annotation that turns data into insight — Kylie Minogue's 370 chart-weeks (100 clear of number two), the album-singles gap peaking at 25% versus 10% in the 2010s, Hilltop Hoods as Triple J's most-played act, and *Dance Monkey*'s record Spotify reign. A consistent palette and Playfair Display + Inter typography give the page an editorial, music-journalism tone.
+**Why (Tasks).** Following Munzner's *why* dimension, the main analytic tasks are: comparing Australian versus international shares over time (trend), ranking artists by chart presence (order), locating the spatial distribution of venues (browse), and looking up specific records such as Kylie Minogue's all-time singles lead and Dance Monkey's Spotify reign (lookup).
 
-**AI acknowledgement.** ChatGPT and Claude (Anthropic) assisted with code structure, debugging, grammar, and design iteration; all data interpretation, design choices, and final wording were reviewed and approved by the author.
+**How (Idioms and custom elements).** Idioms were chosen to match each task. A Mercator dot map and an Equal-Earth choropleth use the geoshape mark with colour-value encoding to answer the geographic questions. A dumbbell plot joins two quantitative values per decade with a connecting rule — encoding the album-versus-singles gap as line length (a more efficient channel than a grouped bar for a gap question). An animated dual-line chart uses a Vega-Lite `params` signal driven by a JavaScript timer so the viewer traces both album and singles share year by year. A brush-linked panel uses an interval selection on a mini area strip to cross-filter and re-aggregate a top-15 ranking in real time — the most technically complex element, requiring a separate artist-by-year derived dataset. A bump chart with joinaggregate end-labels places artist names directly on each line's last point. A heatmap uses a rect mark with an oranges colour scheme to encode entry counts across 33 years. A bubble scatter uses size and viridis colour simultaneously for the Hottest 100 longevity view. In every case, the idiom was chosen so the visual encoding directly reflects the analytic question — position for rankings, length for gaps, area for share, colour value for best position. Interactivity (brush, hover-highlight, Play button) is used only where exploration adds genuine value, consistent with the assignment's presentation-not-exploration goal.
+
+**AI acknowledgement.** ChatGPT and Claude (Anthropic) assisted with code structure, debugging, grammar, and chart-design iteration. All data interpretation, design choices, and final wording were reviewed and approved by the author.
 
 ---
 
 ## Submission checklist
 
-- [ ] Push everything to https://github.com/ngoctuan3451/FIT2179 (main branch)
-- [ ] Verify the live page at https://ngoctuan3451.github.io/FIT2179/ — all 17 charts render, no 404s
-- [ ] Hand-draw the sketch on paper (4+ sections, headings, varied chart types, tidy), photograph/scan to PDF, commit it, link the GitHub URL on Moodle
-- [ ] Paste the prose above into the Moodle form (confirm ≤ 500 words in the counter)
-- [ ] Submit on Moodle: live GitHub Pages URL + sketch PDF URL
-- [ ] Confirm this domain is clearly different from your Data Visualisation 1 (otherwise the mark is 0)
+- [ ] Push to https://github.com/ngoctuan3451/FIT2179 (main branch)
+- [ ] Verify live page at https://ngoctuan3451.github.io/FIT2179/
+- [ ] **Hand-draw the sketch** (see SKETCH_BLUEPRINT.md) → scan to PDF → commit → link URL on Moodle
+- [ ] Paste the prose above (≤500 words) into the Moodle form
+- [ ] Submit: GitHub Pages URL + sketch PDF URL
+- [ ] Confirm this domain is clearly different from your Data Visualisation 1
