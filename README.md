@@ -2,9 +2,9 @@
 
 **An interactive data-visualisation essay on four decades of Australian music — what we buy, what we vote for, and what we stream.**
 
-🔗 **[View the live interactive site →](https://ngoctuan3451.github.io/FIT2179/)**
+🔗 **[View the live interactive site →](https://ngoctuan3451.github.io/sound-of-australia/)**
 
-[![The Sound of Australia](docs/preview.png)](https://ngoctuan3451.github.io/FIT2179/)
+[![The Sound of Australia](docs/preview.png)](https://ngoctuan3451.github.io/sound-of-australia/)
 <!-- Drop a screenshot or a short scrolling GIF at docs/preview.png. The image above links to the live site. -->
 
 ---
@@ -53,7 +53,7 @@ python -m http.server 8000
 # open http://localhost:8000
 ```
 
-Or just open the [live site](https://ngoctuan3451.github.io/FIT2179/).
+Or just open the [live site](https://ngoctuan3451.github.io/sound-of-australia/).
 
 ## Repository structure
 
