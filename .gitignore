@@ -1,0 +1,12 @@
+# Assignment brief / spec (Monash copyright — keep private)
+FIT2179 Data Visualisation 2.pdf
+
+# Scratch / verification files
+_verify.html
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+~$*
